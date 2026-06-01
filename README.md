@@ -1,25 +1,30 @@
 # TraducePDF
 
-Traductor de PDFs del inglés al español utilizando un modelo LLM local (Llama Server).
+Traductor de PDFs del inglés al español utilizando un modelo LLM local (LM Studio, Llama Server u Ollama).
 
 ## Características
 
 - ✅ Traducción automática de PDFs del inglés al español
+- ✅ Compatible con múltiples proveedores LLM locales (LM Studio, Llama Server, Ollama)
 - ✅ Enfoque en contenido de texto (sin formato visual ni imágenes)
 - ✅ **Formateo prolijo de oraciones** - El texto se reescribe de forma natural y legible
 - ✅ Eliminación de saltos de línea innecesarios del PDF original
 - ✅ Procesamiento en bloques con overlap para mantener contexto
 - ✅ Compatible con documentos largos (cientos de páginas)
-- ✅ Detección automática del modelo cargado en Llama Server
+- ✅ Detección automática del modelo cargado
 - ✅ Visualización detallada del proceso de traducción
 - ✅ Salida en formato de texto plano legible
 - ✅ Reintentos automáticos en caso de fallos
 - ✅ Logging detallado para debugging
+- ✅ **Compatible con Windows** (soporte UTF-8)
 
 ## Requisitos
 
 - Python 3.8 o superior
-- Llama Server ejecutándose en `http://localhost:8080/v1`
+- Un servidor LLM local corriendo:
+ - **LM Studio** (http://localhost:1234/v1)
+ - **Llama Server** (http://localhost:8080/v1)
+ - **Ollama** (http://localhost:11434/v1)
 - Un modelo LLM cargado en el servidor
 
 ## Instalación
@@ -41,49 +46,41 @@ Este script realizará automáticamente:
 
 ### Método manual
 
-Si prefieres instalar manualmente:
-
-#### 1. Clonar o descargar el proyecto
-
-```bash
-cd TraducePDF
-```
-
-#### 2. Crear entorno virtual
-
-```bash
-python -m venv venv
-```
-
-#### 3. Activar el entorno virtual
+#### 1. Crear entorno virtual
 
 **En Windows:**
 ```bash
+python -m venv venv
 venv\Scripts\activate
 ```
 
 **En Linux/Mac:**
 ```bash
+python -m venv venv
 source venv/bin/activate
 ```
 
-#### 4. Instalar dependencias
+#### 2. Instalar dependencias
 
 ```bash
 pip install -r requirements.txt
 ```
 
-#### 5. Configurar variables de entorno (opcional)
+#### 3. Crear archivo de configuración (opcional)
 
-Copia el archivo de ejemplo:
 ```bash
 copy .env.example .env
 ```
 
 Edita `.env` según tus necesidades:
+
 ```env
+# URL del servidor LLM (ejemplos)
+LM_STUDIO_URL=http://localhost:1234/v1
 LLAMA_SERVER_URL=http://localhost:8080/v1
-LLAMA_SERVER_TIMEOUT=300
+OLLAMA_URL=http://localhost:11434/v1
+
+LLM_SERVER_TIMEOUT=300
 PAGES_PER_BLOCK=2
 OVERLAP_PERCENTAGE=0.25
 OUTPUT_SUFFIX=_translated
@@ -91,47 +88,66 @@ OUTPUT_SUFFIX=_translated
 
 ## Uso
 
-### Uso básico
+### Activar el entorno virtual
+
+**Windows:**
+```bash
+venv\Scripts\activate
+```
+
+**Linux/Mac:**
+```bash
+source venv/bin/activate
+```
+
+### Modos de uso
+
+#### Opción 1: Usar perfiles pre-configurados (recomendado)
+
+```bash
+# LM Studio
+python src/main.py archivo.pdf --profile lm-studio
+
+# Llama Server (llama.cpp)
+python src/main.py archivo.pdf --profile llama-server
+
+# Ollama
+python src/main.py archivo.pdf --profile ollama
+```
+
+#### Opción 2: URL directa
+
+```bash
+# URL personalizada
+python src/main.py archivo.pdf --server-url http://localhost:1234/v1
+```
+
+#### Opción 3: Uso básico (usa configuración del .env o default)
 
 ```bash
 python src/main.py archivo.pdf
 ```
 
-Esto creará un archivo `archivo_translated.txt` en el mismo directorio con el texto traducido.
-
-### Especificar archivo de salida
+### Opciones adicionales
 
 ```bash
+# Especificar archivo de salida
 python src/main.py archivo.pdf -o resultado.txt
-```
 
-### Mostrar detalles completos de traducción
+# Ajustar parámetros de procesamiento
+python src/main.py archivo.pdf --pages-per-block 3 --overlap 0.2
 
-```bash
-python src/main.py archivo.pdf --show-details
-```
-
-Esta opción muestra el texto original y traducido de cada bloque en pantalla.
-
-### Configurar servidor Llama
-
-```bash
-python src/main.py archivo.pdf --server-url http://localhost:8080/v1
-```
-
-### Ajustar parámetros de procesamiento
-
-```bash
-python src/main.py archivo.pdf --pages-per-block 2 --overlap 0.25
-```
-
-### Verbose y logging
-
-```bash
+# Verbose y logging
 python src/main.py archivo.pdf --verbose --log-file traduccion.log
+
+# Mostrar detalles completos de traducción
+python src/main.py archivo.pdf --show-details
+
+# Combinar opciones
+python src/main.py archivo.pdf --profile lm-studio --pages-per-block 3 --overlap 0.2 -v
 ```
 
-### Ver ayuda
+### Ayuda
 
 ```bash
 python src/main.py --help
@@ -142,68 +158,85 @@ python src/main.py --help
 | Argumento | Descripción | Default |
 |-----------|-------------|---------|
 | `input_pdf` | Ruta al PDF de entrada (requerido) | - |
-| `-o, --output` | Ruta del archivo de salida | `{input}_translated.txt` |
-| `--server-url` | URL del servidor Llama | `http://localhost:8080/v1` |
+| `--profile` | Perfil: `llama-server`, `lm-studio`, `ollama` | - |
+| `--server-url` | URL del servidor LLM | `http://localhost:8080/v1` |
 | `--pages-per-block` | Páginas por bloque de traducción | `2` |
-| `--overlap` | Porcentaje de overlap (0.0-1.0) | `0.25` |
+| `--overlap` | Porcentaje de overlap 0.0-1.0 | `0.25` |
 | `--timeout` | Timeout en segundos para peticiones | `300` |
 | `-v, --verbose` | Mostrar información detallada | `False` |
-| `--log-file` | Archivo de logs | `None` |
+| `--log-file` | Archivo donde guardar los logs | `None` |
 | `--show-details` | Mostrar detalles completos de traducción | `False` |
+
+## Configuración de servidores LLM
+
+### LM Studio
+
+1. Descarga e instala [LM Studio](https://lmstudio.ai/)
+2. Carga un modelo (ej: Llama, Gemma, Mistral)
+3. Habilita el servidor en `Settings → Server`
+4. Puerto default: `1234`
+
+### Llama Server (llama.cpp)
+
+```bash
+llama-server --model tu_modelo.gguf --port 8080
+```
+
+### Ollama
+
+```bash
+# Instalar Ollama
+# Descargar desde https://ollama.ai/
+
+# Descargar modelo
+ollama pull llama2
+
+# Iniciar servidor (Ollama API es compatible con OpenAI)
+# Configurado en el puerto 11434 por defecto
+```
 
 ## Cómo funciona
 
 ```
 ┌─────────────┐
-│  PDF Input  │
+│ PDF Input │
 └──────┬──────┘
-       │
-       ▼
+ │
+ ▼
 ┌─────────────────┐
-│  Extracción de  │  Solo texto
-│  Texto          │
+│ Extracción de │ Solo texto
+│ Texto │
 └──────┬──────────┘
-       │
-       ▼
+ │
+ ▼
 ┌─────────────────┐
-│  División en    │  Bloques con overlap
-│  Bloques        │
+│ División en │ Bloques con overlap
+│ Bloques │
 └──────┬──────────┘
-       │
-       ▼
+ │
+ ▼
 ┌─────────────────┐
-│  Traducción con │  Llama Server
-│  LLM Local      │
+│ Traducción con │ LM Studio / Llama Server / Ollama
+│ LLM Local │
 └──────┬──────────┘
-       │
-       ▼
+ │
+ ▼
 ┌─────────────────┐
-│  Organización   │  Por página
-│  de Resultados  │
+│ Organización │ Por página
+│ de Resultados │
 └──────┬──────────┘
-       │
-       ▼
+ │
+ ▼
 ┌─────────────────┐
-│  Guardado en    │  Archivo de texto
-│  Archivo TXT    │
+│ Guardado en │ Archivo de texto
+│ Archivo TXT │
 └──────┬──────────┘
-       │
-       ▼
+ │
+ ▼
 ┌─────────────┐
-│ TXT Output  │
+│ TXT Output │
 └─────────────┘
 ```
-
-## Configuración de Llama Server
-
-Asegúrate de tener Llama Server ejecutándose con un modelo cargado:
-
-```bash
-# Ejemplo de inicio de Llama Server
-llama-server --model tu_modelo.gguf --port 8080
-```
-
-El servidor debe estar accesible en `http://localhost:8080/v1`.
 
 ## Formateo Prolijo del Texto
 
@@ -241,33 +274,32 @@ El modelo LLM está instruido para reescribir el texto de forma natural mientras
 ```
 TraducePDF/
 ├── src/
-│   ├── __init__.py          # Inicialización del paquete
-│   ├── main.py              # Script principal
-│   ├── pdf_extractor.py     # Extracción de texto e imágenes
-│   ├── text_processor.py    # Procesamiento con overlap
-│   ├── llm_client.py        # Cliente Llama Server
-│   ├── pdf_rebuilder.py     # Reconstrucción del PDF
-│   └── utils.py             # Utilidades
-├── setup.py                 # Script de instalación automática
-├── requirements.txt         # Dependencias
-├── .env                     # Configuración (creado por setup.py)
-├── .env.example            # Ejemplo de configuración
-├── .gitignore              # Archivos ignorados por Git
-└── README.md               # Este archivo
+│ ├── __init__.py # Inicialización del paquete
+│ ├── main.py # Script principal
+│ ├── pdf_extractor.py # Extracción de texto e imágenes
+│ ├── text_processor.py # Procesamiento con overlap
+│ ├── llm_client.py # Cliente LLM (LM Studio, Llama Server, Ollama)
+│ └── utils.py # Utilidades
+├── setup.py # Script de instalación automática
+├── requirements.txt # Dependencias
+├── .env.example # Ejemplo de configuración
+├── .gitignore # Archivos ignorados por Git
+└── README.md # Este archivo
 ```
 
 ## Solución de problemas
 
-### Error de conexión con Llama Server
+### Error de conexión con el servidor LLM
 
 ```
-❌ Error: No se pudo conectar con Llama Server
+❌ Error: No se pudo conectar con el servidor
 ```
 
 **Solución:**
-1. Verifica que Llama Server esté ejecutándose
-2. Verifica que el puerto sea correcto (8080 por defecto)
-3. Verifica que el modelo esté cargado
+1. Verifica que el servidor esté ejecutándose
+2. Usa `--profile` con el proveedor correcto
+3. Verifica que el puerto sea correcto (LM Studio: 1234, Llama Server: 8080, Ollama: 11434)
+4. Verifica que el modelo esté cargado
 
 ### Timeout en la traducción
 
@@ -302,6 +334,15 @@ TraducePDF/
 - Algunos elementos complejos (tablas, fórmulas matemáticas) pueden no traducirse perfectamente
 - El overlap entre bloques puede causar duplicación de texto en los bordes
 - El formateo prolijo puede alterar ligeramente la estructura original del documento
+
+## Cambios recientes
+
+### v0.1 (2026-06-01)
+
+- ✅ Soporte para múltiples proveedores LLM (LM Studio, Llama Server, Ollama)
+- ✅ Compatibilidad con Windows (corrección de encoding UTF-8)
+- ✅ Limpieza de dependencias y código muerto
+- ✅ Corrección de errores de type checking
 
 ## Contribuciones
 
