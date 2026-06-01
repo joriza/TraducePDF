@@ -66,9 +66,7 @@ class PDFRebuilder:
         self.close_new()
 
     def rebuild_page(
-        self,
-        page_translation: PageTranslation,
-        original_page_data: PageData
+        self, page_translation: PageTranslation, original_page_data: PageData
     ):
         """
         Reconstruye una página con el texto traducido.
@@ -85,8 +83,7 @@ class PDFRebuilder:
 
         # Crear una nueva página con las mismas dimensiones
         new_page = self.new_doc.new_page(
-            width=original_page_data.width,
-            height=original_page_data.height
+            width=original_page_data.width, height=original_page_data.height
         )
 
         # Copiar el fondo de la página original
@@ -104,7 +101,7 @@ class PDFRebuilder:
     def rebuild_all(
         self,
         page_translations: List[PageTranslation],
-        original_pages_data: List[PageData]
+        original_pages_data: List[PageData],
     ):
         """
         Reconstruye todas las páginas del PDF.
@@ -119,7 +116,9 @@ class PDFRebuilder:
                 f"no coincide con número de páginas ({len(original_pages_data)})"
             )
 
-        for page_translation, original_data in zip(page_translations, original_pages_data):
+        for page_translation, original_data in zip(
+            page_translations, original_pages_data
+        ):
             self.rebuild_page(page_translation, original_data)
 
         logger.info(f"Reconstruidas {len(page_translations)} páginas")
@@ -149,13 +148,13 @@ class PDFRebuilder:
         """
         try:
             # Crear un rectángulo para la imagen
-            rect = fitz.Rect(image_block.x0, image_block.y0, image_block.x1, image_block.y1)
+            rect = fitz.Rect(
+                image_block.x0, image_block.y0, image_block.x1, image_block.y1
+            )
 
             # Insertar la imagen
             page.insert_image(
-                rect,
-                stream=io.BytesIO(image_block.image_bytes),
-                keep_proportion=True
+                rect, stream=io.BytesIO(image_block.image_bytes), keep_proportion=True
             )
 
             logger.debug(
@@ -179,7 +178,11 @@ class PDFRebuilder:
             original = translated_block.original
 
             # Determinar el texto a usar (traducido o original)
-            text = translated_block.translated_text if translated_block.translation_success else original.text
+            text = (
+                translated_block.translated_text
+                if translated_block.translation_success
+                else original.text
+            )
 
             # Crear rectángulo para el texto
             rect = fitz.Rect(original.x0, original.y0, original.x1, original.y1)
@@ -221,7 +224,7 @@ class PDFRebuilder:
                         text,
                         fontsize=original.font_size,
                         fontname=font_name,
-                        color=color
+                        color=color,
                     )
                 except Exception as e2:
                     logger.error(f"Error en intento alternativo: {e2}")

@@ -177,7 +177,9 @@ class PDFExtractor:
         images = self._extract_images(page, page_num)
         page_data.images = images
 
-        logger.debug(f"Página {page_num + 1}: {len(text_blocks)} bloques de texto, {len(images)} imágenes")
+        logger.debug(
+            f"Página {page_num + 1}: {len(text_blocks)} bloques de texto, {len(images)} imágenes"
+        )
 
         return page_data
 
@@ -270,7 +272,9 @@ class PDFExtractor:
         for img_index, img_info in enumerate(image_list):
             xref = img_info[0]
             if self.doc is None:
-                logger.warning(f"PDF no está abierto, saltando imagen {img_index} en página {page_num}")
+                logger.warning(
+                    f"PDF no está abierto, saltando imagen {img_index} en página {page_num}"
+                )
                 continue
             base_image = self.doc.extract_image(xref)
             image_bytes = base_image["image"]

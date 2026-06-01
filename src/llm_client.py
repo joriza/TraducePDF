@@ -13,16 +13,19 @@ from loguru import logger
 
 class LLMClientError(Exception):
     """Excepción base para errores del cliente LLM."""
+
     pass
 
 
 class LLMConnectionError(LLMClientError):
     """Error de conexión con el servidor LLM."""
+
     pass
 
 
 class LLMTranslationError(LLMClientError):
     """Error durante la traducción."""
+
     pass
 
 
@@ -34,7 +37,7 @@ class LLMClient:
         base_url: str = "http://localhost:8080/v1",
         timeout: int = 300,
         max_retries: int = 3,
-        retry_delay: float = 5.0
+        retry_delay: float = 5.0,
     ):
         """
         Inicializa el cliente LLM.
@@ -45,7 +48,7 @@ class LLMClient:
             max_retries: Número máximo de reintentos.
             retry_delay: Delay entre reintentos en segundos.
         """
-        self.base_url = base_url.rstrip('/')
+        self.base_url = base_url.rstrip("/")
         self.timeout = timeout
         self.max_retries = max_retries
         self.retry_delay = retry_delay
@@ -61,10 +64,7 @@ class LLMClient:
             True si el servidor está disponible, False en caso contrario.
         """
         try:
-            response = requests.get(
-                f"{self.base_url}/models",
-                timeout=10
-            )
+            response = requests.get(f"{self.base_url}/models", timeout=10)
             if response.status_code == 200:
                 logger.info("Conexión con Llama Server exitosa")
                 return True
@@ -83,10 +83,7 @@ class LLMClient:
             ID del modelo o None si no se pudo obtener.
         """
         try:
-            response = requests.get(
-                f"{self.base_url}/models",
-                timeout=10
-            )
+            response = requests.get(f"{self.base_url}/models", timeout=10)
             response.raise_for_status()
 
             data = response.json()
@@ -109,7 +106,7 @@ class LLMClient:
         text: str,
         source_lang: str = "inglés",
         target_lang: str = "español",
-        model_id: Optional[str] = None
+        model_id: Optional[str] = None,
     ) -> str:
         """
         Traduce un texto usando el modelo LLM.
@@ -155,16 +152,17 @@ class LLMClient:
                     time.sleep(self.retry_delay)
                 else:
                     logger.error(f"Todos los intentos fallaron: {e}")
-                    raise LLMTranslationError(f"Error después de {self.max_retries} intentos: {e}")
+                    raise LLMTranslationError(
+                        f"Error después de {self.max_retries} intentos: {e}"
+                    )
 
         # Este punto nunca debería alcanzarse, pero añadimos el raise para satisfacer al type checker
-        raise LLMTranslationError("Número inesperado de reintentos agotados sin lanzar excepción")
+        raise LLMTranslationError(
+            "Número inesperado de reintentos agotados sin lanzar excepción"
+        )
 
     def _build_translation_prompt(
-        self,
-        text: str,
-        source_lang: str,
-        target_lang: str
+        self, text: str, source_lang: str, target_lang: str
     ) -> str:
         """
         Construye el prompt para el modelo.
@@ -224,15 +222,12 @@ Respuesta:"""
                             "role": "system",
                             "content": "Eres un traductor profesional experto en traducir documentos técnicos del inglés al español. Tu traducción debe ser precisa, mantener el formato y ser fiel al significado original."
                         },
-                        {
-                            "role": "user",
-                            "content": prompt
-                        }
+                        {"role": "user", "content": prompt},
                     ],
                     "temperature": 0.3,  # Baja temperatura para traducciones más consistentes
                     "max_tokens": 4096,
                 },
-                timeout=self.timeout
+                timeout=self.timeout,
             )
 
             response.raise_for_status()
@@ -245,7 +240,9 @@ Respuesta:"""
                 logger.debug(f"Respuesta recibida ({len(translated_text)} caracteres)")
                 return translated_text
             else:
-                raise LLMTranslationError("Formato de respuesta inválido: no se encontró 'choices'")
+                raise LLMTranslationError(
+                    "Formato de respuesta inválido: no se encontró 'choices'"
+                )
 
         except requests.exceptions.Timeout:
             raise LLMConnectionError(f"Timeout después de {self.timeout} segundos")
@@ -253,7 +250,9 @@ Respuesta:"""
             raise LLMConnectionError(f"Error de conexión: {e}")
         except requests.exceptions.HTTPError as e:
             if e.response.status_code == 404:
-                raise LLMConnectionError("Endpoint no encontrado. Verifica la URL del servidor.")
+                raise LLMConnectionError(
+                    "Endpoint no encontrado. Verifica la URL del servidor."
+                )
             elif e.response.status_code == 500:
                 raise LLMTranslationError("Error interno del servidor LLM")
             else:
@@ -271,10 +270,7 @@ Respuesta:"""
             Diccionario con información del modelo.
         """
         try:
-            response = requests.get(
-                f"{self.base_url}/models",
-                timeout=10
-            )
+            response = requests.get(f"{self.base_url}/models", timeout=10)
             response.raise_for_status()
             return response.json()
         except requests.exceptions.RequestException as e:

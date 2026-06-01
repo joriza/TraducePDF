@@ -39,63 +39,63 @@ Ejemplos:
   python main.py documento.pdf
   python main.py documento.pdf -o documento_traducido.txt
   python main.py documento.pdf --verbose --log-file traduccion.log
-        """
+        """,
     )
 
-    parser.add_argument(
-        "input_pdf",
-        help="Ruta al archivo PDF de entrada en inglés"
-    )
+    parser.add_argument("input_pdf", help="Ruta al archivo PDF de entrada en inglés")
 
     parser.add_argument(
-        "-o", "--output",
-        help="Ruta del archivo de salida (opcional)",
-        default=None
+        "-o", "--output", help="Ruta del archivo de salida (opcional)", default=None
     )
 
     parser.add_argument(
         "--server-url",
-        help="URL del servidor Llama (default: http://localhost:8080/v1)",
-        default=None
+        help="URL del servidor LLM (default: http://localhost:8080/v1)",
+        default=None,
+    )
+
+    parser.add_argument(
+        "--profile",
+        choices=["llama-server", "lm-studio", "ollama"],
+        help="Perfil pre-configurado del servidor (sobreescribe --server-url)",
     )
 
     parser.add_argument(
         "--pages-per-block",
         type=int,
         help="Número de páginas por bloque de traducción (default: 2)",
-        default=None
+        default=None,
     )
 
     parser.add_argument(
         "--overlap",
         type=float,
         help="Porcentaje de overlap entre bloques 0.0-1.0 (default: 0.25)",
-        default=None
+        default=None,
     )
 
     parser.add_argument(
         "--timeout",
         type=int,
         help="Timeout en segundos para peticiones al LLM (default: 300)",
-        default=None
+        default=None,
     )
 
     parser.add_argument(
-        "--verbose", "-v",
+        "--verbose",
+        "-v",
         action="store_true",
-        help="Mostrar información detallada de depuración"
+        help="Mostrar información detallada de depuración",
     )
 
     parser.add_argument(
-        "--log-file",
-        help="Archivo donde guardar los logs",
-        default=None
+        "--log-file", help="Archivo donde guardar los logs", default=None
     )
 
     parser.add_argument(
         "--show-details",
         action="store_true",
-        help="Mostrar detalles completos de cada traducción en pantalla"
+        help="Mostrar detalles completos de cada traducción en pantalla",
     )
 
     return parser.parse_args()
@@ -140,7 +140,7 @@ def validate_input_file(input_path: str) -> bool:
         print(f"❌ Error: '{input_path}' no es un archivo.")
         return False
 
-    if path.suffix.lower() != '.pdf':
+    if path.suffix.lower() != ".pdf":
         print(f"❌ Error: '{input_path}' no es un archivo PDF.")
         return False
 
@@ -168,10 +168,10 @@ def clean_text_for_output(text: str) -> str:
     text = text.strip()
 
     # Reemplazar múltiples espacios en blanco con un solo espacio
-    text = re.sub(r' +', ' ', text)
+    text = re.sub(r" +", " ", text)
 
     # Eliminar líneas que solo contienen espacios o están vacías
-    lines = text.split('\n')
+    lines = text.split("\n")
     cleaned_lines = []
     for line in lines:
         stripped = line.strip()
@@ -189,26 +189,28 @@ def clean_text_for_output(text: str) -> str:
         # podría ser un nuevo párrafo
         if i + 1 < len(cleaned_lines):
             next_line = cleaned_lines[i + 1]
-            if line.endswith(('.', '!', '?', ':', ';')) and next_line[0].isupper():
-                result.append('')  # Párrafo vacío para separar
+            if line.endswith((".", "!", "?", ":", ";")) and next_line[0].isupper():
+                result.append("")  # Párrafo vacío para separar
             else:
-                result.append(' ')  # Espacio entre líneas del mismo párrafo
+                result.append(" ")  # Espacio entre líneas del mismo párrafo
 
         i += 1
 
     # Unir todo
-    final_text = ''.join(result)
+    final_text = "".join(result)
 
     # Limpiar espacios múltiples después de la unión
-    final_text = re.sub(r' +', ' ', final_text)
+    final_text = re.sub(r" +", " ", final_text)
 
     # Eliminar espacios antes de puntuación
-    final_text = re.sub(r'\s+([.,!?;:])', r'\1', final_text)
+    final_text = re.sub(r"\s+([.,!?;:])", r"\1", final_text)
 
     return final_text.strip()
 
 
-def print_translation_details(page_num: int, block_num: int, original: str, translated: str):
+def print_translation_details(
+    page_num: int, block_num: int, original: str, translated: str
+):
     """
     Imprime detalles de una traducción.
 
@@ -233,10 +235,7 @@ def print_translation_details(page_num: int, block_num: int, original: str, tran
 
 
 def save_translation_to_file(
-    output_path: str,
-    page_translations,
-    pages_data,
-    input_pdf_path: str
+    output_path: str, page_translations, pages_data, input_pdf_path: str
 ):
     """
     Guarda la traducción completa en un archivo de texto.
@@ -247,13 +246,15 @@ def save_translation_to_file(
         pages_data: Datos originales de las páginas.
         input_pdf_path: Ruta del PDF original.
     """
-    with open(output_path, 'w', encoding='utf-8') as f:
+    with open(output_path, "w", encoding="utf-8") as f:
         # Encabezado
         f.write("=" * 80 + "\n")
         f.write("TRADUCCIÓN DE PDF\n")
         f.write("=" * 80 + "\n\n")
         f.write(f"Archivo original: {input_pdf_path}\n")
-        f.write(f"Fecha de traducción: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+        f.write(
+            f"Fecha de traducción: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n"
+        )
         f.write(f"Número de páginas: {len(page_translations)}\n")
         f.write("=" * 80 + "\n\n")
 
@@ -282,6 +283,13 @@ def save_translation_to_file(
 
 def main():
     """Función principal del programa."""
+    # Configurar encoding UTF-8 para Windows
+    if sys.platform == "win32":
+        import codecs
+
+        sys.stdout = codecs.getwriter("utf-8")(sys.stdout.buffer)
+        sys.stderr = codecs.getwriter("utf-8")(sys.stderr.buffer)
+
     # Cargar variables de entorno
     load_dotenv()
 
@@ -310,12 +318,28 @@ def main():
         print(f"📂 Salida: {output_path}\n")
 
         # Obtener configuración
-        server_url = args.server_url or os.getenv("LLAMA_SERVER_URL", "http://localhost:8080/v1")
+        # Perfiles pre-configurados
+        profiles = {
+            "llama-server": "http://localhost:8080/v1",
+            "lm-studio": "http://localhost:1234/v1",
+            "ollama": "http://localhost:11434/v1",
+        }
+
+        # Prioridad: profile > server-url > env var > default
+        if args.profile:
+            server_url = profiles[args.profile]
+            print(f"🎯 Usando perfil: {args.profile} ({server_url})")
+        else:
+            server_url = args.server_url or os.getenv(
+                "LLAMA_SERVER_URL", "http://localhost:8080/v1"
+            )
         pages_per_block = args.pages_per_block or int(os.getenv("PAGES_PER_BLOCK", "2"))
         overlap = args.overlap or float(os.getenv("OVERLAP_PERCENTAGE", "0.25"))
         timeout = args.timeout or int(os.getenv("LLAMA_SERVER_TIMEOUT", "300"))
 
-        logger.info(f"Configuración: servidor={server_url}, páginas/bloque={pages_per_block}, overlap={overlap*100}%")
+        logger.info(
+            f"Configuración: servidor={server_url}, páginas/bloque={pages_per_block}, overlap={overlap * 100}%"
+        )
 
         # Paso 1: Verificar conexión con el servidor LLM
         print("🔍 Verificando conexión con Llama Server...")
@@ -331,7 +355,9 @@ def main():
         if model_id:
             print(f"✅ Modelo detectado: {model_id}")
         else:
-            print("⚠️  No se pudo detectar el modelo, se intentará usar el predeterminado")
+            print(
+                "⚠️  No se pudo detectar el modelo, se intentará usar el predeterminado"
+            )
         print()
 
         # Paso 2: Extraer contenido del PDF
@@ -350,8 +376,7 @@ def main():
         # Paso 3: Crear bloques de traducción
         print("🔨 Creando bloques de traducción con overlap...")
         text_processor = TextProcessor(
-            pages_per_block=pages_per_block,
-            overlap_percentage=overlap
+            pages_per_block=pages_per_block, overlap_percentage=overlap
         )
         translation_blocks = text_processor.create_translation_blocks(pages_data)
         print(f"✅ Creados {len(translation_blocks)} bloques de traducción")
@@ -369,7 +394,9 @@ def main():
             try:
                 # Mostrar qué páginas se están traduciendo
                 page_range = f"{block.page_nums[0] + 1}-{block.page_nums[-1] + 1}"
-                print(f"\n📝 Traduciendo bloque {i + 1}/{len(translation_blocks)} (páginas {page_range})")
+                print(
+                    f"\n📝 Traduciendo bloque {i + 1}/{len(translation_blocks)} (páginas {page_range})"
+                )
                 print_separator("-")
 
                 # Mostrar el texto a traducir (resumen)
@@ -402,12 +429,16 @@ def main():
                 print()
 
                 # Parsear la respuesta
-                translations = text_processor.parse_translation_response(translated_text, block)
+                translations = text_processor.parse_translation_response(
+                    translated_text, block
+                )
                 translation_responses.append(translations)
 
                 translated_count = len(translations)
                 total_translated += translated_count
-                print(f"✅ Bloque {i + 1} completado: {translated_count} bloques de texto traducidos")
+                print(
+                    f"✅ Bloque {i + 1} completado: {translated_count} bloques de texto traducidos"
+                )
                 print_separator()
 
             except (LLMConnectionError, LLMTranslationError) as e:
@@ -428,13 +459,13 @@ def main():
         # Paso 5: Crear traducciones de página
         print("📋 Organizando traducciones por página...")
         page_translations = text_processor.create_page_translations(
-            pages_data,
-            translation_blocks,
-            translation_responses
+            pages_data, translation_blocks, translation_responses
         )
 
         successful_pages = sum(1 for pt in page_translations if pt.is_complete)
-        print(f"✅ Traducciones organizadas: {successful_pages}/{len(page_translations)} páginas completas")
+        print(
+            f"✅ Traducciones organizadas: {successful_pages}/{len(page_translations)} páginas completas"
+        )
         print()
 
         # Paso 6: Mostrar detalles si se solicita
@@ -448,13 +479,17 @@ def main():
                         page_trans.page_num,
                         block_num,
                         block_trans.original.text,
-                        block_trans.translated_text if block_trans.translation_success else "[ERROR]"
+                        block_trans.translated_text
+                        if block_trans.translation_success
+                        else "[ERROR]",
                     )
 
         # Paso 7: Guardar el archivo de texto
         print(f"💾 Guardando traducción en: {output_path}")
-        save_translation_to_file(output_path, page_translations, pages_data, args.input_pdf)
-        print(f"✅ Archivo guardado exitosamente\n")
+        save_translation_to_file(
+            output_path, page_translations, pages_data, args.input_pdf
+        )
+        print("✅ Archivo guardado exitosamente\n")
 
         # Resumen final
         print("=" * 80)
@@ -469,7 +504,9 @@ def main():
         print("=" * 80 + "\n")
 
         if failed_blocks > 0:
-            print("⚠️  Algunos bloques no pudieron traducirse. Revisa el log para más detalles.")
+            print(
+                "⚠️  Algunos bloques no pudieron traducirse. Revisa el log para más detalles."
+            )
             sys.exit(1)
         else:
             print("✅ ¡Traducción completada exitosamente!")
