@@ -1,13 +1,12 @@
 # Dependencias para TraducePDF
-# Procesamiento de PDFs (versiones compatibles con Python 3.13)
+# Procesamiento de PDFs
 PyMuPDF>=1.24.0
 pymupdf-fonts>=1.0.5
 
-# Comunicación HTTP con Llama Server
+# Comunicación HTTP con LLM local
 requests>=2.31.0
 
-# Barra de progreso y UI
-tqdm>=4.66.0
+# UI y barra de progreso
 rich>=13.7.0
 
 # Variables de entorno
@@ -15,10 +14,6 @@ python-dotenv>=1.0.0
 
 # Procesamiento de imágenes
 Pillow>=10.0.0
-
-# Manejo de configuración
-pydantic>=2.5.0
-pydantic-settings>=2.1.0
 
 # Logging mejorado
 loguru>=0.7.0

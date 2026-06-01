@@ -220,7 +220,7 @@ Respuesta:"""
                     "messages": [
                         {
                             "role": "system",
-                            "content": "Eres un traductor profesional experto en traducir documentos técnicos del inglés al español. Tu traducción debe ser precisa, mantener el formato y ser fiel al significado original."
+                            "content": "Eres un traductor profesional experto en traducir documentos técnicos del inglés al español. Tu traducción debe ser precisa, mantener el formato y ser fiel al significado original.",
                         },
                         {"role": "user", "content": prompt},
                     ],
