@@ -177,21 +177,37 @@ class LLMClient:
         """
         prompt = f"""Traduce el siguiente texto del {source_lang} al {target_lang}.
 
-INSTRUCCIONES IMPORTANTES:
-1. Traduce SOLO el contenido de texto, manteniendo el formato exacto de las etiquetas.
-2. NO traduzcas las etiquetas [Página X, Bloque Y].
-3. REESCRIBE el texto traducido de forma prolija y natural:
-   - Elimina saltos de línea innecesarios
-   - NO cortes oraciones arbitrariamente en medio de una línea
-   - Usa párrafos completos y bien estructurados
-   - Mantén el significado original pero mejora la legibilidad
-4. Si hay términos técnicos que no tienen traducción directa, déjalos en inglés.
-5. Responde con el texto traducido en un formato limpio y legible.
+INSTRUCCIONES CRÍTICAS (OBLIGATORIO):
+
+1. DEBES traducir CADA bloque manteniendo EXACTAMENTE el formato:
+   [Página X, Bloque Y] texto traducido
+
+2. NO omitas NINGUN bloque. Si hay 10 bloques, DEBES devolver 10 traducciones.
+
+3. NO cambies el formato de las etiquetas. Mantén [Página X, Bloque Y] exactamente así.
+
+4. Si no puedes traducir un bloque, mantén la etiqueta y el texto original:
+   [Página X, Bloque Y] texto original (no traducido)
+
+5. Separa cada traducción con un salto de línea.
+
+6. NO agregues texto introductorio ni explicaciones. Solo las traducciones con etiquetas.
+
+Ejemplo de formato requerido:
+[Página 1, Bloque 1] texto traducido
+[Página 1, Bloque 2] texto traducido
+[Página 2, Bloque 1] texto traducido
+
+INSTRUCCIONES DE FORMATEO:
+- Elimina saltos de línea innecesarios
+- Usa párrafos completos y bien estructurados
+- Mantén el significado original pero mejora la legibilidad
+- Si hay términos técnicos sin traducción directa, déjalos en inglés
 
 Texto a traducir:
 {text}
 
-Respuesta:"""
+Respuesta (SOLO con etiquetas [Página X, Bloque Y] para cada bloque):"""
 
         return prompt
 

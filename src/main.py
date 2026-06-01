@@ -98,16 +98,28 @@ Ejemplos:
         help="Mostrar detalles completos de cada traducción en pantalla",
     )
 
+    parser.add_argument(
+        "--format",
+        choices=["txt", "markdown", "md"],
+        default="txt",
+        help="Formato de salida (default: txt)",
+    )
+
     return parser.parse_args()
 
 
-def get_output_path(input_path: str, output_path: Optional[str] = None) -> str:
+def get_output_path(
+    input_path: str,
+    output_path: Optional[str] = None,
+    output_format: str = "txt",
+) -> str:
     """
     Determina la ruta de salida del documento traducido.
 
     Args:
         input_path: Ruta del PDF de entrada.
         output_path: Ruta de salida opcional.
+        output_format: Formato de salida (txt, markdown, md).
 
     Returns:
         Ruta de salida del documento.
@@ -117,7 +129,14 @@ def get_output_path(input_path: str, output_path: Optional[str] = None) -> str:
 
     # Si no se especifica, agregar "_translated" antes de la extensión
     input_path_obj = Path(input_path)
-    return str(input_path_obj.parent / f"{input_path_obj.stem}_translated.txt")
+
+    # Determinar extensión según formato
+    if output_format in ["markdown", "md"]:
+        extension = ".md"
+    else:
+        extension = ".txt"
+
+    return str(input_path_obj.parent / f"{input_path_obj.stem}_translated{extension}")
 
 
 def validate_input_file(input_path: str) -> bool:
@@ -281,6 +300,94 @@ def save_translation_to_file(
         f.write("=" * 80 + "\n")
 
 
+def save_translation_to_markdown(
+    output_path: str, page_translations, pages_data, input_pdf_path: str
+):
+    """
+    Guarda la traducción completa en formato Markdown.
+
+    Args:
+        output_path: Ruta del archivo de salida.
+        page_translations: Lista de traducciones por página.
+        pages_data: Datos originales de las páginas.
+        input_pdf_path: Ruta del PDF original.
+    """
+    with open(output_path, "w", encoding="utf-8") as f:
+        # Encabezado Markdown
+        f.write("# Traducción de PDF\n\n")
+        f.write(f"**Archivo original:** `{input_pdf_path}`\n\n")
+        f.write(
+            f"**Fecha de traducción:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n"
+        )
+        f.write(f"**Número de páginas:** {len(page_translations)}\n\n")
+        f.write("---\n\n")
+
+        # Contenido traducido
+        for page_trans, page_data in zip(page_translations, pages_data):
+            f.write(f"## Página {page_trans.page_num + 1}\n\n")
+
+            for block_trans in page_trans.translated_blocks:
+                if block_trans.translation_success:
+                    # Limpiar y formatear el texto para Markdown
+                    cleaned_text = clean_text_for_output(block_trans.translated_text)
+                    markdown_text = text_to_markdown(cleaned_text)
+                    f.write(markdown_text + "\n\n")
+                else:
+                    f.write(f"*⚠️ Error: {block_trans.translation_error}*\n\n")
+                    cleaned_original = clean_text_for_output(block_trans.original.text)
+                    markdown_original = text_to_markdown(cleaned_original)
+                    f.write(markdown_original + "\n\n")
+
+        # Pie de página
+        f.write("---\n\n")
+        f.write("*Fin del documento*\n")
+
+
+def text_to_markdown(text: str) -> str:
+    """
+    Convierte texto plano a formato Markdown básico.
+
+    Args:
+        text: Texto plano.
+
+    Returns:
+        Texto en formato Markdown.
+    """
+    import re
+
+    lines = text.split("\n")
+    result = []
+
+    for line in lines:
+        line = line.strip()
+        if not line:
+            continue
+
+        # Detectar posibles títulos (línea corta, todas mayúsculas o primera letra mayúscula)
+        if (
+            len(line) < 80
+            and line.isupper()
+            and not line.endswith(".")
+            and not line.endswith(",")
+            and not line.endswith(":")
+        ):
+            # Posible título en mayúsculas
+            result.append(f"## {line.title()}")
+        elif (
+            len(line) < 80
+            and line[0].isupper()
+            and not line.endswith(".")
+            and not line.endswith(",")
+        ):
+            # Posible título
+            result.append(f"### {line}")
+        else:
+            # Párrafo normal
+            result.append(line)
+
+    return "\n\n".join(result)
+
+
 def main():
     """Función principal del programa."""
     # Configurar encoding UTF-8 para Windows
@@ -313,9 +420,10 @@ def main():
             sys.exit(1)
 
         # Determinar ruta de salida
-        output_path = get_output_path(args.input_pdf, args.output)
+        output_path = get_output_path(args.input_pdf, args.output, args.format)
         print(f"📂 Entrada: {args.input_pdf}")
-        print(f"📂 Salida: {output_path}\n")
+        print(f"📂 Salida: {output_path}")
+        print(f"📋 Formato: {args.format.upper()}\n")
 
         # Obtener configuración
         # Perfiles pre-configurados
@@ -432,6 +540,52 @@ def main():
                 translations = text_processor.parse_translation_response(
                     translated_text, block
                 )
+
+                # Validar que se tradujeron todos los bloques
+                expected_count = len(block.block_indices)
+                actual_count = len(translations)
+
+                if actual_count < expected_count:
+                    missing = expected_count - actual_count
+                    logger.warning(
+                        f"Bloque {i + 1}: Faltan {missing} traducciones ({actual_count}/{expected_count})."
+                    )
+
+                    # Intentar re-parseo con regex alternativo
+                    import re
+
+                    alt_response = translated_text
+
+                    # Buscar bloques con formato alternativo sin traducción
+                    for page_num, block_idx in block.block_indices:
+                        if (page_num, block_idx) not in translations:
+                            pattern = rf"\[Página\s+{page_num + 1}\s*,\s*Bloque\s+{block_idx + 1}\](.*)"
+                            match = re.search(
+                                pattern, alt_response, re.IGNORECASE | re.DOTALL
+                            )
+
+                            if match:
+                                translations[(page_num, block_idx)] = match.group(
+                                    1
+                                ).strip()
+                                logger.info(
+                                    f"Recuperado bloque ({page_num}, {block_idx}) vía parseo alternativo"
+                                )
+                            else:
+                                # Usar texto original como fallback
+                                for page_data in pages_data:
+                                    if (
+                                        page_data.page_num == page_num
+                                        and page_data.text_blocks
+                                    ):
+                                        translations[(page_num, block_idx)] = (
+                                            page_data.text_blocks[block_idx].text
+                                        )
+                                        logger.warning(
+                                            f"Usando texto original para bloque ({page_num}, {block_idx})"
+                                        )
+                                        break
+
                 translation_responses.append(translations)
 
                 translated_count = len(translations)
@@ -484,11 +638,18 @@ def main():
                         else "[ERROR]",
                     )
 
-        # Paso 7: Guardar el archivo de texto
+        # Paso 7: Guardar el archivo traducido
         print(f"💾 Guardando traducción en: {output_path}")
-        save_translation_to_file(
-            output_path, page_translations, pages_data, args.input_pdf
-        )
+
+        if args.format in ["markdown", "md"]:
+            save_translation_to_markdown(
+                output_path, page_translations, pages_data, args.input_pdf
+            )
+        else:
+            save_translation_to_file(
+                output_path, page_translations, pages_data, args.input_pdf
+            )
+
         print("✅ Archivo guardado exitosamente\n")
 
         # Resumen final

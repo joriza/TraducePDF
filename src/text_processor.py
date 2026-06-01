@@ -63,11 +63,12 @@ class TextProcessor:
         if not 0.0 <= overlap_percentage <= 1.0:
             raise ValueError("overlap_percentage debe estar entre 0.0 y 1.0")
 
-        logger.info(f"TextProcessor configurado: {pages_per_block} páginas/bloque, {overlap_percentage*100}% overlap")
+        logger.info(
+            f"TextProcessor configurado: {pages_per_block} páginas/bloque, {overlap_percentage * 100}% overlap"
+        )
 
     def create_translation_blocks(
-        self,
-        pages_data: List[PageData]
+        self, pages_data: List[PageData]
     ) -> List[TranslationBlock]:
         """
         Crea bloques de texto para traducción con overlap.
@@ -104,7 +105,9 @@ class TextProcessor:
             for page_num in range(overlap_start, start_page):
                 page_data = pages_data[page_num]
                 for block_idx, text_block in enumerate(page_data.text_blocks):
-                    block_text_parts.append(f"[Página {page_num + 1}, Bloque {block_idx + 1}] {text_block.text}")
+                    block_text_parts.append(
+                        f"[Página {page_num + 1}, Bloque {block_idx + 1}] {text_block.text}"
+                    )
                     block_indices.append((page_num, block_idx))
 
             # Luego agregar las páginas principales
@@ -113,7 +116,9 @@ class TextProcessor:
                 page_nums_in_block.append(page_num)
 
                 for block_idx, text_block in enumerate(page_data.text_blocks):
-                    block_text_parts.append(f"[Página {page_num + 1}, Bloque {block_idx + 1}] {text_block.text}")
+                    block_text_parts.append(
+                        f"[Página {page_num + 1}, Bloque {block_idx + 1}] {text_block.text}"
+                    )
                     block_indices.append((page_num, block_idx))
 
             # Crear el bloque de traducción
@@ -123,7 +128,7 @@ class TextProcessor:
                 text=full_text,
                 page_nums=page_nums_in_block,
                 block_indices=block_indices,
-                is_overlap=(overlap_start < start_page)
+                is_overlap=(overlap_start < start_page),
             )
 
             blocks.append(translation_block)
@@ -138,9 +143,7 @@ class TextProcessor:
         return blocks
 
     def parse_translation_response(
-        self,
-        response: str,
-        block: TranslationBlock
+        self, response: str, block: TranslationBlock
     ) -> Dict[tuple, str]:
         """
         Parsea la respuesta del modelo LLM para extraer las traducciones.
@@ -156,37 +159,49 @@ class TextProcessor:
             Diccionario mapeando (page_num, block_index) -> texto traducido.
         """
         translations = {}
+        import re
 
-        # Dividir la respuesta por líneas
-        lines = response.split('\n')
+        # Regex mejorado para capturar texto multilínea
+        # Busca [Página X, Bloque Y] hasta el próximo [Página o fin del texto
+        pattern = r"\[Página\s+(\d+)\s*,\s*Bloque\s+(\d+)\]\s*(.*?)(?=\n\[Página|$)"
+        matches = re.findall(pattern, response, re.DOTALL | re.IGNORECASE)
 
-        for line in lines:
-            line = line.strip()
-            if not line:
-                continue
+        for page_str, block_str, translated_text in matches:
+            page_num = int(page_str) - 1  # Convertir a 0-indexed
+            block_idx = int(block_str) - 1
+            translated_text = translated_text.strip()
 
-            # Buscar el patrón [Página X, Bloque Y]
-            import re
-            match = re.match(r'\[Página\s+(\d+),\s*Bloque\s+(\d+)\]\s*(.*)', line, re.IGNORECASE)
-
-            if match:
-                page_num = int(match.group(1)) - 1  # Convertir a 0-indexed
-                block_idx = int(match.group(2)) - 1
-                translated_text = match.group(3).strip()
-
-                if (page_num, block_idx) in block.block_indices:
-                    translations[(page_num, block_idx)] = translated_text
-                else:
-                    logger.warning(
-                        f"Bloque no encontrado en índices: ({page_num}, {block_idx}). "
-                        f"Saltando traducción."
-                    )
+            if (page_num, block_idx) in block.block_indices:
+                translations[(page_num, block_idx)] = translated_text
             else:
-                # Si no coincide con el patrón, podría ser continuación de texto anterior
-                # o un formato diferente. Lo logueamos para debugging.
-                logger.debug(f"Línea sin formato reconocido: {line}")
+                logger.warning(
+                    f"Bloque no encontrado en índices: ({page_num}, {block_idx}). "
+                    f"Saltando traducción."
+                )
 
-        logger.debug(f"Parseadas {len(translations)} traducciones de {len(block.block_indices)} bloques")
+        # Validación: verificar que se parsearon todos los bloques
+        expected_count = len(block.block_indices)
+        actual_count = len(translations)
+
+        if actual_count < expected_count:
+            missing = expected_count - actual_count
+            logger.warning(
+                f"Faltan {missing} traducciones ({actual_count}/{expected_count}). "
+                f"Esto puede indicar que el LLM omitió bloques."
+            )
+
+            # Intentar parseo alternativo: buscar etiquetas perdidas
+            alt_pattern = r"\[Página\s+(\d+)\s*,\s*Bloque\s+(\d+)\]"
+            alt_matches = re.findall(alt_pattern, response, re.IGNORECASE)
+
+            if len(alt_matches) > actual_count:
+                logger.info(
+                    f"Se encontraron {len(alt_matches)} etiquetas vs {actual_count} traducciones parseadas"
+                )
+
+        logger.debug(
+            f"Parseadas {len(translations)} traducciones de {len(block.block_indices)} bloques"
+        )
 
         return translations
 
@@ -194,7 +209,7 @@ class TextProcessor:
         self,
         pages_data: List[PageData],
         translation_blocks: List[TranslationBlock],
-        translation_responses: List[Dict[tuple, str]]
+        translation_responses: List[Dict[tuple, str]],
     ) -> List[PageTranslation]:
         """
         Crea las traducciones de página a partir de las respuestas del modelo.
@@ -213,7 +228,7 @@ class TextProcessor:
         for page_data in pages_data:
             page_translation = PageTranslation(
                 page_num=page_data.page_num,
-                original_blocks=page_data.text_blocks.copy()
+                original_blocks=page_data.text_blocks.copy(),
             )
             page_translations.append(page_translation)
 
@@ -224,21 +239,23 @@ class TextProcessor:
 
         # Asignar traducciones a los bloques correspondientes
         for page_translation in page_translations:
-            for block_idx, original_block in enumerate(page_translation.original_blocks):
+            for block_idx, original_block in enumerate(
+                page_translation.original_blocks
+            ):
                 key = (page_translation.page_num, block_idx)
 
                 if key in all_translations:
                     translated_block = TextBlockWithTranslation(
                         original=original_block,
                         translated_text=all_translations[key],
-                        translation_success=True
+                        translation_success=True,
                     )
                 else:
                     translated_block = TextBlockWithTranslation(
                         original=original_block,
                         translated_text=original_block.text,  # Mantener original
                         translation_success=False,
-                        translation_error="No se encontró traducción en la respuesta"
+                        translation_error="No se encontró traducción en la respuesta",
                     )
 
                 page_translation.translated_blocks.append(translated_block)
@@ -246,14 +263,15 @@ class TextProcessor:
         # Log de estadísticas
         total_blocks = sum(len(pt.translated_blocks) for pt in page_translations)
         successful_blocks = sum(
-            1 for pt in page_translations
+            1
+            for pt in page_translations
             for tb in pt.translated_blocks
             if tb.translation_success
         )
 
         logger.info(
             f"Traducciones de página creadas: {successful_blocks}/{total_blocks} bloques exitosos "
-            f"({successful_blocks/total_blocks*100:.1f}%)"
+            f"({successful_blocks / total_blocks * 100:.1f}%)"
         )
 
         return page_translations
