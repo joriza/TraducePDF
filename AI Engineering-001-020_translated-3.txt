@@ -1,0 +1,1762 @@
+================================================================================
+TRADUCCIÓN DE PDF
+================================================================================
+
+Archivo original: AI Engineering-001-020.pdf
+Fecha de traducción: 2026-04-27 02:42:03
+Número de páginas: 20
+================================================================================
+
+
+================================================================================
+PÁGINA 1
+================================================================================
+
+AI Engineering
+
+Building Applications
+
+with Foundation Models
+
+Chip Huyen
+
+
+================================================================================
+PÁGINA 2
+================================================================================
+
+Este libro sirve como una guía completa y bien estructurada de los aspectos esenciales de la construcción de sistemas de IA generativa. [Página 2, Bloque 2] Una lectura obligada para cualquier profesional [Página 2, Bloque 3] que busque escalar la IA en toda la empresa. [Página 2, Bloque 4] Vittorio Cretella, [Página 2, Bloque 5] ex CIO global en P&G y Mars [Página 2, Bloque 6] “Chip Huyen gets generative AI. She is a remarkable teacher and writer [Página 2, Bloque 7] cuyo trabajo ha sido fundamental para ayudar a los equipos a llevar la IA a producción. [Página 2, Bloque 8] Basándose en su profunda experiencia, [Página 2, Bloque 9] AI Engineering [Página 2, Bloque 10] es una guía completa y [Página 2, Bloque 11] holística para construir aplicaciones de IA generativa en producción.” [Página 2, Bloque 12] Luke Metz, [Página 2, Bloque 13] cocreador de ChatGPT, ex gerente de investigación en OpenAI [Página 2, Bloque 14] AI Engineering [Página 2, Bloque 15] Los foundation models han permitido muchos nuevos casos de uso de IA mientras reducen las barreras de entrada para [Página 2, Bloque 16] construir productos de IA. Esto ha transformado la IA de una disciplina esotérica en una herramienta de desarrollo poderosa que cualquiera puede usar, incluidos aquellos sin experiencia previa en IA. [Página 2, Bloque 17] En esta guía accesible, la autora Chip Huyen discute la ingeniería de IA: el proceso de construir aplicaciones [Página 2, Bloque 18] con foundation models fácilmente disponibles. Los desarrolladores de aplicaciones de IA descubrirán cómo navegar [Página 2, Bloque 19] el panorama de la IA, incluidos modelos, conjuntos de datos, puntos de referencia de evaluación y el número aparentemente infinito [Página 2, Bloque 20] de patrones de aplicación. El libro también presenta un marco práctico para desarrollar una aplicación de IA [Página 2, Bloque 21] y desplegarla de manera eficiente. [Página 2, Bloque 22] • [Página 2, Bloque 23] Comprenda qué es la ingeniería de IA y cómo se diferencia [Página 2, Bloque 24] de la ingeniería de machine learning tradicional [Página 2, Bloque 25] • [Página 2, Bloque 26] Aprenda el proceso para desarrollar una aplicación de IA, los [Página 2, Bloque 27] desafíos en cada paso y los enfoques para abordarlos [Página 2, Bloque 28] • [Página 2, Bloque 29] Explore diversas técnicas de adaptación de modelos, incluyendo [Página 2, Bloque 30] prompt engineering, RAG, finetuning, agents y [Página 2, Bloque 31] dataset engineering, y comprenda cómo y por qué funcionan [Página 2, Bloque 32] Chip Huyen [Página 2, Bloque 33] trabaja en la intersección [Página 2, Bloque 34] de la IA, los datos y la narración. Anteriormente, [Página 2, Bloque 35] trabajó con Snorkel AI y NVIDIA, [Página 2, Bloque 36] fundó una startup de infraestructura de IA [Página 2, Bloque 37] (adquirida) y enseñó diseño de sistemas de machine learning en Stanford. [Página 2, Bloque 38] Su libro [Página 2, Bloque 39] Designing Machine Learning Systems [Página 2, Bloque 40] ha sido traducido a más de 10 idiomas. [Página 2, Bloque 41] • [Página 2, Bloque 42] Examine los cuellos de botella de latencia y costo al servir [Página 2, Bloque 43] foundation models y aprenda cómo superarlos [Página 2, Bloque 44] • [Página 2, Bloque 45] Elija el modelo, las métricas, los datos y los patrones de desarrollo adecuados para sus necesidades [Página 2, Bloque 46] DATA [Página 2, Bloque 47] ISBN: 978-1-098-16630-4 [Página 2, Bloque 48] US $79.99 CAN $99.99 [Página 2, Bloque 49] 5 [Página 2, Bloque 50] 7 [Página 2, Bloque 51] 9 [Página 2, Bloque 52] 9 [Página 2, Bloque 53] 9 [Página 2, Bloque 54] 9 [Página 2, Bloque 55] 7 8 1 0 9 8 [Página 2, Bloque 56] 1 6 6 3 0 4]
+
+de la construcción de sistemas de IA generativa. Una lectura obligada para cualquier profesional
+
+que busque escalar la IA en toda la empresa.”
+
+Vittorio Cretella,
+
+ex CIO global en P&G y Mars
+
+“Chip Huyen domina la IA generativa. Es una maestra y escritora notable
+
+cuyo trabajo ha sido fundamental para ayudar a los equipos a llevar la IA a producción.
+
+Basándose en su profunda experiencia,
+
+AI Engineering
+
+es una guía completa y
+
+holística para construir aplicaciones de IA generativa en producción.”
+
+Luke Metz,
+
+cocreador de ChatGPT, ex gerente de investigación en OpenAI
+
+AI Engineering
+
+Los foundation models han permitido muchos nuevos casos de uso de IA mientras reducen las barreras de entrada para
+
+construir productos de IA. Esto ha transformado la IA de una disciplina esotérica en una herramienta de desarrollo poderosa
+
+que cualquiera puede usar, incluidos aquellos sin experiencia previa en IA.
+
+En esta guía accesible, la autora Chip Huyen discute la ingeniería de IA: el proceso de construir aplicaciones
+
+con foundation models fácilmente disponibles. Los desarrolladores de aplicaciones de IA descubrirán cómo navegar
+
+el panorama de la IA, incluidos modelos, conjuntos de datos, benchmarks de evaluación y el número aparentemente infinito
+
+de patrones de aplicación. El libro también introduce un marco práctico para desarrollar una aplicación de IA
+
+y desplegarla de manera eficiente.
+
+•
+
+Comprenda qué es la ingeniería de IA y cómo se diferencia
+
+de la ingeniería de machine learning tradicional
+
+•
+
+Aprenda el proceso para desarrollar una aplicación de IA, los
+
+desafíos en cada paso y los enfoques para abordarlos
+
+•
+
+Explore varias técnicas de adaptación de modelos, incluyendo
+
+prompt engineering, RAG, finetuning, agents y
+
+engineering de datasets, y entienda cómo y por qué funcionan
+
+Chip Huyen
+
+trabaja en la intersección
+
+de IA, datos y storytelling. Anteriormente,
+
+trabajó con Snorkel AI y NVIDIA,
+
+fundó una startup de infraestructura de IA
+
+(adquirida) y enseñó diseño de sistemas de machine
+
+learning en Stanford.
+
+Su libro
+
+Designing Machine
+
+Learning Systems
+
+(O’Reilly) ha sido
+
+traducido a más de 10 idiomas.
+
+•
+
+Examine los cuellos de botella de latencia y costo al servir
+
+foundation models y aprenda cómo superarlos
+
+•
+
+Elija el modelo, las métricas, los datos y los patrones de desarrollo adecuados para sus necesidades
+
+DATA
+
+DATA
+
+ISBN: 978-1-098-16630-4
+
+US $79.99 CAN $99.99
+
+5
+
+7
+
+9
+
+9
+
+9
+
+9
+
+7 8 1 0 9 8
+
+1 6 6 3 0 4
+
+
+================================================================================
+PÁGINA 3
+================================================================================
+
+Elogios para [Página 3, Bloque 2] AI Engineering [Página 3, Bloque 3] Este libro ofrece una guía completa y bien estructurada de los aspectos esenciales de la construcción de sistemas de IA generativa. Una lectura obligada para cualquier [Página 3, Bloque 4] profesional que busque escalar la IA en toda la empresa. [Página 3, Bloque 5] —Vittorio Cretella, ex CIO global de P&G y Mars [Página 3, Bloque 6] Chip Huyen gets generative AI. Además, es una maestra y escritora notable [Página 3, Bloque 7] cuyo trabajo ha sido fundamental para ayudar a los equipos a llevar la IA a producción. [Página 3, Bloque 8] Basándose en su profunda experiencia, [Página 3, Bloque 9] AI Engineering [Página 3, Bloque 10] sirve como una guía completa [Página 3, Bloque 11] y holística, detallando magistralmente todo lo necesario para [Página 3, Bloque 12] diseñar e implementar aplicaciones de IA generativa en producción. [Página 3, Bloque 13] —Luke Metz, cocreador de ChatGPT, [Página 3, Bloque 14] ex gerente de investigación en OpenAI [Página 3, Bloque 15] Todo ingeniero de IA que construya aplicaciones del mundo real debe leer este libro. Es una guía vital para el diseño de sistemas de IA de extremo a extremo, desde el desarrollo del modelo [Página 3, Bloque 16] y la evaluación hasta el despliegue y la operación a gran escala. [Página 3, Bloque 17] —Andrei Lopatenko, Director de Búsqueda e IA, Neuron7 [Página 3, Bloque 18] Este libro sirve como una guía esencial para construir productos de IA que puedan escalar. [Página 3, Bloque 19] A diferencia de otros libros que se centran en herramientas o tendencias actuales que están constantemente [Página 3, Bloque 20] cambiando, Chip ofrece conocimiento fundamental atemporal. Ya sea que sea [Página 3, Bloque 21] un gerente de producto o un ingeniero, este libro cierra efectivamente la brecha de colaboración entre equipos multifuncionales, lo que lo convierte en una lectura obligada para cualquiera involucrado en el desarrollo de IA. [Página 3, Bloque 22] —Aileen Bui, Gerente de Operaciones de Producto de IA, Google]
+
+[ERROR: No se encontró traducción en la respuesta]
+AI Engineering
+
+[ERROR: No se encontró traducción en la respuesta]
+This book offers a comprehensive, well-structured guide to the essential
+
+[ERROR: No se encontró traducción en la respuesta]
+aspects of building generative AI systems. A must-read for any
+
+[ERROR: No se encontró traducción en la respuesta]
+professional looking to scale AI across the enterprise.
+
+[ERROR: No se encontró traducción en la respuesta]
+—Vittorio Cretella, former global CIO, P&G and Mars
+
+[ERROR: No se encontró traducción en la respuesta]
+Chip Huyen gets generative AI. On top of that, she is a remarkable teacher and writer
+
+[ERROR: No se encontró traducción en la respuesta]
+whose work has been instrumental in helping teams bring AI into production.
+
+[ERROR: No se encontró traducción en la respuesta]
+Drawing on her deep expertise,
+
+[ERROR: No se encontró traducción en la respuesta]
+AI Engineering
+
+[ERROR: No se encontró traducción en la respuesta]
+serves as a comprehensive
+
+[ERROR: No se encontró traducción en la respuesta]
+and holistic guide, masterfully detailing everything required to
+
+[ERROR: No se encontró traducción en la respuesta]
+design and deploy generative AI applications in production.
+
+[ERROR: No se encontró traducción en la respuesta]
+—Luke Metz, cocreator of ChatGPT,
+
+[ERROR: No se encontró traducción en la respuesta]
+former research manager at OpenAI
+
+[ERROR: No se encontró traducción en la respuesta]
+Every AI engineer building real-world applications should read this book. It’s a
+
+[ERROR: No se encontró traducción en la respuesta]
+vital guide to end-to-end AI system design, from model development
+
+[ERROR: No se encontró traducción en la respuesta]
+and evaluation to large-scale deployment and operation.
+
+[ERROR: No se encontró traducción en la respuesta]
+—Andrei Lopatenko, Director Search and AI, Neuron7
+
+[ERROR: No se encontró traducción en la respuesta]
+This book serves as an essential guide for building AI products that can scale.
+
+[ERROR: No se encontró traducción en la respuesta]
+Unlike other books that focus on tools or current trends that are constantly
+
+[ERROR: No se encontró traducción en la respuesta]
+changing, Chip delivers timeless foundational knowledge. Whether you’re
+
+[ERROR: No se encontró traducción en la respuesta]
+a product manager or an engineer, this book effectively bridges the
+
+[ERROR: No se encontró traducción en la respuesta]
+collaboration gap between cross-functional teams, making it
+
+[ERROR: No se encontró traducción en la respuesta]
+a must-read for anyone involved in AI development.
+
+[ERROR: No se encontró traducción en la respuesta]
+—Aileen Bui, AI Product Operations Manager, Google
+
+
+================================================================================
+PÁGINA 4
+================================================================================
+
+Esta es la transición definitiva al AI engineering por parte de una de las grandes del ML engineering.
+
+Chip ha demostrado su éxito a través de proyectos y carreras en cada etapa de una empresa y
+
+por primera vez ha condensado su experiencia para los nuevos AI Engineers que ingresan al campo.
+
+—swyx, Curator, AI.Engineer
+
+AI Engineering
+
+es una guía práctica que proporciona la información más actualizada sobre el desarrollo de IA, haciéndola accesible tanto para líderes novatos como expertos. Este libro
+
+es un recurso esencial para cualquiera que busque construir sistemas de IA robustos y escalables.
+
+—Vicki Reyzelman, Chief AI Solutions Architect, Mave Sparks
+
+[ERROR: No se encontró traducción en la respuesta]
+—Vicki Reyzelman, Chief AI Solutions Architect, Mave Sparks
+
+AI Engineering
+
+es una guía completa que sirve como referencia esencial
+
+tanto para comprender como para implementar sistemas de IA en la práctica.
+
+—Han Lee, Director—Data Science, Moody’s
+
+AI Engineering
+
+es una guía esencial para cualquiera que esté construyendo software con Generative AI.
+
+Desmitifica la tecnología, destaca la importancia de la evaluación y comparte
+
+lo que se debe hacer para lograr calidad antes de comenzar con el costoso fine-tuning.
+
+—Rafal Kawala, Senior AI Engineering Director, 16 años de
+
+experiencia trabajando en una empresa Fortune 500
+
+
+================================================================================
+PÁGINA 5
+================================================================================
+
+AI Engineering
+
+Building Applications with Foundation Models
+
+Chip Huyen
+
+
+================================================================================
+PÁGINA 6
+================================================================================
+
+Ingeniería de IA
+
+por Chip Huyen
+
+Copyright © 2025 Developer Experience Advisory LLC. Todos los derechos reservados.
+
+Impreso en los Estados Unidos de América.
+
+Publicado por O’Reilly Media, Inc., 1005 Gravenstein Highway North, Sebastopol, CA 95472.
+
+Los libros de O’Reilly pueden comprarse para uso educativo, comercial o promocional de ventas. Las ediciones en línea también están disponibles para la mayoría de los títulos (
+
+http://oreilly.com
+
+). Para obtener más información, contacte a nuestro departamento de ventas corporativas/institucionales: 800-998-9938 o
+
+corporate@oreilly.com
+
+.
+
+.
+
+Editor de Adquisiciones:
+
+Nicole Butterfield
+
+Nicole Butterfield
+
+WordCo Indexing Services, Inc.
+
+Indexador:
+
+WordCo Indexing Services, Inc.
+
+Editor de Desarrollo:
+
+Melissa Potter
+
+Diseñador de Interiores:
+
+David Futato
+
+Editor de Producción:
+
+Diseñador de Portada:
+
+Beth Kelly
+
+Corrector de Copia:
+
+Karen Montgomery
+
+Ilustrador:
+
+Liz Wheeler
+
+Piper Editorial Consulting, LLC
+
+Kate Dullea
+
+Corrector de Pruebas:
+
+Piper Editorial Consulting, LLC
+
+Diciembre de 2024:
+
+Primera Edición
+
+Historial de Revisiones para la Primera Edición
+
+2024-12-04: Primer Lanzamiento
+
+Consulte
+
+http://oreilly.com/catalog/errata.csp?isbn=9781098166304
+
+Detalles de lanzamiento.
+
+El logotipo de O’Reilly es una marca registrada de O’Reilly Media, Inc.
+
+La imagen de la portada y el trade dress relacionados son marcas comerciales de O’Reilly Media, Inc.
+
+Las opiniones expresadas en esta obra son las del autor y no representan las opiniones de la editorial.
+
+Si bien la editorial y el autor han hecho esfuerzos de buena fe para garantizar que la información y
+
+las instrucciones contenidas en esta obra sean precisas, la editorial y el autor declinan toda responsabilidad
+
+por errores u omisiones, incluyendo, entre otros, la responsabilidad por daños resultantes del uso de
+
+o la confianza en esta obra. El uso de la información e instrucciones contenidas en esta obra es bajo su propio
+
+riesgo. Si alguna muestra de código u otra tecnología que contiene o describe esta obra está sujeta a licencias de código abierto
+
+o a los derechos de propiedad intelectual de terceros, es su responsabilidad asegurarse de que su uso
+
+cumpla con dichas licencias y/o derechos.
+
+978-1-098-16630-4
+
+[LSI]
+
+
+================================================================================
+PÁGINA 7
+================================================================================
+
+Tabla de Contenidos
+
+Prefacio...................................................................... xi
+
+1.
+
+Introducción a la Construcción de Aplicaciones de IA con Foundation Models. 1
+
+El Auge de la Ingeniería de IA 2
+
+De Modelos de Lenguaje a Large Language Models 2
+
+De Large Language Models a Foundation Models 8
+
+De Foundation Models a Ingeniería de IA 12
+
+Casos de Uso de Foundation Models 16
+
+Codificación 20
+
+Producción de Imágenes y Video 22
+
+Escritura 22
+
+Educación 24
+
+Bots Conversacionales 26
+
+Agregación de Información 26
+
+Organización de Datos 27
+
+Automatización de Flujos de Trabajo 28
+
+Planificación de Aplicaciones de IA 28
+
+Evaluación de Casos de Uso 29
+
+Establecimiento de Expectativas 32
+
+Planificación de Hitos 33
+
+Mantenimiento 34
+
+La Pila de Ingeniería de IA 35
+
+Tres Capas de la Pila de IA 37
+
+Ingeniería de IA versus ML Engineering 39
+
+Ingeniería de IA versus Full-Stack Engineering 46
+
+Resumen 47
+
+v
+
+
+================================================================================
+PÁGINA 8
+================================================================================
+
+2.
+
+Understanding Foundation Models.......................................... 49
+
+Training Data 50
+
+Multilingual Models 51
+
+Domain-Specific Models 56
+
+Modeling 58
+
+Model Architecture 58
+
+Model Size 67
+
+Post-Training 78
+
+Supervised Finetuning 80
+
+Preference Finetuning 83
+
+Sampling 88
+
+Sampling Fundamentals 88
+
+Sampling Strategies 90
+
+Test Time Compute 96
+
+Structured Outputs 99
+
+The Probabilistic Nature of AI 105
+
+Summary 111
+
+3.
+
+Evaluation Methodology................................................... 113
+
+Challenges of Evaluating Foundation Models 114
+
+Understanding Language Modeling Metrics 118
+
+Entropy 119
+
+Cross Entropy 120
+
+Bits-per-Character and Bits-per-Byte 121
+
+Perplexity 121
+
+Perplexity Interpretation and Use Cases 122
+
+Exact Evaluation 125
+
+Functional Correctness 126
+
+Similarity Measurements Against Reference Data 127
+
+Introduction to Embedding 134
+
+AI as a Judge 136
+
+Why AI as a Judge? 137
+
+How to Use AI as a Judge 138
+
+Limitations of AI as a Judge 141
+
+What Models Can Act as Judges? 145
+
+Ranking Models with Comparative Evaluation 148
+
+Challenges of Comparative Evaluation 152
+
+The Future of Comparative Evaluation 155
+
+Summary 156
+
+vi
+
+|
+
+Table of Contents
+
+
+================================================================================
+PÁGINA 9
+================================================================================
+
+4.
+
+Evaluate AI Systems....................................................... 159
+
+Evaluation Criteria 160
+
+Domain-Specific Capability 161
+
+Generation Capability 163
+
+Instruction-Following Capability 172
+
+Cost and Latency 177
+
+Model Selection 179
+
+Model Selection Workflow 179
+
+Model Build Versus Buy 181
+
+Navigate Public Benchmarks 191
+
+Design Your Evaluation Pipeline 200
+
+Step 1. Evaluate All Components in a System 200
+
+Step 2. Create an Evaluation Guideline 202
+
+Step 3. Define Evaluation Methods and Data 204
+
+Summary 208
+
+5.
+
+Prompt Engineering....................................................... 211
+
+Introduction to Prompting 212
+
+In-Context Learning: Zero-Shot and Few-Shot 213
+
+System Prompt and User Prompt 215
+
+Context Length and Context Efficiency 218
+
+Prompt Engineering Best Practices 220
+
+Write Clear and Explicit Instructions 220
+
+Provide Sufficient Context 223
+
+Break Complex Tasks into Simpler Subtasks 224
+
+Give the Model Time to Think 227
+
+Iterate on Your Prompts 229
+
+Evaluate Prompt Engineering Tools 230
+
+Organize and Version Prompts 233
+
+Defensive Prompt Engineering 235
+
+Proprietary Prompts and Reverse Prompt Engineering 236
+
+Jailbreaking and Prompt Injection 238
+
+Information Extraction 243
+
+Defenses Against Prompt Attacks 248
+
+Summary 251
+
+6.
+
+RAG and Agents........................................................... 253
+
+RAG 253
+
+RAG Architecture 256
+
+Retrieval Algorithms 257
+
+Retrieval Optimization 267
+
+Table of Contents
+
+|
+
+vii
+
+
+================================================================================
+PÁGINA 10
+================================================================================
+
+RAG Beyond Texts 273
+
+Agents 275
+
+Agent Overview 276
+
+Tools 278
+
+Planning 281
+
+Agent Failure Modes and Evaluation 298
+
+Memory 300
+
+Summary 305
+
+7.
+
+Finetuning.............................................................. 307
+
+Finetuning Overview 308
+
+When to Finetune 311
+
+Reasons to Finetune 311
+
+Reasons Not to Finetune 312
+
+Finetuning and RAG 316
+
+Memory Bottlenecks 319
+
+Backpropagation and Trainable Parameters 320
+
+Memory Math 322
+
+Numerical Representations 325
+
+Quantization 328
+
+Finetuning Techniques 332
+
+Parameter-Efficient Finetuning 332
+
+Model Merging and Multi-Task Finetuning 347
+
+Finetuning Tactics 357
+
+Summary 361
+
+8.
+
+Dataset Engineering....................................................... 363
+
+Data Curation 365
+
+Data Quality 368
+
+Data Coverage 369
+
+Data Quantity 372
+
+Data Acquisition and Annotation 377
+
+Data Augmentation and Synthesis 380
+
+Why Data Synthesis 381
+
+Traditional Data Synthesis Techniques 383
+
+AI-Powered Data Synthesis 386
+
+Model Distillation 395
+
+Data Processing 396
+
+Inspect Data 397
+
+Deduplicate Data 399
+
+Clean and Filter Data 401
+
+viii
+
+|
+
+Table of Contents
+
+
+================================================================================
+PÁGINA 11
+================================================================================
+
+Format Data 401
+
+Summary 403
+
+9.
+
+Inference Optimization..................................................... 405
+
+Understanding Inference Optimization 406
+
+Inference Overview 406
+
+Inference Performance Metrics 412
+
+AI Accelerators 419
+
+Inference Optimization 426
+
+Model Optimization 426
+
+Inference Service Optimization 440
+
+Summary 447
+
+10.
+
+AI Engineering Architecture and User Feedback................................ 449
+
+AI Engineering Architecture 449
+
+Step 1. Enhance Context 450
+
+Step 2. Put in Guardrails 451
+
+Step 3. Add Model Router and Gateway 456
+
+Step 4. Reduce Latency with Caches 460
+
+Step 5. Add Agent Patterns 463
+
+Monitoring and Observability 465
+
+AI Pipeline Orchestration 472
+
+User Feedback 474
+
+Extracting Conversational Feedback 475
+
+Feedback Design 480
+
+Feedback Limitations 490
+
+Summary 492
+
+Epilogue.................................................................... 495
+
+Index....................................................................... 497
+
+Table of Contents
+
+|
+
+ix
+
+
+================================================================================
+PÁGINA 12
+================================================================================
+
+
+================================================================================
+PÁGINA 13
+================================================================================
+
+1
+
+2
+
+Lo que me sorprendió fue la gran cantidad de aplicaciones que esta mejora de capacidad desbloqueó. Pensé que un pequeño aumento en las métricas de calidad del modelo podría resultar en un aumento modesto de aplicaciones. En cambio, resultó en una explosión de nuevas posibilidades.
+
+No solo estas nuevas capacidades de IA han aumentado la demanda de aplicaciones de IA, sino que también han reducido la barrera de entrada para los desarrolladores. Se ha vuelto tan fácil comenzar a construir aplicaciones de IA. Es incluso posible construir una aplicación sin escribir una sola línea de código. Este cambio ha transformado la IA de una disciplina especializada en una herramienta de desarrollo poderosa que todos pueden usar.
+
+Aunque la adopción de la IA hoy parece nueva, se basa en técnicas que se han estado utilizando durante un tiempo. Los artículos sobre language modeling salieron a principios de la década de 1950.
+
+Las aplicaciones de Retrieval-augmented generation (RAG) se construyen sobre la tecnología de recuperación que ha impulsado los sistemas de búsqueda y recomendación desde mucho antes de que se acuñara el término RAG. Las mejores prácticas para implementar aplicaciones tradicionales de machine learning —experimentación sistemática, evaluación rigurosa, optimización implacable para modelos más rápidos y baratos— siguen siendo las mejores prácticas para trabajar con aplicaciones basadas en foundation models.
+
+1
+
+Un autor del artículo de AlexNet, Ilya Sutskever, continuó cofundando OpenAI, convirtiendo esta lección en realidad con los modelos GPT.
+
+2
+
+Incluso mi pequeño proyecto en 2017, que utilizó un language model para evaluar la calidad de la traducción, concluyó que necesitábamos “un mejor language model”.
+
+xi
+
+[ERROR: No se encontró traducción en la respuesta]
+2
+
+[ERROR: No se encontró traducción en la respuesta]
+What surprised me was the sheer number of applications this capability boost
+
+[ERROR: No se encontró traducción en la respuesta]
+unlocked. I thought a small increase in model quality metrics might result in a mod‐
+
+[ERROR: No se encontró traducción en la respuesta]
+est increase in applications. Instead, it resulted in an explosion of new possibilities.
+
+[ERROR: No se encontró traducción en la respuesta]
+Not only have these new AI capabilities increased the demand for AI applications,
+
+[ERROR: No se encontró traducción en la respuesta]
+but they have also lowered the entry barrier for developers. It’s become so easy to get
+
+[ERROR: No se encontró traducción en la respuesta]
+started with building AI applications. It’s even possible to build an application
+
+[ERROR: No se encontró traducción en la respuesta]
+without writing a single line of code. This shift has transformed AI from a specialized
+
+[ERROR: No se encontró traducción en la respuesta]
+discipline into a powerful development tool everyone can use.
+
+[ERROR: No se encontró traducción en la respuesta]
+Even though AI adoption today seems new, it’s built upon techniques that have been
+
+[ERROR: No se encontró traducción en la respuesta]
+around for a while. Papers about language modeling came out as early as the 1950s.
+
+[ERROR: No se encontró traducción en la respuesta]
+Retrieval-augmented generation (RAG) applications are built upon retrieval technol‐
+
+[ERROR: No se encontró traducción en la respuesta]
+ogy that has powered search and recommender systems since long before the term
+
+[ERROR: No se encontró traducción en la respuesta]
+RAG was coined. The best practices for deploying traditional machine learning appli‐
+
+[ERROR: No se encontró traducción en la respuesta]
+cations—systematic experimentation, rigorous evaluation, relentless optimization for
+
+[ERROR: No se encontró traducción en la respuesta]
+faster and cheaper models—are still the best practices for working with foundation
+
+[ERROR: No se encontró traducción en la respuesta]
+model-based applications.
+
+[ERROR: No se encontró traducción en la respuesta]
+1
+
+[ERROR: No se encontró traducción en la respuesta]
+An author of the AlexNet paper, Ilya Sutskever, went on to cofound OpenAI, turning this lesson into reality
+
+[ERROR: No se encontró traducción en la respuesta]
+with GPT models.
+
+[ERROR: No se encontró traducción en la respuesta]
+2
+
+[ERROR: No se encontró traducción en la respuesta]
+Even
+
+[ERROR: No se encontró traducción en la respuesta]
+my small project in 2017
+
+[ERROR: No se encontró traducción en la respuesta]
+, which used a language model to evaluate translation quality, concluded that
+
+[ERROR: No se encontró traducción en la respuesta]
+we needed “a better language model.”
+
+[ERROR: No se encontró traducción en la respuesta]
+xi
+
+
+================================================================================
+PÁGINA 14
+================================================================================
+
+La familiaridad y facilidad de uso de muchas técnicas de ingeniería de IA pueden llevar a las personas a pensar que no hay nada nuevo en la ingeniería de IA. [Página 14, Bloque 2] Pero si bien muchos principios [Página 14, Bloque 3] para construir aplicaciones de IA siguen siendo los mismos, la escala y las capacidades mejoradas de [Página 14, Bloque 4] los modelos de IA introducen oportunidades y desafíos que requieren nuevas soluciones. [Página 14, Bloque 5] Este libro cubre el proceso de extremo a extremo de adaptar los foundation models para resolver problemas del mundo real, abarcando técnicas probadas y eficaces de otros campos de ingeniería [Página 14, Bloque 6] y técnicas emergentes con los foundation models. [Página 14, Bloque 7] Me propuse escribir el libro porque quería aprender, y aprendí mucho. Aprendí [Página 14, Bloque 8] de los proyectos en los que trabajé, de los artículos que leí y de las personas a las que entrevisté. [Página 14, Bloque 9] Durante el proceso de escribir este libro, utilicé notas de más de 100 conversaciones [Página 14, Bloque 10] y entrevistas, incluyendo investigadores de laboratorios importantes de IA (OpenAI, Google, [Página 14, Bloque 11] Anthropic,...), desarrolladores de frameworks (NVIDIA, Meta, Hugging Face, Anyscale, [Página 14, Bloque 12] LangChain, LlamaIndex,...), ejecutivos y jefes de IA/datos en empresas de diferentes [Página 14, Bloque 13] tamaños, gerentes de producto, investigadores de la comunidad y desarrolladores de aplicaciones [Página 14, Bloque 14] independientes (ver [Página 14, Bloque 15] “Acknowledgments” en la página xx). [Página 14, Bloque 16] Aprendí especialmente de los primeros lectores que probaron mis suposiciones, me presentaron diferentes perspectivas y me expusieron a nuevos problemas y enfoques. Algunas secciones del libro también han recibido miles de comentarios de la comunidad después de ser compartidas en [Página 14, Bloque 17] mi blog, muchos de los cuales me brindaron nuevas perspectivas o confirmaron una hipótesis. [Página 14, Bloque 18] Espero que este proceso de aprendizaje continúe para mí ahora que el libro está en sus manos, ya que ustedes tienen experiencias y perspectivas que son únicas para ustedes. Por favor, siéntanse libres de compartir cualquier comentario que puedan tener sobre este libro conmigo a través de [Página 14, Bloque 19] X, [Página 14, Bloque 20] LinkedIn, [Página 14, Bloque 21] o correo electrónico en [Página 14, Bloque 22] hi@huyenchip.com. [Página 14, Bloque 23] Qué trata este libro [Página 14, Bloque 24] Este libro proporciona un marco para adaptar los foundation models, que incluyen tanto [Página 14, Bloque 25] large language models (LLMs) como large multimodal models (LMMs), a aplicaciones específicas. [Página 14, Bloque 26] Hay muchas maneras diferentes de construir una aplicación. Este libro describe varias soluciones y también plantea preguntas que pueden hacer para evaluar la mejor solución para sus necesidades. Algunas de las muchas preguntas que este libro puede ayudarle a responder son: [Página 14, Bloque 27] • [Página 14, Bloque 28] ¿Debería construir esta aplicación de IA? [Página 14, Bloque 29] • [Página 14, Bloque 30] ¿Cómo evalúo mi aplicación? ¿Puedo usar IA para evaluar resultados de IA? [Página 14, Bloque 31] • [Página 14, Bloque 32] ¿Qué causa las alucinaciones? ¿Cómo detecto y mitigo las alucinaciones? [Página 14, Bloque 33] • [Página 14, Bloque 34] ¿Cuáles son las mejores prácticas para prompt engineering? [Página 14, Bloque 35] • [Página 14, Bloque 36] ¿Por qué funciona RAG? ¿Cuáles son las estrategias para hacer RAG? [Página 14, Bloque 37] xii [Página 14, Bloque 38] | [Página 14, Bloque 39] Prefacio [Página 15, Bloque 1] • [Página 15, Bloque 2] ¿Qué es un agent? ¿Cómo construyo y evalúo un agent? [Página 15, Bloque 3] • [Página 15, Bloque 4] ¿Cuándo ajustar (finetune) un modelo? ¿Cuándo no ajustar un modelo? [Página 15, Bloque 5] • [Página 15, Bloque 6] ¿Cuántos datos necesito? ¿Cómo valido la calidad de mis datos? [Página 15, Bloque 7] • [Página 15, Bloque 8] ¿Cómo hago que mi modelo sea más rápido, más barato y seguro? [Página 15, Bloque 9] • [Página 15, Bloque 10] ¿Cómo creo un bucle de retroalimentación para mejorar continuamente mi aplicación? [Página 15, Bloque 11] El libro también le ayudará a navegar por el abrumador panorama de la IA: tipos de modelos, [Página 15, Bloque 12] benchmarks de evaluación y un número aparentemente infinito de casos de uso y patrones de aplicación. [Página 15, Bloque 13] El contenido de este libro está ilustrado mediante estudios de caso, muchos de los cuales trabajé, [Página 15, Bloque 14] respaldados por amplias referencias y exhaustivamente revisados por expertos de una amplia gama de [Página 15, Bloque 15] antecedentes. Aunque el libro tardó dos años en escribirse, se basa en mi experiencia trabajando con language models y ML systems de la última década. [Página 15, Bloque 16] Al igual que mi libro anterior de O’Reilly, [Página 15, Bloque 17] Designing Machine Learning Systems (DMLS), este libro se centra en los fundamentos de la ingeniería de IA en lugar de cualquier herramienta o API específica. Las herramientas se vuelven obsoletas rápidamente, pero los fundamentos deberían perdurar más tiempo. [Página 15, Bloque 18] 3 [Página 15, Bloque 19] Lectura de AI Engineering (AIE) con [Página 15, Bloque 20] Designing Machine Learning Systems (DMLS) [Página 15, Bloque 21] AIE puede ser un compañero de DMLS. DMLS se centra en construir aplicaciones sobre modelos ML tradicionales, lo que implica más anotaciones de datos tabulares, ingeniería de características y entrenamiento de modelos. AIE se centra en construir aplicaciones sobre foundation models, lo que implica más prompt engineering, construcción de contexto y finetuning eficiente en parámetros. Ambos libros son independientes y modulares, por lo que puede leer cualquiera de los dos libros de forma independiente. [Página 15, Bloque 36] Dado que los foundation models son modelos ML, algunos conceptos son relevantes para trabajar con ambos. Si un tema es relevante para AIE pero se ha discutido extensamente en DMLS, aún se cubrirá en este libro, pero en menor medida, con referencias a recursos relevantes. [Página 15, Bloque 37] Tenga en cuenta que muchos temas se cubren en DMLS pero no en AIE, y viceversa. El primer capítulo de este libro también cubre las diferencias entre la ingeniería de ML tradicional y la ingeniería de IA. Un sistema del mundo real a menudo involucra tanto modelos ML tradicionales como foundation models, por lo que el conocimiento sobre cómo trabajar con ambos es a menudo necesario. [Página 15, Bloque 38] 3 [Página 15, Bloque 39] Prefacio [Página 16, Bloque 1] Determinar si algo durará, sin embargo, a menudo es desafiante. Me basé en tres criterios. Primero, para un problema, determiné si resulta de las limitaciones fundamentales de cómo funciona la IA o si desaparecerá con mejores modelos. Si un problema es fundamental, analizaré sus desafíos y soluciones para abordar cada desafío. Soy un fan del enfoque de empezar simple, por lo que para muchos problemas, comenzaré con la solución más simple y luego progresaré con soluciones más complejas para abordar los desafíos crecientes. [Página 16, Bloque 2] Segundo, consulté una extensa red de investigadores e ingenieros, que son más inteligentes que yo, sobre lo que consideran los problemas y soluciones más importantes. [Página 16, Bloque 3] Ocasionalmente, también me basé en Lindy’s Law, que infiere que la vida útil futura de una tecnología es proporcional a su edad actual. Así que si algo ha estado por un tiempo, asumo que seguirá existiendo por más tiempo. [Página 16, Bloque 4] Sin embargo, en este libro, ocasionalmente incluí un concepto que creo que es temporal porque es inmediatamente útil para algunos desarrolladores de aplicaciones o porque ilustra un interesante enfoque de resolución de problemas. [Página 16, Bloque 5] Qué no es este libro [Página 16, Bloque 6] Este libro no es un tutorial. Si bien menciona herramientas específicas e incluye fragmentos de pseudocódigo para ilustrar ciertos conceptos, no le enseña a usar una herramienta. En cambio, ofrece un marco para seleccionar herramientas. Incluye muchas discusiones sobre las compensaciones entre diferentes soluciones y las preguntas que debe hacer al evaluar una solución. Cuando quiera usar una herramienta, generalmente es fácil encontrar tutoriales para ella en línea. [Página 16, Bloque 7] Los chatbots de IA también son bastante buenos para ayudarle a empezar con herramientas populares. [Página 16, Bloque 8] Este libro no es un libro de teoría de ML. No explica qué es una red neuronal ni cómo construir y entrenar un modelo desde cero. Si bien explica muchos conceptos teóricos inmediatamente relevantes para la discusión, el libro es un libro práctico que se centra en ayudarle a construir aplicaciones de IA exitosas para resolver problemas del mundo real. [Página 16, Bloque 9] Si bien es posible construir aplicaciones basadas en foundation models sin experiencia en ML, una comprensión básica de ML y estadística puede ayudarle a construir mejores aplicaciones y ahorrarle sufrimiento innecesario. Puede leer este libro sin ningún conocimiento previo de ML. Sin embargo, será más efectivo al construir aplicaciones de IA si conoce los siguientes conceptos: [Página 16, Bloque 10] • [Página 16, Bloque 11] Conceptos probabilísticos como sampling, determinismo y distribución. [Página 16, Bloque 12] • [Página 16, Bloque 13] Conceptos de ML como supervision, self-supervision, log-likelihood, descenso de gradiente, backpropagation, función de pérdida y ajuste de hiperparámetros. [Página 16, Bloque 14] xiv [Página 16, Bloque 15] | [Página 16, Bloque 16] Prefacio
+
+Este libro cubre el proceso de extremo a extremo de adaptar foundation models para resolver problemas del mundo real, abarcando técnicas probadas de otros campos de ingeniería y técnicas emergentes con los foundation models.
+
+Me propuse escribir el libro porque quería aprender, y aprendí mucho. Aprendí de los proyectos en los que trabajé, de los artículos que leí y de las personas a las que entrevisté.
+
+Durante el proceso de escribir este libro, utilicé notas de más de 100 conversaciones y entrevistas, incluidos investigadores de laboratorios importantes de IA (OpenAI, Google, Anthropic,...), desarrolladores de frameworks (NVIDIA, Meta, Hugging Face, Anyscale, LangChain, LlamaIndex,...), ejecutivos y jefes de IA/datos en empresas de diferentes tamaños, gerentes de producto, investigadores de la comunidad y desarrolladores de aplicaciones independientes (ver “Agradecimientos” en la página xx).
+
+Aprendí especialmente de los primeros lectores que probaron mis suposiciones, me presentaron diferentes perspectivas y me expusieron a nuevos problemas y enfoques. Algunas secciones del libro también han recibido miles de comentarios de la comunidad después de ser compartidas en mi blog, muchos de los cuales me dieron nuevas perspectivas o confirmaron una hipótesis.
+
+Espero que este proceso de aprendizaje continúe para mí ahora que el libro está en sus manos, ya que ustedes tienen experiencias y perspectivas que son únicas para ustedes. Por favor, siéntanse libres de compartir cualquier comentario que puedan tener sobre este libro conmigo a través de X, LinkedIn o por correo electrónico a hi@huyenchip.com.
+
+Qué trata este libro
+
+Este libro proporciona un marco para adaptar foundation models, que incluyen tanto large language models (LLMs) como large multimodal models (LMMs), a aplicaciones específicas.
+
+Hay muchas maneras diferentes de construir una aplicación. Este libro describe varias soluciones y también plantea preguntas que pueden hacer para evaluar la mejor solución para sus necesidades. Algunas de las muchas preguntas que este libro puede ayudarle a responder son:
+
+•
+
+¿Debería construir esta aplicación de IA?
+
+•
+
+¿Cómo evalúo mi aplicación? ¿Puedo usar IA para evaluar resultados de IA?
+
+•
+
+¿Qué causa las alucinaciones? ¿Cómo detecto y mitigo las alucinaciones?
+
+•
+
+¿Cuáles son las mejores prácticas para el prompt engineering?
+
+•
+
+¿Por qué funciona RAG? ¿Cuáles son las estrategias para hacer RAG?
+
+xii
+
+|
+
+Prefacio
+
+[ERROR: No se encontró traducción en la respuesta]
+, many giving me new perspectives or confirming a
+
+[ERROR: No se encontró traducción en la respuesta]
+hypothesis.
+
+[ERROR: No se encontró traducción en la respuesta]
+I hope that this learning process will continue for me now that the book is in your
+
+[ERROR: No se encontró traducción en la respuesta]
+hands, as you have experiences and perspectives that are unique to you. Please
+
+[ERROR: No se encontró traducción en la respuesta]
+feel free to share any feedback you might have for this book with me via
+
+[ERROR: No se encontró traducción en la respuesta]
+X
+
+[ERROR: No se encontró traducción en la respuesta]
+,
+
+[ERROR: No se encontró traducción en la respuesta]
+LinkedIn
+
+[ERROR: No se encontró traducción en la respuesta]
+,
+
+[ERROR: No se encontró traducción en la respuesta]
+or email at
+
+[ERROR: No se encontró traducción en la respuesta]
+hi@huyenchip.com
+
+[ERROR: No se encontró traducción en la respuesta]
+.
+
+[ERROR: No se encontró traducción en la respuesta]
+What This Book Is About
+
+[ERROR: No se encontró traducción en la respuesta]
+This book provides a framework for adapting foundation models, which include both
+
+[ERROR: No se encontró traducción en la respuesta]
+large language models (LLMs) and large multimodal models (LMMs), to specific
+
+[ERROR: No se encontró traducción en la respuesta]
+applications.
+
+[ERROR: No se encontró traducción en la respuesta]
+There are many different ways to build an application. This book outlines various
+
+[ERROR: No se encontró traducción en la respuesta]
+solutions and also raises questions you can ask to evaluate the best solution for your
+
+[ERROR: No se encontró traducción en la respuesta]
+needs. Some of the many questions that this book can help you answer are:
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+Should I build this AI application?
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+How do I evaluate my application? Can I use AI to evaluate AI outputs?
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+What causes hallucinations? How do I detect and mitigate hallucinations?
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+What are the best practices for prompt engineering?
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+Why does RAG work? What are the strategies for doing RAG?
+
+[ERROR: No se encontró traducción en la respuesta]
+xii
+
+[ERROR: No se encontró traducción en la respuesta]
+|
+
+[ERROR: No se encontró traducción en la respuesta]
+Preface
+
+
+================================================================================
+PÁGINA 15
+================================================================================
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+What’s an agent? How do I build and evaluate an agent?
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+When to finetune a model? When not to finetune a model?
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+How much data do I need? How do I validate the quality of my data?
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+How do I make my model faster, cheaper, and secure?
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+How do I create a feedback loop to improve my application continually?
+
+[ERROR: No se encontró traducción en la respuesta]
+The book will also help you navigate the overwhelming AI landscape: types of mod‐
+
+[ERROR: No se encontró traducción en la respuesta]
+els, evaluation benchmarks, and a seemingly infinite number of use cases and appli‐
+
+[ERROR: No se encontró traducción en la respuesta]
+cation patterns.
+
+[ERROR: No se encontró traducción en la respuesta]
+The content in this book is illustrated using case studies, many of which I worked on,
+
+[ERROR: No se encontró traducción en la respuesta]
+backed by ample references and extensively reviewed by experts from a wide range of
+
+[ERROR: No se encontró traducción en la respuesta]
+backgrounds. Although the book took two years to write, it draws from my experi‐
+
+[ERROR: No se encontró traducción en la respuesta]
+ence working with language models and ML systems from the last decade.
+
+[ERROR: No se encontró traducción en la respuesta]
+Like my previous O’Reilly book,
+
+[ERROR: No se encontró traducción en la respuesta]
+Designing Machine Learning Systems
+
+[ERROR: No se encontró traducción en la respuesta]
+(DMLS), this
+
+[ERROR: No se encontró traducción en la respuesta]
+book focuses on the fundamentals of AI engineering instead of any specific tool or
+
+[ERROR: No se encontró traducción en la respuesta]
+API. Tools become outdated quickly, but fundamentals should last longer.
+
+[ERROR: No se encontró traducción en la respuesta]
+3
+
+[ERROR: No se encontró traducción en la respuesta]
+Reading
+
+[ERROR: No se encontró traducción en la respuesta]
+AI Engineering
+
+[ERROR: No se encontró traducción en la respuesta]
+(AIE) with
+
+[ERROR: No se encontró traducción en la respuesta]
+Designing
+
+[ERROR: No se encontró traducción en la respuesta]
+Machine Learning Systems
+
+[ERROR: No se encontró traducción en la respuesta]
+(DMLS)
+
+[ERROR: No se encontró traducción en la respuesta]
+AIE can be a companion to DMLS. DMLS focuses on building applications on top of
+
+[ERROR: No se encontró traducción en la respuesta]
+traditional ML models, which involves more tabular data annotations, feature engi‐
+
+[ERROR: No se encontró traducción en la respuesta]
+neering, and model training. AIE focuses on building applications on top of founda‐
+
+[ERROR: No se encontró traducción en la respuesta]
+tion models, which involves more prompt engineering, context construction, and
+
+[ERROR: No se encontró traducción en la respuesta]
+parameter-efficient finetuning. Both books are self-contained and modular, so you
+
+[ERROR: No se encontró traducción en la respuesta]
+can read either book independently.
+
+[ERROR: No se encontró traducción en la respuesta]
+Since foundation models are ML models, some concepts are relevant to working with
+
+[ERROR: No se encontró traducción en la respuesta]
+both. If a topic is relevant to AIE but has been discussed extensively in DMLS, it’ll still
+
+[ERROR: No se encontró traducción en la respuesta]
+be covered in this book, but to a lesser extent, with pointers to relevant resources.
+
+[ERROR: No se encontró traducción en la respuesta]
+Note that many topics are covered in DMLS but not in AIE, and vice versa. The first
+
+[ERROR: No se encontró traducción en la respuesta]
+chapter of this book also covers the differences between traditional ML engineering
+
+[ERROR: No se encontró traducción en la respuesta]
+and AI engineering. A real-world system often involves both traditional ML models
+
+[ERROR: No se encontró traducción en la respuesta]
+and foundation models, so knowledge about working with both is often necessary.
+
+[ERROR: No se encontró traducción en la respuesta]
+3
+
+[ERROR: No se encontró traducción en la respuesta]
+Teaching a course on how to use TensorFlow in 2017 taught me a painful lesson about how quickly tools and
+
+[ERROR: No se encontró traducción en la respuesta]
+tutorials become outdated.
+
+[ERROR: No se encontró traducción en la respuesta]
+Preface
+
+[ERROR: No se encontró traducción en la respuesta]
+|
+
+[ERROR: No se encontró traducción en la respuesta]
+xiii
+
+
+================================================================================
+PÁGINA 16
+================================================================================
+
+Determinar si algo durará, sin embargo, a menudo es un desafío. Me basé en
+
+tres criterios. Primero, para un problema, determiné si resulta de las limitaciones fundamentales de cómo funciona la IA o si desaparecerá con mejores modelos. Si un problema
+
+es fundamental, analizaré sus desafíos y soluciones para abordar cada uno de ellos. Soy
+
+un fan del enfoque start-simple, por lo que para muchos problemas, empezaré con la solución más simple
+
+y luego progresaré con soluciones más complejas para abordar los desafíos crecientes.
+
+Segundo, consulté una extensa red de investigadores e ingenieros, que son
+
+más inteligentes que yo, sobre lo que consideran los problemas y soluciones más importantes.
+
+Ocasionalmente, también me basé en
+
+Lindy’s Law, que infiere que la esperanza de vida futura
+
+de una tecnología es proporcional a su edad actual. Así que si algo ha existido por
+
+un tiempo, asumo que seguirá existiendo por más tiempo.
+
+Sin embargo, en este libro, ocasionalmente incluí un concepto que creo que es temporal porque es inmediatamente útil para algunos desarrolladores de aplicaciones o porque ilustra un interesante enfoque de resolución de problemas.
+
+Lo que Este Libro No Es
+
+Este libro no es un tutorial. Si bien menciona herramientas específicas e incluye snippets de pseudocódigo
+
+para ilustrar ciertos conceptos, no te enseña a usar una herramienta. En cambio, ofrece un framework para seleccionar herramientas. Incluye muchas discusiones sobre los trade-offs entre diferentes soluciones y las preguntas que debes hacer al evaluar una solución. Cuando quieras usar una herramienta, generalmente es fácil encontrar tutoriales para ella en línea.
+
+Los chatbots de IA también son bastante buenos para ayudarte a empezar con herramientas populares.
+
+Este libro no es un libro de teoría de ML. No explica qué es una neural network ni cómo construir y entrenar un modelo desde cero. Si bien explica muchos conceptos teóricos inmediatamente relevantes para la discusión, el libro es un libro práctico que se centra en ayudarte a construir aplicaciones de IA exitosas para resolver problemas del mundo real.
+
+Si bien es posible construir aplicaciones basadas en foundation models sin experiencia en ML, una comprensión básica de ML y estadística puede ayudarte a construir mejores aplicaciones y ahorrarte sufrimiento innecesario. Puedes leer este libro sin ningún conocimiento previo de ML. Sin embargo, serás más efectivo al construir aplicaciones de IA si conoces los siguientes conceptos:
+
+• Conceptos probabilísticos como sampling, determinismo y distribución.
+
+• Conceptos de ML como supervision, self-supervision, log-likelihood, gradient descent, backpropagation, loss function y hyperparameter tuning.
+
+xiv
+
+|
+
+Prefacio
+
+[ERROR: No se encontró traducción en la respuesta]
+AI chatbots are also pretty good at helping you get started with popular tools.
+
+[ERROR: No se encontró traducción en la respuesta]
+This book isn’t an ML theory book. It doesn’t explain what a neural network is or
+
+[ERROR: No se encontró traducción en la respuesta]
+how to build and train a model from scratch. While it explains many theoretical con‐
+
+[ERROR: No se encontró traducción en la respuesta]
+cepts immediately relevant to the discussion, the book is a practical book that focuses
+
+[ERROR: No se encontró traducción en la respuesta]
+on helping you build successful AI applications to solve real-world problems.
+
+[ERROR: No se encontró traducción en la respuesta]
+While it’s possible to build foundation model-based applications without ML exper‐
+
+[ERROR: No se encontró traducción en la respuesta]
+tise, a basic understanding of ML and statistics can help you build better applications
+
+[ERROR: No se encontró traducción en la respuesta]
+and save you from unnecessary suffering. You can read this book without any prior
+
+[ERROR: No se encontró traducción en la respuesta]
+ML background. However, you will be more effective while building AI applications
+
+[ERROR: No se encontró traducción en la respuesta]
+if you know the following concepts:
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+Probabilistic concepts such as sampling, determinism, and distribution.
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+ML concepts such as supervision, self-supervision, log-likelihood, gradient
+
+[ERROR: No se encontró traducción en la respuesta]
+descent, backpropagation, loss function, and hyperparameter tuning.
+
+[ERROR: No se encontró traducción en la respuesta]
+xiv
+
+[ERROR: No se encontró traducción en la respuesta]
+|
+
+[ERROR: No se encontró traducción en la respuesta]
+Preface
+
+
+================================================================================
+PÁGINA 17
+================================================================================
+
+• Varias arquitecturas de neural network, incluyendo feedforward, recurrent y transformer.
+
+• Métricas como accuracy, F1, precision, recall, cosine similarity y cross entropy.
+
+Si aún no las conoces, no te preocupes: este libro tiene explicaciones breves y de alto nivel o referencias a recursos que pueden ponerte al día.
+
+Quién Es Para Este Libro
+
+Este libro es para cualquiera que quiera aprovechar los foundation models para resolver problemas del mundo real. Este es un libro técnico, por lo que el lenguaje de este libro está dirigido a roles técnicos, incluidos ingenieros de IA, ingenieros de ML, científicos de datos, gerentes de ingeniería y gerentes de producto técnico. Este libro es para ti si puedes relacionarte con alguno de los siguientes escenarios:
+
+• Estás construyendo u optimizando una aplicación de IA, ya sea empezando desde cero o buscando pasar de la fase de demo a una etapa lista para producción. También puedes estar enfrentando problemas como hallucinations, seguridad, latencia o costos, y necesitas soluciones específicas.
+
+• Quieres optimizar el proceso de desarrollo de IA de tu equipo, haciéndolo más sistemático, rápido y fiable.
+
+• Quieres entender cómo tu organización puede aprovechar los foundation models para mejorar los resultados del negocio y cómo construir un equipo para hacerlo.
+
+También puedes beneficiarte del libro si perteneces a uno de los siguientes grupos:
+
+• Desarrolladores de herramientas que desean identificar áreas desatendidas en la ingeniería de IA para posicionar tus productos en el ecosistema.
+
+• Investigadores que desean comprender mejor los casos de uso de la IA.
+
+• Candidatos a puestos que buscan claridad sobre las habilidades necesarias para seguir una carrera como ingeniero de IA.
+
+• Cualquiera que quiera comprender mejor las capacidades y limitaciones de la IA, y cómo puede afectar a diferentes roles.
+
+Me encanta llegar al fondo de las cosas, por lo que algunas secciones profundizan un poco más en el lado técnico. Si bien muchos lectores iniciales disfrutan del detalle, puede que no sea para todos. Te daré un aviso antes de que las cosas se vuelvan demasiado técnicas. Siéntete libre de avanzar si te parece que estás demasiado metido en los detalles.
+
+Prefacio
+
+|
+
+[ERROR: No se encontró traducción en la respuesta]
+scratch or looking to move beyond the demo phase into a production-ready
+
+[ERROR: No se encontró traducción en la respuesta]
+stage. You may also be facing issues like hallucinations, security, latency, or costs,
+
+[ERROR: No se encontró traducción en la respuesta]
+and need targeted solutions.
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+You want to streamline your team’s AI development process, making it more
+
+[ERROR: No se encontró traducción en la respuesta]
+systematic, faster, and reliable.
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+You want to understand how your organization can leverage foundation models
+
+[ERROR: No se encontró traducción en la respuesta]
+to improve the business’s bottom line and how to build a team to do so.
+
+[ERROR: No se encontró traducción en la respuesta]
+You can also benefit from the book if you belong to one of the following groups:
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+Tool developers who want to identify underserved areas in AI engineering to
+
+[ERROR: No se encontró traducción en la respuesta]
+position your products in the ecosystem.
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+Researchers who want to better understand AI use cases.
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+Job candidates seeking clarity on the skills needed to pursue a career as an AI
+
+[ERROR: No se encontró traducción en la respuesta]
+engineer.
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+Anyone wanting to better understand AI’s capabilities and limitations, and how
+
+[ERROR: No se encontró traducción en la respuesta]
+it might affect different roles.
+
+[ERROR: No se encontró traducción en la respuesta]
+I love getting to the bottom of things, so some sections dive a bit deeper into the tech‐
+
+[ERROR: No se encontró traducción en la respuesta]
+nical side. While many early readers like the detail, it might not be for everyone. I’ll
+
+[ERROR: No se encontró traducción en la respuesta]
+give you a heads-up before things get too technical. Feel free to skip ahead if it feels a
+
+[ERROR: No se encontró traducción en la respuesta]
+little too in the weeds!
+
+[ERROR: No se encontró traducción en la respuesta]
+Preface
+
+[ERROR: No se encontró traducción en la respuesta]
+|
+
+[ERROR: No se encontró traducción en la respuesta]
+xv
+
+
+================================================================================
+PÁGINA 18
+================================================================================
+
+Navegando este libro
+
+Este libro está estructurado para seguir el proceso típico para desarrollar una aplicación de IA.
+
+Esto es lo que parece este proceso típico y cómo encaja cada capítulo en el proceso.
+
+Debido a que este libro es modular, eres bienvenido a omitir cualquier sección que ya
+
+conozcas o que sea menos relevante para ti.
+
+Antes de decidir construir una aplicación de IA, es necesario comprender qué implica este pro-
+
+ceso y responder preguntas como: ¿Es necesaria esta aplicación? ¿Se necesita IA?
+
+¿Tengo que construir esta aplicación yo mismo? El primer capítulo del libro
+
+te ayuda a responder estas preguntas. También cubre una variedad de casos de uso exitosos para dar
+
+una idea de lo que pueden hacer los foundation models.
+
+Si bien no es necesario tener una base en ML para construir aplicaciones de IA, comprender
+
+cómo funciona un foundation model bajo el capó es útil para sacarle el máximo provecho.
+
+Capítulo 2
+
+analiza la creación de un foundation model y las decisiones de diseño con
+
+impactos significativos en las aplicaciones posteriores (downstream applications), incluyendo su receta de datos de entrenamiento,
+
+arquitecturas y escalas del modelo, y cómo se entrena el modelo para alinearse con las preferencias humanas. Luego
+
+discute cómo un modelo genera una respuesta, lo que ayuda a explicar los comportamientos aparentemente desconcertantes del
+
+modelo, como la inconsistencia y las alucinaciones. Cambiar la configuración de generación de un modelo también es a menudo una forma barata y fácil de aumentar significativamente el rendimiento del modelo.
+
+|
+
+Prefacio
+
+Una vez que te has comprometido a construir una aplicación con foundation models, la evaluación será una parte integral de cada paso en el camino. La evaluación es uno de los desafíos más difíciles, si no el más difícil, de la ingeniería de IA. Este libro dedica dos capítulos,
+
+[ERROR: No se encontró traducción en la respuesta]
+tion will be an integral part of every step along the way. Evaluation is one of the hard‐
+
+[ERROR: No se encontró traducción en la respuesta]
+est, if not the hardest, challenges of AI engineering. This book dedicates two chapters,
+
+Capítulo
+
+3
+
+y
+
+4
+
+, a explorar diferentes métodos de evaluación y cómo usarlos para crear un pipeline de evaluación confiable y sistemático para tu aplicación.
+
+[ERROR: No se encontró traducción en la respuesta]
+create a reliable and systematic evaluation pipeline for your application.
+
+Dada una consulta, la calidad de la respuesta de un modelo depende de los siguientes aspectos
+
+(fuera de la configuración de generación del modelo):
+
+•
+
+Las instrucciones sobre cómo debe comportarse el modelo
+
+•
+
+El contexto que el modelo puede usar para responder a la consulta
+
+•
+
+El modelo en sí
+
+Los siguientes tres capítulos del libro se centran en cómo optimizar cada uno de estos aspectos para mejorar el rendimiento de un modelo para una aplicación.
+
+[ERROR: No se encontró traducción en la respuesta]
+improve a model’s performance for an application.
+
+Capítulo 5
+
+cubre el prompt engineering, comenzando por qué es un prompt, por qué funciona el prompt engineering y las mejores prácticas de prompt engineering. Luego discute cómo los actores malintencionados pueden explotar tu aplicación con ataques de prompt y cómo defender tu aplicación contra ellos.
+
+[ERROR: No se encontró traducción en la respuesta]
+neering, starting with what a prompt is, why prompt engineering works, and prompt
+
+[ERROR: No se encontró traducción en la respuesta]
+engineering best practices. It then discusses how bad actors can exploit your applica‐
+
+[ERROR: No se encontró traducción en la respuesta]
+tion with prompt attacks and how to defend your application against them.
+
+Capítulo 6
+
+explora por qué el contexto es importante para que un modelo genere respuestas precisas. Se centra en dos patrones principales de aplicación para la construcción de contexto: RAG y
+
+agentic. El patrón RAG se entiende mejor y ha demostrado funcionar bien en producción. Por otro lado, aunque el patrón agentic promete ser mucho más
+
+potente, también es más complejo y todavía se está explorando.
+
+[ERROR: No se encontró traducción en la respuesta]
+xvi
+
+[ERROR: No se encontró traducción en la respuesta]
+|
+
+[ERROR: No se encontró traducción en la respuesta]
+Preface
+
+
+================================================================================
+PÁGINA 19
+================================================================================
+
+Capítulo 7
+
+[ERROR: No se encontró traducción en la respuesta]
+powerful, it’s also more complex and is still being explored.
+
+[ERROR: No se encontró traducción en la respuesta]
+Chapter 7
+
+trata sobre cómo adaptar un modelo a una aplicación cambiando el modelo en sí mismo mediante finetuning. Debido a la escala de los foundation models, el finetuning nativo del modelo es intensivo en memoria, y se desarrollan muchas técnicas para permitir el finetuning de modelos mejores con menos memoria. El capítulo cubre diferentes enfoques de finetuning, complementados por un enfoque más experimental: model merging. Este capítulo contiene una sección más técnica que muestra cómo calcular la huella de memoria de un modelo.
+
+[ERROR: No se encontró traducción en la respuesta]
+itself with finetuning. Due to the scale of foundation models, native model finetuning
+
+[ERROR: No se encontró traducción en la respuesta]
+is memory-intensive, and many techniques are developed to allow finetuning better
+
+[ERROR: No se encontró traducción en la respuesta]
+models with less memory. The chapter covers different finetuning approaches, sup‐
+
+[ERROR: No se encontró traducción en la respuesta]
+plemented by a more experimental approach: model merging. This chapter contains
+
+[ERROR: No se encontró traducción en la respuesta]
+a more technical section that shows how to calculate the memory footprint of a
+
+[ERROR: No se encontró traducción en la respuesta]
+model.
+
+Debido a la disponibilidad de muchos frameworks de finetuning, el proceso de finetuning en sí suele ser sencillo. Sin embargo, obtener datos para el finetuning es difícil. El siguiente capítulo trata sobre los datos, incluyendo la adquisición de datos, anotaciones de datos, síntesis de datos y procesamiento de datos. Muchos de los temas discutidos en el Capítulo 8 son relevantes más allá del finetuning, incluyendo la cuestión de lo que significa la calidad de los datos y cómo evaluar la calidad de tus datos.
+
+[ERROR: No se encontró traducción en la respuesta]
+often straightforward. However, getting data for finetuning is hard. The next chapter
+
+[ERROR: No se encontró traducción en la respuesta]
+is all about data, including data acquisition, data annotations, data synthesis, and data
+
+[ERROR: No se encontró traducción en la respuesta]
+processing. Many of the topics discussed in
+
+[ERROR: No se encontró traducción en la respuesta]
+Chapter 8
+
+[ERROR: No se encontró traducción en la respuesta]
+are relevant beyond finetuning,
+
+[ERROR: No se encontró traducción en la respuesta]
+including the question of what data quality means and how to evaluate the quality of
+
+[ERROR: No se encontró traducción en la respuesta]
+your data.
+
+Si los Capítulos
+
+5
+
+a
+
+8
+
+tratan sobre mejorar la calidad de un modelo, el Capítulo 9 trata sobre hacer su inferencia más barata y rápida. Discute la optimización tanto a nivel del modelo como a nivel del servicio de inferencia. Si estás utilizando una API de modelo, es decir, alguien más aloja tu modelo por ti, esta API probablemente se encargará de la optimización de la inferencia por ti. ¿Cómo, si alojas el modelo tú mismo, ya sea un modelo de código abierto o un modelo desarrollado internamente, necesitarás implementar muchas de las técnicas discutidas en este capítulo?
+
+[ERROR: No se encontró traducción en la respuesta]
+Chapter 9
+
+[ERROR: No se encontró traducción en la respuesta]
+is about making
+
+[ERROR: No se encontró traducción en la respuesta]
+its inference cheaper and faster. It discusses optimization both at the model level and
+
+[ERROR: No se encontró traducción en la respuesta]
+inference service level. If you’re using a model API—i.e., someone else hosts your
+
+[ERROR: No se encontró traducción en la respuesta]
+model for you—this API will likely take care of inference optimization for you. How‐
+
+[ERROR: No se encontró traducción en la respuesta]
+ever, if you host the model yourself—either an open source model or a model devel‐
+
+[ERROR: No se encontró traducción en la respuesta]
+oped in-house—you’ll need to implement many of the techniques discussed in this
+
+[ERROR: No se encontró traducción en la respuesta]
+chapter.
+
+El último capítulo del libro reúne los diferentes conceptos de este libro para construir una aplicación de principio a fin (end-to-end). La segunda parte del capítulo es más orientada al producto, con discusiones sobre cómo diseñar un sistema de retroalimentación del usuario que te ayude a recopilar comentarios útiles mientras se mantiene una buena experiencia de usuario.
+
+[ERROR: No se encontró traducción en la respuesta]
+build an application end-to-end. The second part of the chapter is more product-
+
+[ERROR: No se encontró traducción en la respuesta]
+focused, with discussions on how to design a user feedback system that helps you col‐
+
+[ERROR: No se encontró traducción en la respuesta]
+lect useful feedback while maintaining a good user experience.
+
+A menudo uso "nosotros" en este libro para referirme a ti (el lector) y a mí. Es un hábito que adquirí en mis días de enseñanza, ya que veía la escritura como una experiencia de aprendizaje compartida tanto para el escritor como para los lectores.
+
+[ERROR: No se encontró traducción en la respuesta]
+habit I got from my teaching days, as I saw writing as a shared
+
+[ERROR: No se encontró traducción en la respuesta]
+learning experience for both the writer and the readers.
+
+Convenciones Utilizadas en Este Libro
+
+Las siguientes convenciones tipográficas se utilizan en este libro:
+
+*Cursiva*
+
+Indica nuevos términos, URLs, direcciones de correo electrónico, nombres de archivos y extensiones de archivo.
+
+[ERROR: No se encontró traducción en la respuesta]
+Preface
+
+[ERROR: No se encontró traducción en la respuesta]
+|
+
+xvii
+
+
+================================================================================
+PÁGINA 20
+================================================================================
+
+Ancho constante
+
+Se utiliza para listados de programas, así como dentro de los párrafos para referirse a elementos como nombres de variables o funciones, bases de datos, tipos de datos, variables de entorno, sentencias, prompts de entrada a modelos y palabras clave.
+
+[ERROR: No se encontró traducción en la respuesta]
+ments such as variable or function names, databases, data types, environment
+
+[ERROR: No se encontró traducción en la respuesta]
+variables, statements, input prompts into models, and keywords.
+
+Ancho constante en negrita
+
+Muestra comandos u otro texto que debe ser escrito literalmente por el usuario.
+
+Ancho constante en cursiva
+
+Muestra texto que debe ser reemplazado con valores suministrados por el usuario o por valores determinados por el contexto.
+
+[ERROR: No se encontró traducción en la respuesta]
+mined by context.
+
+Este elemento significa una sugerencia o consejo.
+
+Este elemento significa una nota general.
+
+Este elemento indica una advertencia o precaución.
+
+Uso de Ejemplos de Código
+
+El material complementario (ejemplos de código, ejercicios, etc.) está disponible para descargar en https://github.com/chiphuyen/aie-book. El repositorio contiene recursos adicionales sobre ingeniería de IA, incluidos artículos importantes y herramientas útiles. También cubre temas que son demasiado profundos para entrar en este libro. Para aquellos interesados en el proceso de escritura de este libro, el repositorio de GitHub también contiene información detrás de escena y estadísticas sobre el libro.
+
+[ERROR: No se encontró traducción en la respuesta]
+https://github.com/chiphuyen/aie-book
+
+[ERROR: No se encontró traducción en la respuesta]
+. The repository contains additional resources
+
+[ERROR: No se encontró traducción en la respuesta]
+about AI engineering, including important papers and helpful tools. It also covers
+
+[ERROR: No se encontró traducción en la respuesta]
+topics that are too deep to go into in this book. For those interested in the process of
+
+[ERROR: No se encontró traducción en la respuesta]
+writing this book, the GitHub repository also contains behind-the-scenes informa‐
+
+[ERROR: No se encontró traducción en la respuesta]
+tion and statistics about the book.
+
+Si tienes una pregunta técnica o un problema con los ejemplos de código, por favor envía un correo electrónico a support@oreilly.com.
+
+[ERROR: No se encontró traducción en la respuesta]
+email to
+
+[ERROR: No se encontró traducción en la respuesta]
+support@oreilly.com
+
+[ERROR: No se encontró traducción en la respuesta]
+.
+
+Este libro está aquí para ayudarte a hacer tu trabajo. En general, si se ofrece código de ejemplo con este libro, puedes usarlo en tus programas y documentación. No necesitas contactarnos para pedir permiso a menos que estés reproduciendo una porción significativa del código. Por ejemplo, escribir un programa que utilice varios fragmentos de código del
+
+[ERROR: No se encontró traducción en la respuesta]
+with this book, you may use it in your programs and documentation. You do not
+
+[ERROR: No se encontró traducción en la respuesta]
+need to contact us for permission unless you’re reproducing a significant portion
+
+[ERROR: No se encontró traducción en la respuesta]
+of the code. For example, writing a program that uses several chunks of code from
+
+xviii
+
+[ERROR: No se encontró traducción en la respuesta]
+|
+
+[ERROR: No se encontró traducción en la respuesta]
+Preface
+
+
+================================================================================
+FIN DEL DOCUMENTO
+================================================================================
