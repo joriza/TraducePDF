@@ -1,0 +1,1106 @@
+================================================================================
+TRADUCCIÓN DE PDF
+================================================================================
+
+Archivo original: AI Engineering-001-020-13-20.pdf
+Fecha de traducción: 2026-06-01 17:58:09
+Número de páginas: 8
+================================================================================
+
+
+================================================================================
+PÁGINA 1
+================================================================================
+
+[ERROR: No se encontró traducción en la respuesta]
+Preface
+
+[ERROR: No se encontró traducción en la respuesta]
+When ChatGPT came out, like many of my colleagues, I was disoriented. What sur‐
+
+[ERROR: No se encontró traducción en la respuesta]
+prised me wasn’t the model’s size or capabilities. For over a decade, the AI commu‐
+
+[ERROR: No se encontró traducción en la respuesta]
+nity has known that scaling up a model improves it. In 2012, the AlexNet authors
+
+[ERROR: No se encontró traducción en la respuesta]
+noted in
+
+[ERROR: No se encontró traducción en la respuesta]
+their landmark paper
+
+[ERROR: No se encontró traducción en la respuesta]
+that: “All of our experiments suggest that our results
+
+[ERROR: No se encontró traducción en la respuesta]
+can be improved simply by waiting for faster GPUs and bigger datasets to become
+
+[ERROR: No se encontró traducción en la respuesta]
+available.”
+
+[ERROR: No se encontró traducción en la respuesta]
+1
+
+[ERROR: No se encontró traducción en la respuesta]
+,
+
+[ERROR: No se encontró traducción en la respuesta]
+2
+
+[ERROR: No se encontró traducción en la respuesta]
+What surprised me was the sheer number of applications this capability boost
+
+[ERROR: No se encontró traducción en la respuesta]
+unlocked. I thought a small increase in model quality metrics might result in a mod‐
+
+[ERROR: No se encontró traducción en la respuesta]
+est increase in applications. Instead, it resulted in an explosion of new possibilities.
+
+[ERROR: No se encontró traducción en la respuesta]
+Not only have these new AI capabilities increased the demand for AI applications,
+
+[ERROR: No se encontró traducción en la respuesta]
+but they have also lowered the entry barrier for developers. It’s become so easy to get
+
+[ERROR: No se encontró traducción en la respuesta]
+started with building AI applications. It’s even possible to build an application
+
+[ERROR: No se encontró traducción en la respuesta]
+without writing a single line of code. This shift has transformed AI from a specialized
+
+[ERROR: No se encontró traducción en la respuesta]
+discipline into a powerful development tool everyone can use.
+
+[ERROR: No se encontró traducción en la respuesta]
+Even though AI adoption today seems new, it’s built upon techniques that have been
+
+[ERROR: No se encontró traducción en la respuesta]
+around for a while. Papers about language modeling came out as early as the 1950s.
+
+[ERROR: No se encontró traducción en la respuesta]
+Retrieval-augmented generation (RAG) applications are built upon retrieval technol‐
+
+[ERROR: No se encontró traducción en la respuesta]
+ogy that has powered search and recommender systems since long before the term
+
+[ERROR: No se encontró traducción en la respuesta]
+RAG was coined. The best practices for deploying traditional machine learning appli‐
+
+[ERROR: No se encontró traducción en la respuesta]
+cations—systematic experimentation, rigorous evaluation, relentless optimization for
+
+[ERROR: No se encontró traducción en la respuesta]
+faster and cheaper models—are still the best practices for working with foundation
+
+[ERROR: No se encontró traducción en la respuesta]
+model-based applications.
+
+[ERROR: No se encontró traducción en la respuesta]
+1
+
+[ERROR: No se encontró traducción en la respuesta]
+An author of the AlexNet paper, Ilya Sutskever, went on to cofound OpenAI, turning this lesson into reality
+
+[ERROR: No se encontró traducción en la respuesta]
+with GPT models.
+
+[ERROR: No se encontró traducción en la respuesta]
+2
+
+[ERROR: No se encontró traducción en la respuesta]
+Even
+
+[ERROR: No se encontró traducción en la respuesta]
+my small project in 2017
+
+[ERROR: No se encontró traducción en la respuesta]
+, which used a language model to evaluate translation quality, concluded that
+
+[ERROR: No se encontró traducción en la respuesta]
+we needed “a better language model.”
+
+[ERROR: No se encontró traducción en la respuesta]
+xi
+
+
+================================================================================
+PÁGINA 2
+================================================================================
+
+[ERROR: No se encontró traducción en la respuesta]
+The familiarity and ease of use of many AI engineering techniques can mislead peo‐
+
+[ERROR: No se encontró traducción en la respuesta]
+ple into thinking there is nothing new to AI engineering. But while many principles
+
+[ERROR: No se encontró traducción en la respuesta]
+for building AI applications remain the same, the scale and improved capabilities of
+
+[ERROR: No se encontró traducción en la respuesta]
+AI models introduce opportunities and challenges that require new solutions.
+
+[ERROR: No se encontró traducción en la respuesta]
+This book covers the end-to-end process of adapting foundation models to solve real-
+
+[ERROR: No se encontró traducción en la respuesta]
+world problems, encompassing tried-and-true techniques from other engineering
+
+[ERROR: No se encontró traducción en la respuesta]
+fields and techniques emerging with foundation models.
+
+[ERROR: No se encontró traducción en la respuesta]
+I set out to write the book because I wanted to learn, and I did learn a lot. I learned
+
+[ERROR: No se encontró traducción en la respuesta]
+from the projects I worked on, the papers I read, and the people I interviewed.
+
+[ERROR: No se encontró traducción en la respuesta]
+During the process of writing this book, I used notes from over 100 conversations
+
+[ERROR: No se encontró traducción en la respuesta]
+and interviews, including researchers from major AI labs (OpenAI, Google,
+
+[ERROR: No se encontró traducción en la respuesta]
+Anthropic,...), framework developers (NVIDIA, Meta, Hugging Face, Anyscale,
+
+[ERROR: No se encontró traducción en la respuesta]
+LangChain, LlamaIndex,...), executives and heads of AI/data at companies of differ‐
+
+[ERROR: No se encontró traducción en la respuesta]
+ent sizes, product managers, community researchers, and independent application
+
+[ERROR: No se encontró traducción en la respuesta]
+developers (see
+
+[ERROR: No se encontró traducción en la respuesta]
+“Acknowledgments” on page xx
+
+[ERROR: No se encontró traducción en la respuesta]
+).
+
+[ERROR: No se encontró traducción en la respuesta]
+I especially learned from early readers who tested my assumptions, introduced me to
+
+[ERROR: No se encontró traducción en la respuesta]
+different perspectives, and exposed me to new problems and approaches. Some sec‐
+
+[ERROR: No se encontró traducción en la respuesta]
+tions of the book have also received thousands of comments from the community
+
+[ERROR: No se encontró traducción en la respuesta]
+after being shared on
+
+[ERROR: No se encontró traducción en la respuesta]
+my blog
+
+[ERROR: No se encontró traducción en la respuesta]
+, many giving me new perspectives or confirming a
+
+[ERROR: No se encontró traducción en la respuesta]
+hypothesis.
+
+[ERROR: No se encontró traducción en la respuesta]
+I hope that this learning process will continue for me now that the book is in your
+
+[ERROR: No se encontró traducción en la respuesta]
+hands, as you have experiences and perspectives that are unique to you. Please
+
+[ERROR: No se encontró traducción en la respuesta]
+feel free to share any feedback you might have for this book with me via
+
+[ERROR: No se encontró traducción en la respuesta]
+X
+
+[ERROR: No se encontró traducción en la respuesta]
+,
+
+[ERROR: No se encontró traducción en la respuesta]
+LinkedIn
+
+[ERROR: No se encontró traducción en la respuesta]
+,
+
+[ERROR: No se encontró traducción en la respuesta]
+or email at
+
+[ERROR: No se encontró traducción en la respuesta]
+hi@huyenchip.com
+
+[ERROR: No se encontró traducción en la respuesta]
+.
+
+[ERROR: No se encontró traducción en la respuesta]
+What This Book Is About
+
+[ERROR: No se encontró traducción en la respuesta]
+This book provides a framework for adapting foundation models, which include both
+
+[ERROR: No se encontró traducción en la respuesta]
+large language models (LLMs) and large multimodal models (LMMs), to specific
+
+[ERROR: No se encontró traducción en la respuesta]
+applications.
+
+[ERROR: No se encontró traducción en la respuesta]
+There are many different ways to build an application. This book outlines various
+
+[ERROR: No se encontró traducción en la respuesta]
+solutions and also raises questions you can ask to evaluate the best solution for your
+
+[ERROR: No se encontró traducción en la respuesta]
+needs. Some of the many questions that this book can help you answer are:
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+Should I build this AI application?
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+How do I evaluate my application? Can I use AI to evaluate AI outputs?
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+What causes hallucinations? How do I detect and mitigate hallucinations?
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+What are the best practices for prompt engineering?
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+Why does RAG work? What are the strategies for doing RAG?
+
+[ERROR: No se encontró traducción en la respuesta]
+xii
+
+[ERROR: No se encontró traducción en la respuesta]
+|
+
+[ERROR: No se encontró traducción en la respuesta]
+Preface
+
+
+================================================================================
+PÁGINA 3
+================================================================================
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+What’s an agent? How do I build and evaluate an agent?
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+When to finetune a model? When not to finetune a model?
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+How much data do I need? How do I validate the quality of my data?
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+How do I make my model faster, cheaper, and secure?
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+How do I create a feedback loop to improve my application continually?
+
+[ERROR: No se encontró traducción en la respuesta]
+The book will also help you navigate the overwhelming AI landscape: types of mod‐
+
+[ERROR: No se encontró traducción en la respuesta]
+els, evaluation benchmarks, and a seemingly infinite number of use cases and appli‐
+
+[ERROR: No se encontró traducción en la respuesta]
+cation patterns.
+
+[ERROR: No se encontró traducción en la respuesta]
+The content in this book is illustrated using case studies, many of which I worked on,
+
+[ERROR: No se encontró traducción en la respuesta]
+backed by ample references and extensively reviewed by experts from a wide range of
+
+[ERROR: No se encontró traducción en la respuesta]
+backgrounds. Although the book took two years to write, it draws from my experi‐
+
+[ERROR: No se encontró traducción en la respuesta]
+ence working with language models and ML systems from the last decade.
+
+[ERROR: No se encontró traducción en la respuesta]
+Like my previous O’Reilly book,
+
+[ERROR: No se encontró traducción en la respuesta]
+Designing Machine Learning Systems
+
+[ERROR: No se encontró traducción en la respuesta]
+(DMLS), this
+
+[ERROR: No se encontró traducción en la respuesta]
+book focuses on the fundamentals of AI engineering instead of any specific tool or
+
+[ERROR: No se encontró traducción en la respuesta]
+API. Tools become outdated quickly, but fundamentals should last longer.
+
+[ERROR: No se encontró traducción en la respuesta]
+3
+
+[ERROR: No se encontró traducción en la respuesta]
+Reading
+
+[ERROR: No se encontró traducción en la respuesta]
+AI Engineering
+
+[ERROR: No se encontró traducción en la respuesta]
+(AIE) with
+
+[ERROR: No se encontró traducción en la respuesta]
+Designing
+
+[ERROR: No se encontró traducción en la respuesta]
+Machine Learning Systems
+
+[ERROR: No se encontró traducción en la respuesta]
+(DMLS)
+
+[ERROR: No se encontró traducción en la respuesta]
+AIE can be a companion to DMLS. DMLS focuses on building applications on top of
+
+[ERROR: No se encontró traducción en la respuesta]
+traditional ML models, which involves more tabular data annotations, feature engi‐
+
+[ERROR: No se encontró traducción en la respuesta]
+neering, and model training. AIE focuses on building applications on top of founda‐
+
+[ERROR: No se encontró traducción en la respuesta]
+tion models, which involves more prompt engineering, context construction, and
+
+[ERROR: No se encontró traducción en la respuesta]
+parameter-efficient finetuning. Both books are self-contained and modular, so you
+
+[ERROR: No se encontró traducción en la respuesta]
+can read either book independently.
+
+[ERROR: No se encontró traducción en la respuesta]
+Since foundation models are ML models, some concepts are relevant to working with
+
+[ERROR: No se encontró traducción en la respuesta]
+both. If a topic is relevant to AIE but has been discussed extensively in DMLS, it’ll still
+
+[ERROR: No se encontró traducción en la respuesta]
+be covered in this book, but to a lesser extent, with pointers to relevant resources.
+
+[ERROR: No se encontró traducción en la respuesta]
+Note that many topics are covered in DMLS but not in AIE, and vice versa. The first
+
+[ERROR: No se encontró traducción en la respuesta]
+chapter of this book also covers the differences between traditional ML engineering
+
+[ERROR: No se encontró traducción en la respuesta]
+and AI engineering. A real-world system often involves both traditional ML models
+
+[ERROR: No se encontró traducción en la respuesta]
+and foundation models, so knowledge about working with both is often necessary.
+
+[ERROR: No se encontró traducción en la respuesta]
+3
+
+[ERROR: No se encontró traducción en la respuesta]
+Teaching a course on how to use TensorFlow in 2017 taught me a painful lesson about how quickly tools and
+
+[ERROR: No se encontró traducción en la respuesta]
+tutorials become outdated.
+
+[ERROR: No se encontró traducción en la respuesta]
+Preface
+
+[ERROR: No se encontró traducción en la respuesta]
+|
+
+[ERROR: No se encontró traducción en la respuesta]
+xiii
+
+
+================================================================================
+PÁGINA 4
+================================================================================
+
+[ERROR: No se encontró traducción en la respuesta]
+Determining whether something will last, however, is often challenging. I relied on
+
+[ERROR: No se encontró traducción en la respuesta]
+three criteria. First, for a problem, I determined whether it results from the funda‐
+
+[ERROR: No se encontró traducción en la respuesta]
+mental limitations of how AI works or if it’ll go away with better models. If a problem
+
+[ERROR: No se encontró traducción en la respuesta]
+is fundamental, I’ll analyze its challenges and solutions to address each challenge. I’m
+
+[ERROR: No se encontró traducción en la respuesta]
+a fan of the start-simple approach, so for many problems, I’ll start from the simplest
+
+[ERROR: No se encontró traducción en la respuesta]
+solution and then progress with more complex solutions to address rising challenges.
+
+[ERROR: No se encontró traducción en la respuesta]
+Second, I consulted an extensive network of researchers and engineers, who are
+
+[ERROR: No se encontró traducción en la respuesta]
+smarter than I am, about what they think are the most important problems and
+
+[ERROR: No se encontró traducción en la respuesta]
+solutions.
+
+[ERROR: No se encontró traducción en la respuesta]
+Occasionally, I also relied on
+
+[ERROR: No se encontró traducción en la respuesta]
+Lindy’s Law
+
+[ERROR: No se encontró traducción en la respuesta]
+, which infers that the future life expectancy
+
+[ERROR: No se encontró traducción en la respuesta]
+of a technology is proportional to its current age. So if something has been around for
+
+[ERROR: No se encontró traducción en la respuesta]
+a while, I assume that it’ll continue existing for a while longer.
+
+[ERROR: No se encontró traducción en la respuesta]
+In this book, however, I occasionally included a concept that I believe to be tempo‐
+
+[ERROR: No se encontró traducción en la respuesta]
+rary because it’s immediately useful for some application developers or because it
+
+[ERROR: No se encontró traducción en la respuesta]
+illustrates an interesting problem-solving approach.
+
+[ERROR: No se encontró traducción en la respuesta]
+What This Book Is Not
+
+[ERROR: No se encontró traducción en la respuesta]
+This book isn’t a tutorial. While it mentions specific tools and includes pseudocode
+
+[ERROR: No se encontró traducción en la respuesta]
+snippets to illustrate certain concepts, it doesn’t teach you how to use a tool. Instead,
+
+[ERROR: No se encontró traducción en la respuesta]
+it offers a framework for selecting tools. It includes many discussions on the trade-
+
+[ERROR: No se encontró traducción en la respuesta]
+offs between different solutions and the questions you should ask when evaluating a
+
+[ERROR: No se encontró traducción en la respuesta]
+solution. When you want to use a tool, it’s usually easy to find tutorials for it online.
+
+[ERROR: No se encontró traducción en la respuesta]
+AI chatbots are also pretty good at helping you get started with popular tools.
+
+[ERROR: No se encontró traducción en la respuesta]
+This book isn’t an ML theory book. It doesn’t explain what a neural network is or
+
+[ERROR: No se encontró traducción en la respuesta]
+how to build and train a model from scratch. While it explains many theoretical con‐
+
+[ERROR: No se encontró traducción en la respuesta]
+cepts immediately relevant to the discussion, the book is a practical book that focuses
+
+[ERROR: No se encontró traducción en la respuesta]
+on helping you build successful AI applications to solve real-world problems.
+
+[ERROR: No se encontró traducción en la respuesta]
+While it’s possible to build foundation model-based applications without ML exper‐
+
+[ERROR: No se encontró traducción en la respuesta]
+tise, a basic understanding of ML and statistics can help you build better applications
+
+[ERROR: No se encontró traducción en la respuesta]
+and save you from unnecessary suffering. You can read this book without any prior
+
+[ERROR: No se encontró traducción en la respuesta]
+ML background. However, you will be more effective while building AI applications
+
+[ERROR: No se encontró traducción en la respuesta]
+if you know the following concepts:
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+Probabilistic concepts such as sampling, determinism, and distribution.
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+ML concepts such as supervision, self-supervision, log-likelihood, gradient
+
+[ERROR: No se encontró traducción en la respuesta]
+descent, backpropagation, loss function, and hyperparameter tuning.
+
+[ERROR: No se encontró traducción en la respuesta]
+xiv
+
+[ERROR: No se encontró traducción en la respuesta]
+|
+
+[ERROR: No se encontró traducción en la respuesta]
+Preface
+
+
+================================================================================
+PÁGINA 5
+================================================================================
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+Various neural network architectures, including feedforward, recurrent, and
+
+[ERROR: No se encontró traducción en la respuesta]
+transformer.
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+Metrics such as accuracy, F1, precision, recall, cosine similarity, and cross
+
+[ERROR: No se encontró traducción en la respuesta]
+entropy.
+
+[ERROR: No se encontró traducción en la respuesta]
+If you don’t know them yet, don’t worry—this book has either brief, high-level
+
+[ERROR: No se encontró traducción en la respuesta]
+explanations or pointers to resources that can get you up to speed.
+
+[ERROR: No se encontró traducción en la respuesta]
+Who This Book Is For
+
+[ERROR: No se encontró traducción en la respuesta]
+This book is for anyone who wants to leverage foundation models to solve real-world
+
+[ERROR: No se encontró traducción en la respuesta]
+problems. This is a technical book, so the language of this book is geared toward
+
+[ERROR: No se encontró traducción en la respuesta]
+technical roles, including AI engineers, ML engineers, data scientists, engineering
+
+[ERROR: No se encontró traducción en la respuesta]
+managers, and technical product managers. This book is for you if you can relate to
+
+[ERROR: No se encontró traducción en la respuesta]
+one of the following scenarios:
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+You’re building or optimizing an AI application, whether you’re starting from
+
+[ERROR: No se encontró traducción en la respuesta]
+scratch or looking to move beyond the demo phase into a production-ready
+
+[ERROR: No se encontró traducción en la respuesta]
+stage. You may also be facing issues like hallucinations, security, latency, or costs,
+
+[ERROR: No se encontró traducción en la respuesta]
+and need targeted solutions.
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+You want to streamline your team’s AI development process, making it more
+
+[ERROR: No se encontró traducción en la respuesta]
+systematic, faster, and reliable.
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+You want to understand how your organization can leverage foundation models
+
+[ERROR: No se encontró traducción en la respuesta]
+to improve the business’s bottom line and how to build a team to do so.
+
+[ERROR: No se encontró traducción en la respuesta]
+You can also benefit from the book if you belong to one of the following groups:
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+Tool developers who want to identify underserved areas in AI engineering to
+
+[ERROR: No se encontró traducción en la respuesta]
+position your products in the ecosystem.
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+Researchers who want to better understand AI use cases.
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+Job candidates seeking clarity on the skills needed to pursue a career as an AI
+
+[ERROR: No se encontró traducción en la respuesta]
+engineer.
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+Anyone wanting to better understand AI’s capabilities and limitations, and how
+
+[ERROR: No se encontró traducción en la respuesta]
+it might affect different roles.
+
+[ERROR: No se encontró traducción en la respuesta]
+I love getting to the bottom of things, so some sections dive a bit deeper into the tech‐
+
+[ERROR: No se encontró traducción en la respuesta]
+nical side. While many early readers like the detail, it might not be for everyone. I’ll
+
+[ERROR: No se encontró traducción en la respuesta]
+give you a heads-up before things get too technical. Feel free to skip ahead if it feels a
+
+[ERROR: No se encontró traducción en la respuesta]
+little too in the weeds!
+
+[ERROR: No se encontró traducción en la respuesta]
+Preface
+
+[ERROR: No se encontró traducción en la respuesta]
+|
+
+[ERROR: No se encontró traducción en la respuesta]
+xv
+
+
+================================================================================
+PÁGINA 6
+================================================================================
+
+[ERROR: No se encontró traducción en la respuesta]
+Navigating This Book
+
+[ERROR: No se encontró traducción en la respuesta]
+This book is structured to follow the typical process for developing an AI application.
+
+[ERROR: No se encontró traducción en la respuesta]
+Here’s what this typical process looks like and how each chapter fits into the process.
+
+[ERROR: No se encontró traducción en la respuesta]
+Because this book is modular, you’re welcome to skip any section that you’re already
+
+[ERROR: No se encontró traducción en la respuesta]
+familiar with or that is less relevant to you.
+
+[ERROR: No se encontró traducción en la respuesta]
+Before deciding to build an AI application, it’s necessary to understand what this pro‐
+
+[ERROR: No se encontró traducción en la respuesta]
+cess involves and answer questions such as: Is this application necessary? Is AI
+
+[ERROR: No se encontró traducción en la respuesta]
+needed? Do I have to build this application myself? The first chapter of the book
+
+[ERROR: No se encontró traducción en la respuesta]
+helps you answer these questions. It also covers a range of successful use cases to give
+
+[ERROR: No se encontró traducción en la respuesta]
+a sense of what foundation models can do.
+
+[ERROR: No se encontró traducción en la respuesta]
+While an ML background is not necessary to build AI applications, understanding
+
+[ERROR: No se encontró traducción en la respuesta]
+how a foundation model works under the hood is useful to make the most out of it.
+
+[ERROR: No se encontró traducción en la respuesta]
+Chapter 2
+
+[ERROR: No se encontró traducción en la respuesta]
+analyzes the making of a foundation model and the design decisions with
+
+[ERROR: No se encontró traducción en la respuesta]
+significant impacts on downstream applications, including its training data recipe,
+
+[ERROR: No se encontró traducción en la respuesta]
+model architectures and scales, and how the model is trained to align to human pref‐
+
+[ERROR: No se encontró traducción en la respuesta]
+erence. It then discusses how a model generates a response, which helps explain the
+
+[ERROR: No se encontró traducción en la respuesta]
+model’s seemingly baffling behaviors, like inconsistency and hallucinations. Chang‐
+
+[ERROR: No se encontró traducción en la respuesta]
+ing the generation setting of a model is also often a cheap and easy way to signifi‐
+
+[ERROR: No se encontró traducción en la respuesta]
+cantly boost the model’s performance.
+
+[ERROR: No se encontró traducción en la respuesta]
+Once you’ve committed to building an application with foundation models, evalua‐
+
+[ERROR: No se encontró traducción en la respuesta]
+tion will be an integral part of every step along the way. Evaluation is one of the hard‐
+
+[ERROR: No se encontró traducción en la respuesta]
+est, if not the hardest, challenges of AI engineering. This book dedicates two chapters,
+
+[ERROR: No se encontró traducción en la respuesta]
+Chapters
+
+[ERROR: No se encontró traducción en la respuesta]
+3
+
+[ERROR: No se encontró traducción en la respuesta]
+and
+
+[ERROR: No se encontró traducción en la respuesta]
+4
+
+[ERROR: No se encontró traducción en la respuesta]
+, to explore different evaluation methods and how to use them to
+
+[ERROR: No se encontró traducción en la respuesta]
+create a reliable and systematic evaluation pipeline for your application.
+
+[ERROR: No se encontró traducción en la respuesta]
+Given a query, the quality of a model’s response depends on the following aspects
+
+[ERROR: No se encontró traducción en la respuesta]
+(outside of the model’s generation setting):
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+The instructions for how the model should behave
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+The context the model can use to respond to the query
+
+[ERROR: No se encontró traducción en la respuesta]
+•
+
+[ERROR: No se encontró traducción en la respuesta]
+The model itself
+
+[ERROR: No se encontró traducción en la respuesta]
+The next three chapters of the book focus on how to optimize each of these aspects to
+
+[ERROR: No se encontró traducción en la respuesta]
+improve a model’s performance for an application.
+
+[ERROR: No se encontró traducción en la respuesta]
+Chapter 5
+
+[ERROR: No se encontró traducción en la respuesta]
+covers prompt engi‐
+
+[ERROR: No se encontró traducción en la respuesta]
+neering, starting with what a prompt is, why prompt engineering works, and prompt
+
+[ERROR: No se encontró traducción en la respuesta]
+engineering best practices. It then discusses how bad actors can exploit your applica‐
+
+[ERROR: No se encontró traducción en la respuesta]
+tion with prompt attacks and how to defend your application against them.
+
+[ERROR: No se encontró traducción en la respuesta]
+Chapter 6
+
+[ERROR: No se encontró traducción en la respuesta]
+explores why context is important for a model to generate accurate respon‐
+
+[ERROR: No se encontró traducción en la respuesta]
+ses. It zooms into two major application patterns for context construction: RAG and
+
+[ERROR: No se encontró traducción en la respuesta]
+agentic. The RAG pattern is better understood and has proven to work well in
+
+[ERROR: No se encontró traducción en la respuesta]
+xvi
+
+[ERROR: No se encontró traducción en la respuesta]
+|
+
+[ERROR: No se encontró traducción en la respuesta]
+Preface
+
+
+================================================================================
+PÁGINA 7
+================================================================================
+
+[ERROR: No se encontró traducción en la respuesta]
+production. On the other hand, while the agentic pattern promises to be much more
+
+[ERROR: No se encontró traducción en la respuesta]
+powerful, it’s also more complex and is still being explored.
+
+[ERROR: No se encontró traducción en la respuesta]
+Chapter 7
+
+[ERROR: No se encontró traducción en la respuesta]
+is about how to adapt a model to an application by changing the model
+
+[ERROR: No se encontró traducción en la respuesta]
+itself with finetuning. Due to the scale of foundation models, native model finetuning
+
+[ERROR: No se encontró traducción en la respuesta]
+is memory-intensive, and many techniques are developed to allow finetuning better
+
+[ERROR: No se encontró traducción en la respuesta]
+models with less memory. The chapter covers different finetuning approaches, sup‐
+
+[ERROR: No se encontró traducción en la respuesta]
+plemented by a more experimental approach: model merging. This chapter contains
+
+[ERROR: No se encontró traducción en la respuesta]
+a more technical section that shows how to calculate the memory footprint of a
+
+[ERROR: No se encontró traducción en la respuesta]
+model.
+
+[ERROR: No se encontró traducción en la respuesta]
+Due to the availability of many finetuning frameworks, the finetuning process itself is
+
+[ERROR: No se encontró traducción en la respuesta]
+often straightforward. However, getting data for finetuning is hard. The next chapter
+
+[ERROR: No se encontró traducción en la respuesta]
+is all about data, including data acquisition, data annotations, data synthesis, and data
+
+[ERROR: No se encontró traducción en la respuesta]
+processing. Many of the topics discussed in
+
+[ERROR: No se encontró traducción en la respuesta]
+Chapter 8
+
+[ERROR: No se encontró traducción en la respuesta]
+are relevant beyond finetuning,
+
+[ERROR: No se encontró traducción en la respuesta]
+including the question of what data quality means and how to evaluate the quality of
+
+[ERROR: No se encontró traducción en la respuesta]
+your data.
+
+[ERROR: No se encontró traducción en la respuesta]
+If Chapters
+
+[ERROR: No se encontró traducción en la respuesta]
+5
+
+[ERROR: No se encontró traducción en la respuesta]
+to
+
+[ERROR: No se encontró traducción en la respuesta]
+8
+
+[ERROR: No se encontró traducción en la respuesta]
+are about improving a model’s quality,
+
+[ERROR: No se encontró traducción en la respuesta]
+Chapter 9
+
+[ERROR: No se encontró traducción en la respuesta]
+is about making
+
+[ERROR: No se encontró traducción en la respuesta]
+its inference cheaper and faster. It discusses optimization both at the model level and
+
+[ERROR: No se encontró traducción en la respuesta]
+inference service level. If you’re using a model API—i.e., someone else hosts your
+
+[ERROR: No se encontró traducción en la respuesta]
+model for you—this API will likely take care of inference optimization for you. How‐
+
+[ERROR: No se encontró traducción en la respuesta]
+ever, if you host the model yourself—either an open source model or a model devel‐
+
+[ERROR: No se encontró traducción en la respuesta]
+oped in-house—you’ll need to implement many of the techniques discussed in this
+
+[ERROR: No se encontró traducción en la respuesta]
+chapter.
+
+[ERROR: No se encontró traducción en la respuesta]
+The last chapter in the book brings together the different concepts from this book to
+
+[ERROR: No se encontró traducción en la respuesta]
+build an application end-to-end. The second part of the chapter is more product-
+
+[ERROR: No se encontró traducción en la respuesta]
+focused, with discussions on how to design a user feedback system that helps you col‐
+
+[ERROR: No se encontró traducción en la respuesta]
+lect useful feedback while maintaining a good user experience.
+
+[ERROR: No se encontró traducción en la respuesta]
+I often use “we” in this book to mean you (the reader) and I. It’s a
+
+[ERROR: No se encontró traducción en la respuesta]
+habit I got from my teaching days, as I saw writing as a shared
+
+[ERROR: No se encontró traducción en la respuesta]
+learning experience for both the writer and the readers.
+
+[ERROR: No se encontró traducción en la respuesta]
+Conventions Used in This Book
+
+[ERROR: No se encontró traducción en la respuesta]
+The following typographical conventions are used in this book:
+
+[ERROR: No se encontró traducción en la respuesta]
+Italic
+
+[ERROR: No se encontró traducción en la respuesta]
+Indicates new terms, URLs, email addresses, filenames, and file extensions.
+
+[ERROR: No se encontró traducción en la respuesta]
+Preface
+
+[ERROR: No se encontró traducción en la respuesta]
+|
+
+[ERROR: No se encontró traducción en la respuesta]
+xvii
+
+
+================================================================================
+PÁGINA 8
+================================================================================
+
+[ERROR: No se encontró traducción en la respuesta]
+Constant width
+
+[ERROR: No se encontró traducción en la respuesta]
+Used for program listings, as well as within paragraphs to refer to program ele‐
+
+[ERROR: No se encontró traducción en la respuesta]
+ments such as variable or function names, databases, data types, environment
+
+[ERROR: No se encontró traducción en la respuesta]
+variables, statements, input prompts into models, and keywords.
+
+[ERROR: No se encontró traducción en la respuesta]
+Constant width bold
+
+[ERROR: No se encontró traducción en la respuesta]
+Shows commands or other text that should be typed literally by the user.
+
+[ERROR: No se encontró traducción en la respuesta]
+Constant width italic
+
+[ERROR: No se encontró traducción en la respuesta]
+Shows text that should be replaced with user-supplied values or by values deter‐
+
+[ERROR: No se encontró traducción en la respuesta]
+mined by context.
+
+[ERROR: No se encontró traducción en la respuesta]
+This element signifies a tip or suggestion.
+
+[ERROR: No se encontró traducción en la respuesta]
+This element signifies a general note.
+
+[ERROR: No se encontró traducción en la respuesta]
+This element indicates a warning or caution.
+
+[ERROR: No se encontró traducción en la respuesta]
+Using Code Examples
+
+[ERROR: No se encontró traducción en la respuesta]
+Supplemental material (code examples, exercises, etc.) is available for download at
+
+[ERROR: No se encontró traducción en la respuesta]
+https://github.com/chiphuyen/aie-book
+
+[ERROR: No se encontró traducción en la respuesta]
+. The repository contains additional resources
+
+[ERROR: No se encontró traducción en la respuesta]
+about AI engineering, including important papers and helpful tools. It also covers
+
+[ERROR: No se encontró traducción en la respuesta]
+topics that are too deep to go into in this book. For those interested in the process of
+
+[ERROR: No se encontró traducción en la respuesta]
+writing this book, the GitHub repository also contains behind-the-scenes informa‐
+
+[ERROR: No se encontró traducción en la respuesta]
+tion and statistics about the book.
+
+[ERROR: No se encontró traducción en la respuesta]
+If you have a technical question or a problem using the code examples, please send
+
+[ERROR: No se encontró traducción en la respuesta]
+email to
+
+[ERROR: No se encontró traducción en la respuesta]
+support@oreilly.com
+
+[ERROR: No se encontró traducción en la respuesta]
+.
+
+[ERROR: No se encontró traducción en la respuesta]
+This book is here to help you get your job done. In general, if example code is offered
+
+[ERROR: No se encontró traducción en la respuesta]
+with this book, you may use it in your programs and documentation. You do not
+
+[ERROR: No se encontró traducción en la respuesta]
+need to contact us for permission unless you’re reproducing a significant portion
+
+[ERROR: No se encontró traducción en la respuesta]
+of the code. For example, writing a program that uses several chunks of code from
+
+[ERROR: No se encontró traducción en la respuesta]
+xviii
+
+[ERROR: No se encontró traducción en la respuesta]
+|
+
+[ERROR: No se encontró traducción en la respuesta]
+Preface
+
+
+================================================================================
+FIN DEL DOCUMENTO
+================================================================================

@@ -13,8 +13,9 @@ Traductor de PDFs del inglés al español utilizando un modelo LLM local (LM Stu
 - ✅ Compatible con documentos largos (cientos de páginas)
 - ✅ Detección automática del modelo cargado
 - ✅ Visualización detallada del proceso de traducción
-- ✅ Salida en formato de texto plano legible
+- ✅ **Salida en formato TXT o Markdown** (opcional)
 - ✅ Reintentos automáticos en caso de fallos
+- ✅ **Parseo robusto con fallback automático** (evita errores de traducción)
 - ✅ Logging detallado para debugging
 - ✅ **Compatible con Windows** (soporte UTF-8)
 
@@ -22,9 +23,9 @@ Traductor de PDFs del inglés al español utilizando un modelo LLM local (LM Stu
 
 - Python 3.8 o superior
 - Un servidor LLM local corriendo:
- - **LM Studio** (http://localhost:1234/v1)
- - **Llama Server** (http://localhost:8080/v1)
- - **Ollama** (http://localhost:11434/v1)
+  - **LM Studio** (http://localhost:1234/v1)
+  - **Llama Server** (http://localhost:8080/v1)
+  - **Ollama** (http://localhost:11434/v1)
 - Un modelo LLM cargado en el servidor
 
 ## Instalación
@@ -128,6 +129,25 @@ python src/main.py archivo.pdf --server-url http://localhost:1234/v1
 python src/main.py archivo.pdf
 ```
 
+### Formatos de salida
+
+#### TXT (default)
+```bash
+python src/main.py archivo.pdf
+# Crea: archivo_translated.txt
+```
+
+#### Markdown
+```bash
+python src/main.py archivo.pdf --format markdown
+# Crea: archivo_translated.md
+```
+
+Opción alternativa:
+```bash
+python src/main.py archivo.pdf --format md
+```
+
 ### Opciones adicionales
 
 ```bash
@@ -144,7 +164,7 @@ python src/main.py archivo.pdf --verbose --log-file traduccion.log
 python src/main.py archivo.pdf --show-details
 
 # Combinar opciones
-python src/main.py archivo.pdf --profile lm-studio --pages-per-block 3 --overlap 0.2 -v
+python src/main.py archivo.pdf --profile lm-studio --pages-per-block 3 --overlap 0.2 --format markdown -v
 ```
 
 ### Ayuda
@@ -160,6 +180,7 @@ python src/main.py --help
 | `input_pdf` | Ruta al PDF de entrada (requerido) | - |
 | `--profile` | Perfil: `llama-server`, `lm-studio`, `ollama` | - |
 | `--server-url` | URL del servidor LLM | `http://localhost:8080/v1` |
+| `--format` | Formato de salida: `txt`, `markdown`, `md` | `txt` |
 | `--pages-per-block` | Páginas por bloque de traducción | `2` |
 | `--overlap` | Porcentaje de overlap 0.0-1.0 | `0.25` |
 | `--timeout` | Timeout en segundos para peticiones | `300` |
@@ -195,46 +216,69 @@ ollama pull llama2
 # Configurado en el puerto 11434 por defecto
 ```
 
+## Comparación de Formatos de Salida
+
+| Aspecto | TXT | Markdown |
+|---------|-----|----------|
+| **Preservación de formato** | 🔴 10% | 🟡 70% |
+| **Edición manual necesaria** | 🔴 Alta | 🟢 Baja |
+| **Tiempo de edición** | 15-30 min | 2-5 min |
+| **Negritas** | ❌ No | ✅ `**texto**` |
+| **Cursivas** | ❌ No | ✅ `*texto*` |
+| **Listas** | ❌ No | ✅ `- item` |
+| **Títulos** | ❌ No | ✅ `#` `##` |
+| **GitHub compatibility** | 🔴 Baja | 🟢 Alta |
+| **Convertibilidad** | ❌ Baja | ✅ Alta |
+
+**Recomendación:** Usa Markdown para documentos técnicos o cuando necesites compartir en GitHub/Notion. Usa TXT para lectura simple.
+
 ## Cómo funciona
 
 ```
 ┌─────────────┐
-│ PDF Input │
+│  PDF Input  │
 └──────┬──────┘
- │
- ▼
+       │
+       ▼
 ┌─────────────────┐
-│ Extracción de │ Solo texto
-│ Texto │
+│  Extracción de  │  Solo texto
+│  Texto          │
 └──────┬──────────┘
- │
- ▼
+       │
+       ▼
 ┌─────────────────┐
-│ División en │ Bloques con overlap
-│ Bloques │
+│  División en    │  Bloques con overlap
+│  Bloques        │
 └──────┬──────────┘
- │
- ▼
+       │
+       ▼
 ┌─────────────────┐
-│ Traducción con │ LM Studio / Llama Server / Ollama
-│ LLM Local │
+│  Traducción con │  Llama Server / LM Studio / Ollama
+│  LLM Local      │
 └──────┬──────────┘
- │
- ▼
+       │
+       ▼
 ┌─────────────────┐
-│ Organización │ Por página
-│ de Resultados │
+│  Parseo robusto │  Con fallback automático
+│  de respuesta   │
 └──────┬──────────┘
- │
- ▼
+       │
+       ▼
 ┌─────────────────┐
-│ Guardado en │ Archivo de texto
-│ Archivo TXT │
+│  Organización   │  Por página
+│  de Resultados  │
 └──────┬──────────┘
- │
- ▼
-┌─────────────┐
-│ TXT Output │
+       │
+       ▼
+┌─────────────────┐
+│  Formato de     │  TXT o Markdown
+│  Salida         │
+└──────┬──────────┘
+       │
+       ▼
+┌─────────────────┐
+│  Guardado en    │  Archivo .txt o .md
+│  Archivo        │
 └─────────────┘
 ```
 
@@ -262,29 +306,54 @@ innecesarios y corta oraciones
 en medio de una línea.
 ```
 
-**Texto traducido y formateado:**
+**Texto traducido y formateado (TXT):**
 ```
 Este es un ejemplo de texto que tiene saltos de línea innecesarios y corta oraciones en medio de una línea.
 ```
 
+**Texto traducido y formateado (Markdown):**
+```markdown
+Este es un ejemplo de texto que tiene saltos de línea innecesarios y corta oraciones en medio de una línea.
+```
+
 El modelo LLM está instruido para reescribir el texto de forma natural mientras mantiene el significado original.
+
+## Mejoras Recientes
+
+### v0.2 (2026-06-01)
+
+- ✅ **Corregido error de parseo** - Ya no aparecen mensajes `[ERROR: No se encontró traducción]`
+- ✅ **Prompt mejorado** - Instrucciones críticas para asegurar que todos los bloques se traduzcan
+- ✅ **Regex multilínea** - Parseo mejorado para capturar texto con saltos de línea
+- ✅ **Fallback automático** - Usa texto original si el parseo falla
+- ✅ **Formato Markdown** - Opción de salida con mejor formato visual
+- ✅ **Soporte multi-proveedor** - LM Studio, Llama Server, Ollama
+- ✅ **Windows UTF-8** - Compatibilidad completa con Windows
+
+### v0.1 (2026-06-01)
+
+- ✅ Traducción de PDFs del inglés al español
+- ✅ Procesamiento en bloques con overlap
+- ✅ Detección automática del modelo
+- ✅ Reintentos automáticos
+- ✅ Logging detallado
 
 ## Estructura del proyecto
 
 ```
 TraducePDF/
 ├── src/
-│ ├── __init__.py # Inicialización del paquete
-│ ├── main.py # Script principal
-│ ├── pdf_extractor.py # Extracción de texto e imágenes
-│ ├── text_processor.py # Procesamiento con overlap
-│ ├── llm_client.py # Cliente LLM (LM Studio, Llama Server, Ollama)
-│ └── utils.py # Utilidades
-├── setup.py # Script de instalación automática
-├── requirements.txt # Dependencias
-├── .env.example # Ejemplo de configuración
-├── .gitignore # Archivos ignorados por Git
-└── README.md # Este archivo
+│   ├── __init__.py          # Inicialización del paquete
+│   ├── main.py              # Script principal
+│   ├── pdf_extractor.py     # Extracción de texto e imágenes
+│   ├── text_processor.py    # Procesamiento con overlap
+│   ├── llm_client.py        # Cliente LLM (LM Studio, Llama Server, Ollama)
+│   └── utils.py             # Utilidades
+├── setup.py                 # Script de instalación automática
+├── requirements.txt         # Dependencias
+├── .env.example            # Ejemplo de configuración
+├── .gitignore              # Archivos ignorados por Git
+└── README.md               # Este archivo
 ```
 
 ## Solución de problemas
@@ -318,6 +387,7 @@ TraducePDF/
 1. Revisa el log para ver detalles de los errores
 2. Algunos bloques pueden fallar si el texto es muy complejo
 3. Usa `--verbose` para más información de depuración
+4. El sistema usa texto original como fallback automático
 
 ### Texto duplicado en el archivo de salida
 
@@ -335,14 +405,25 @@ TraducePDF/
 - El overlap entre bloques puede causar duplicación de texto en los bordes
 - El formateo prolijo puede alterar ligeramente la estructura original del documento
 
-## Cambios recientes
+## Próximos desarrollos
 
-### v0.1 (2026-06-01)
+### Rama 260601 - MVP con preservación de layout
 
-- ✅ Soporte para múltiples proveedores LLM (LM Studio, Llama Server, Ollama)
-- ✅ Compatibilidad con Windows (corrección de encoding UTF-8)
-- ✅ Limpieza de dependencias y código muerto
-- ✅ Corrección de errores de type checking
+Implementación basada en investigación exhaustiva para traducir PDFs preservando el aspecto visual:
+
+**Stack:**
+- pdf2htmlEX para extracción precisa de layout
+- BeautifulSoup para parsing HTML
+- Llama/Ollama para traducción
+- WeasyPrint para regeneración PDF
+
+**Objetivos:**
+- 80-90% preservación de layout en documentos simples
+- Soporte para tablas básicas
+- Detección de fórmulas matemáticas
+- OCR para imágenes con texto
+
+Ver documentación completa en `INVESTIGACION_TRADUCCION_PDF_LAYOUT.md`
 
 ## Contribuciones
 
@@ -354,4 +435,4 @@ Este proyecto es de código abierto y está disponible bajo la licencia MIT.
 
 ## Autor
 
-TraducePDF - 2024
+TraducePDF - 2024-2026
