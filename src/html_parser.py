@@ -89,7 +89,7 @@ class HTMLParser:
                 text_content=text,
                 is_translatable=is_translatable,
                 block_type=block_type,
-                position=position
+                position=position,
             )
 
             blocks.append(content_block)
@@ -204,7 +204,7 @@ class HTMLParser:
         stats = {
             "total": len(self.content_blocks),
             "translatable": len(self.get_translatable_blocks()),
-            "by_type": {}
+            "by_type": {},
         }
 
         for block in self.content_blocks:

@@ -93,7 +93,9 @@ class HTMLExtractor:
             page = self.doc[page_num]
             rect = page.rect
 
-            html_parts.append(f'<div class="page" style="width:{rect.width}pt; height:{rect.height}pt;">')
+            html_parts.append(
+                f'<div class="page" style="width:{rect.width}pt; height:{rect.height}pt;">'
+            )
 
             # Extraer bloques de texto con posiciones
             blocks = page.get_text("dict", sort=True)["blocks"]
@@ -116,7 +118,9 @@ class HTMLExtractor:
                                 # Crear bloque HTML con posicionamiento absoluto
                                 font_style = "font-weight: bold;" if is_bold else ""
 
-                                html_parts.append(f'<div class="text-block" style="left:{x0}pt; top:{y0}pt; font-size:{font_size}pt; {font_style}">')
+                                html_parts.append(
+                                    f'<div class="text-block" style="left:{x0}pt; top:{y0}pt; font-size:{font_size}pt; {font_style}">'
+                                )
                                 html_parts.append(text)
                                 html_parts.append("</div>")
 

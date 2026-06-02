@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<style>
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .page {
+            position: relative;
+            width: 595pt;
+            height: 842pt;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            page-break-after: always;
+        }
+        .text-block {
+            position: absolute;
+            white-space: pre-wrap;
+        }
+    
+</style>
+</head>
+<body>
+<div class="text-block" style="left:369.9441223144531pt; top:70.22593688964844pt; font-size:25.219999313354492pt; font-weight: bold;">
+Preface
+</div>
+<div class="text-block" style="left:71.99703979492188pt; top:213.30799865722656pt; font-size:10.5pt; ">
+Cuando salió ChatGPT, como muchos de mis colegas, yo estaba desorientado. Lo que
+</div>
+<div class="text-block" style="left:72.00454711914062pt; top:225.9080047607422pt; font-size:10.5pt; ">
+me sorprendió no el tamaño o las capacidades del modelo. Durante más de una década, la comunicación
+</div>
+<div class="text-block" style="left:72.00151062011719pt; top:238.5080108642578pt; font-size:10.5pt; ">
+la capacidad ha sabido que escalar un modelo lo mejora. En 2012, los autores de AlexNet
+</div>
+<div class="text-block" style="left:71.99851989746094pt; top:251.10801696777344pt; font-size:10.5pt; ">
+notaron en
+</div>
+<div class="text-block" style="left:111.2615966796875pt; top:251.10801696777344pt; font-size:10.5pt; ">
+their landmark paper
+</div>
+<div class="text-block" style="left:202.47866821289062pt; top:251.10801696777344pt; font-size:10.5pt; ">
+que: “Todos nuestros experimentos sugieren que nuestros resultados
+</div>
+<div class="text-block" style="left:71.99552917480469pt; top:263.7080383300781pt; font-size:10.5pt; ">
+pueden mejorarse simplemente esperando que las GPU más rápidas y los conjuntos de datos más grandes estén
+</div>
+<div class="text-block" style="left:72.00303649902344pt; top:276.30804443359375pt; font-size:10.5pt; ">
+available.”
+</div>
+<div class="text-block" style="left:72.00094604492188pt; top:294.9080505371094pt; font-size:10.5pt; ">
+Lo que me sorprendió fue la gran cantidad de aplicaciones que impulsó esta mejora de capacidad
+</div>
+<div class="text-block" style="left:71.99795532226562pt; top:307.508056640625pt; font-size:10.5pt; ">
+desbloqueó. Pensé que un pequeño aumento en las métricas de calidad del modelo podría resultar en una mod-
+</div>
+<div class="text-block" style="left:71.99496459960938pt; top:320.1080627441406pt; font-size:10.5pt; ">
+aumento en aplicaciones. En cambio, resultó en una explosión de nuevas posibilidades.
+</div>
+<div class="text-block" style="left:71.99496459960938pt; top:338.70806884765625pt; font-size:10.5pt; ">
+No solo estas nuevas capacidades de IA han aumentado la demanda de aplicaciones de IA,
+</div>
+<div class="text-block" style="left:72.00247192382812pt; top:351.3080749511719pt; font-size:10.5pt; ">
+sino que también han reducido la barrera de entrada para los desarrolladores. Se ha vuelto tan fácil obtener
+</div>
+<div class="text-block" style="left:71.99948120117188pt; top:363.9080810546875pt; font-size:10.5pt; ">
+empezar a construir aplicaciones de IA. Incluso es posible construir una aplicación
+</div>
+<div class="text-block" style="left:71.99649047851562pt; top:376.5080871582031pt; font-size:10.5pt; ">
+sin escribir una sola línea de código. Este cambio ha transformado la IA de una disciplina especializada
+</div>
+<div class="text-block" style="left:72.0040054321289pt; top:389.10809326171875pt; font-size:10.5pt; ">
+en una poderosa herramienta de desarrollo que todos pueden usar.
+</div>
+<div class="text-block" style="left:72.00398254394531pt; top:407.7080993652344pt; font-size:10.5pt; ">
+Aunque la adopción de la IA hoy parece nueva, se basa en técnicas que han sido
+</div>
+<div class="text-block" style="left:72.00101470947266pt; top:420.30810546875pt; font-size:10.5pt; ">
+alrededor por un tiempo. Los trabajos sobre modelado de lenguaje surgieron a principios de la década de 1950.
+</div>
+<div class="text-block" style="left:71.9980239868164pt; top:432.9081115722656pt; font-size:10.5pt; ">
+Las aplicaciones de generación aumentada por recuperación (RAG) se construyen sobre la tecnología de recuperación
+</div>
+<div class="text-block" style="left:71.99497985839844pt; top:445.50811767578125pt; font-size:10.5pt; ">
+que ha impulsado los sistemas de búsqueda y recomendación mucho antes de que el término
+</div>
+<div class="text-block" style="left:72.00249481201172pt; top:458.1081237792969pt; font-size:10.5pt; ">
+RAG fue acuñado. Las mejores prácticas para implementar aplicaciones de aprendizaje automático tradicional
+</div>
+<div class="text-block" style="left:71.99950408935547pt; top:470.7081298828125pt; font-size:10.5pt; ">
+—experimentación sistemática, evaluación rigurosa, optimización implacable para
+</div>
+<div class="text-block" style="left:71.99651336669922pt; top:483.3081359863281pt; font-size:10.5pt; ">
+modelos más rápidos y económicos—siguen siendo las mejores prácticas para trabajar con modelos de base
+</div>
+<div class="text-block" style="left:72.00402069091797pt; top:495.90814208984375pt; font-size:10.5pt; ">
+aplicaciones basadas en modelos.
+</div
+<div class="text-block" style="left:80.0pt; top:545.7539672851562pt; font-size:8.0pt; ">
+Un autor del artículo de AlexNet, Ilya Sutskever, fundó OpenAI, convirtiendo esta lección en realidad
+</div
+<div class="text-block" style="left:80.0pt; top:555.7539672851562pt; font-size:8.0pt; ">
+con modelos GPT.
+</div
+<div class="text-block" style="left:80.0pt; top:568.7539672851562pt; font-size:8.0pt; ">
+Even
+</div>
+<div class="text-block" style="left:97.83999633789062pt; top:568.7539672851562pt; font-size:8.0pt; ">
+mi pequeño proyecto en 2017
+</div>
+<div class="text-block" style="left:176.76800537109375pt; top:568.7539672851562pt; font-size:8.0pt; ">
+, que utilizó un modelo de lenguaje para evaluar la calidad de la traducción, concluyó que
+</div>
+<div class="text-block" style="left:79.99996185302734pt; top:578.7539672851562pt; font-size:8.0pt; ">
+necesitábamos "un modelo de lenguaje mejor".
+</div>
+<div class="text-block" style="left:426.8259582519531pt; top:610.218017578125pt; font-size:9.0pt; font-weight: bold;">
+xi
+</div>
+<div class="text-block" style="left:72.0pt; top:52.29900360107422pt; font-size:10.5pt; ">
+La familiaridad y facilidad de uso de muchas técnicas de ingeniería de IA pueden engañar a las peo‐
+</div>
+<div class="text-block" style="left:71.9970474243164pt; top:64.89900207519531pt; font-size:10.5pt; ">
+pensar que no hay nada nuevo en la ingeniería de IA. Pero mientras que muchos principios
+</div>
+<div class="text-block" style="left:72.00456237792969pt; top:77.4990005493164pt; font-size:10.5pt; ">
+para construir aplicaciones de IA siguen siendo los mismos, la escala y las capacidades mejoradas de
+</div>
+<div class="text-block" style="left:72.0016098022461pt; top:90.09900665283203pt; font-size:10.5pt; ">
+los modelos de IA introducen oportunidades y desafíos que requieren nuevas soluciones.
+</div>
+<div class="text-block" style="left:72.0016098022461pt; top:108.69901275634766pt; font-size:10.5pt; ">
+Este libro cubre el proceso de extremo a extremo de adaptación de modelos fundacionales para resolver problemas reales
+</div>
+<div class="text-block" style="left:72.0016098022461pt; top:121.29900360107422pt; font-size:10.5pt; ">
+del mundo, abarcando técnicas probadas y eficaces de otros campos de ingeniería
+</div>
+<div class="text-block" style="left:71.99861907958984pt; top:133.8990020751953pt; font-size:10.5pt; ">
+y técnicas que están surgiendo con los modelos fundacionales.
+</div>
+<div class="text-block" style="left:71.99864196777344pt; top:152.49900817871094pt; font-size:10.5pt; ">
+Me propuse escribir el libro porque quería aprender, y aprendí mucho. Aprendí
+</div>
+<div class="text-block" style="left:71.99566650390625pt; top:165.0989990234375pt; font-size:10.5pt; ">
+de los proyectos en los que trabajé, los artículos que leí y las personas a las que entrevisté.
+</div>
+<div class="text-block" style="left:72.00318145751953pt; top:177.69900512695312pt; font-size:10.5pt; ">
+Durante el proceso de escribir este libro, utilicé notas de más de 100 conversaciones
+</div>
+<div class="text-block" style="left:72.00022888183594pt; top:190.29901123046875pt; font-size:10.5pt; ">
+e entrevistas, incluidos investigadores de importantes laboratorios de IA (OpenAI, Google,
+</div>
+<div class="text-block" style="left:71.99723052978516pt; top:202.89901733398438pt; font-size:10.5pt; ">
+Anthropic, ...), desarrolladores de marcos (NVIDIA, Meta, Hugging Face, Anyscale,
+</div>
+<div class="text-block" style="left:72.0047378540039pt; top:215.4990234375pt; font-size:10.5pt; ">
+LangChain, LlamaIndex, ...), ejecutivos y jefes de IA/datos en empresas de diferen‐
+</div>
+<div class="text-block" style="left:72.00174713134766pt; top:228.09902954101562pt; font-size:10.5pt; ">
+tamaños de ent, gerentes de producto, investigadores de la comunidad y aplicaciones independientes
+</div>
+<div class="text-block" style="left:71.9987564086914pt; top:240.69903564453125pt; font-size:10.5pt; ">
+developers (see
+</div>
+<div class="text-block" style="left:138.23275756835938pt; top:240.69903564453125pt; font-size:10.5pt; ">
+“Agradecimientos” en la página xx
+</div>
+<div class="text-block" style="left:272.90576171875pt; top:240.69903564453125pt; font-size:10.5pt; ">
+).
+</div>
+<div class="text-block" style="left:71.99873352050781pt; top:259.2990417480469pt; font-size:10.5pt; ">
+Aprendí especialmente de los lectores tempranos que pusieron a prueba mis suposiciones, me introdujeron a
+</div
+<div class="text-block" style="left:71.99576568603516pt; top:271.8990783691406pt; font-size:10.5pt; ">
+diferentes perspectivas y me expusieron a nuevos problemas y enfoques. Algunos sec‐
+</div
+<div class="text-block" style="left:72.00322723388672pt; top:284.4990539550781pt; font-size:10.5pt; ">
+las obras del libro también han recibido miles de comentarios de la comunidad
+</div>
+<div class="text-block" style="left:72.00023651123047pt; top:297.0990905761719pt; font-size:10.5pt; ">
+después de ser compartidas en
+</div>
+<div class="text-block" style="left:169.4368896484375pt; top:297.0990905761719pt; font-size:10.5pt; ">
+mi blog
+</div>
+<div class="text-block" style="left:205.0704345703125pt; top:297.0990905761719pt; font-size:10.5pt; ">
+, muchos dándome nuevas perspectivas o confirmando una
+</div>
+<div class="text-block" style="left:71.99723815917969pt; top:309.6990966796875pt; font-size:10.5pt; ">
+hypothesis.
+</div>
+<div class="text-block" style="left:71.99723815917969pt; top:328.2991027832031pt; font-size:10.5pt; ">
+Espero que este proceso de aprendizaje continúe para mí ahora que el libro está en tu
+</div>
+<div class="text-block" style="left:72.0047378540039pt; top:340.89910888671875pt; font-size:10.5pt; ">
+manos, ya que tienes experiencias y perspectivas que son únicas para ti. Por favor
+</div>
+<div class="text-block" style="left:72.00174713134766pt; top:353.4991149902344pt; font-size:10.5pt; ">
+siéntete libre de compartir cualquier comentario que puedas tener sobre este libro conmigo a través de
+</div>
+<div class="text-block" style="left:390.856689453125pt; top:353.4991149902344pt; font-size:10.5pt; ">
+LinkedIn
+</div>
+<div class="text-block" style="left:72.003173828125pt; top:366.09912109375pt; font-size:10.5pt; ">
+o correo electrónico en
+</div>
+<div class="text-block" style="left:119.35818481445312pt; top:365.9626159667969pt; font-size:10.5pt; ">
+hi@huyenchip.com
+</div>
+<div class="text-block" style="left:72.00003814697266pt; top:388.85736083984375pt; font-size:18.920000076293945pt; font-weight: bold;">
+De qué trata este libro
+</div>
+<div class="text-block" style="left:72.00323486328125pt; top:416.0995178222656pt; font-size:10.5pt; ">
+Este libro proporciona un marco para adaptar modelos fundacionales, que incluyen tanto
+</div>
+<div class="text-block" style="left:72.00028991699219pt; top:428.69952392578125pt; font-size:10.5pt; ">
+modelos de lenguaje grandes (LLMs) y modelos multimodales grandes (LMMs) a aplicaciones específicas.
+</div>
+<div class="text-block" style="left:71.99729919433594pt; top:441.2995300292969pt; font-size:10.5pt; ">
+</div>
+<div class="text-block" style="left:71.99729919433594pt; top:459.8995361328125pt; font-size:10.5pt; ">
+Hay muchas maneras diferentes de construir una aplicación. Este libro describe varias
+</div>
+<div class="text-block" style="left:72.00479888916016pt; top:472.4995422363281pt; font-size:10.5pt; ">
+soluciones y también plantea preguntas que puedes hacer para evaluar la mejor solución para tu
+</div>
+<div class="text-block" style="left:72.0018081665039pt; top:485.09954833984375pt; font-size:10.5pt; ">
+necesidades. Algunas de las muchas preguntas que este libro puede ayudarte a responder son:
+</div>
+<div class="text-block" style="left:89.99700164794922pt; top:507.6994934082031pt; font-size:10.5pt; ">
+¿Debería construir esta aplicación de IA?
+</div>
+<div class="text-block" style="left:89.99700164794922pt; top:524.2994995117188pt; font-size:10.5pt; ">
+¿Cómo evalúo mi aplicación? ¿Puedo usar IA para evaluar resultados de IA?
+</div>
+<div class="text-block" style="left:89.99700164794922pt; top:540.8995361328125pt; font-size:10.5pt; ">
+¿Qué causa las alucinaciones? ¿Cómo detecto y mitigo las alucinaciones?
+</div>
+<div class="text-block" style="left:89.99700164794922pt; top:557.49951171875pt; font-size:10.5pt; ">
+¿Cuáles son las mejores prácticas para la ingeniería de *prompts*?
+</div>
+<div class="text-block" style="left:89.99700164794922pt; top:574.0994873046875pt; font-size:10.5pt; ">
+¿Por qué funciona RAG? ¿Cuáles son las estrategias para realizar RAG?
+</div>
+<div class="text-block" style="left:71.99700927734375pt; top:610.218017578125pt; font-size:9.0pt; font-weight: bold;">
+xii
+</div>
+<div class="text-block" style="left:98.90701293945312pt; top:610.218017578125pt; font-size:9.0pt; font-weight: bold;">
+Preface
+</div>
+<div class="text-block" style="left:89.99700164794922pt; top:52.29900360107422pt; font-size:10.5pt; ">
+¿Qué es un agente? ¿Cómo construyo y evalúo un agente?
+</div>
+<div class="text-block" style="left:89.99700164794922pt; top:68.89900207519531pt; font-size:10.5pt; ">
+¿Cuándo ajustar (finetune) un modelo? ¿Cuándo no ajustar un modelo?
+</div>
+<div class="text-block" style="left:89.99700164794922pt; top:85.4990005493164pt; font-size:10.5pt; ">
+¿Cuántos datos necesito? ¿Cómo valido la calidad de mis datos?
+</div>
+<div class="text-block" style="left:89.99700164794922pt; top:102.09900665283203pt; font-size:10.5pt; ">
+¿Cómo hago mi modelo más rápido, más barato y seguro?
+</div>
+<div class="text-block" style="left:89.99700164794922pt; top:118.6989974975586pt; font-size:10.5pt; ">
+¿Cómo creo un bucle de retroalimentación para mejorar continuamente mi aplicación?
+</div>
+<div class="text-block" style="left:72.00001525878906pt; top:141.2989959716797pt; font-size:10.5pt; ">
+El libro también le ayudará a navegar por el abrumador panorama de la IA: tipos de mod‐
+</div>
+<div class="text-block" style="left:71.99700164794922pt; top:153.8990020751953pt; font-size:10.5pt; ">
+elos, puntos de referencia de evaluación y un número aparentemente infinito de casos de uso y aplic‐
+</div>
+<div class="text-block" style="left:72.00450897216797pt; top:166.49899291992188pt; font-size:10.5pt; ">
+patrones de aplicación.
+</div>
+<div class="text-block" style="left:72.00450897216797pt; top:185.09898376464844pt; font-size:10.5pt; ">
+El contenido de este libro está ilustrado mediante estudios de caso, muchos de los cuales trabajé,
+</div>
+<div class="text-block" style="left:72.00155639648438pt; top:197.69898986816406pt; font-size:10.5pt; ">
+respaldado por amplias referencias y exhaustivamente revisado por expertos de una amplia gama de
+</div>
+<div class="text-block" style="left:71.99856567382812pt; top:210.2989959716797pt; font-size:10.5pt; ">
+contextos. Aunque el libro tardó dos años en escribirse, se basa en mi experiencia
+</div>
+<div class="text-block" style="left:71.9955825805664pt; top:222.8990020751953pt; font-size:10.5pt; ">
+trabajando con modelos de lenguaje y sistemas de ML durante la última década.
+</div>
+<div class="text-block" style="left:71.9955825805664pt; top:241.49900817871094pt; font-size:10.5pt; ">
+Como en mi libro anterior de O’Reilly,
+</div>
+<div class="text-block" style="left:214.9568328857422pt; top:241.36251831054688pt; font-size:10.5pt; ">
+Diseñando Sistemas de Machine Learning
+</div>
+<div class="text-block" style="left:372.2280578613281pt; top:241.49900817871094pt; font-size:10.5pt; ">
+(DMLS), esto
+</div>
+<div class="text-block" style="left:72.00308227539062pt; top:254.09901428222656pt; font-size:10.5pt; ">
+el libro se centra en los fundamentos de la ingeniería de IA en lugar de en alguna herramienta específica o
+</div>
+<div class="text-block" style="left:72.00008392333984pt; top:266.69903564453125pt; font-size:10.5pt; ">
+API. Las herramientas se vuelven obsoletas rápidamente, pero los fundamentos deberían durar más tiempo.
+</div>
+<div class="text-block" style="left:145.05609130859375pt; top:297.905029296875pt; font-size:15.0pt; font-weight: bold;">
+Reading
+</div>
+<div class="text-block" style="left:188.25608825683594pt; top:297.9350280761719pt; font-size:15.0pt; font-weight: bold;">
+Ingeniería de IA
+</div>
+<div class="text-block" style="left:257.93109130859375pt; top:297.905029296875pt; font-size:15.0pt; font-weight: bold;">
+(AIE) con
+</div>
+<div class="text-block" style="left:311.256103515625pt; top:297.9350280761719pt; font-size:15.0pt; font-weight: bold;">
+Designing
+</div>
+<div class="text-block" style="left:170.18109130859375pt; top:312.1850280761719pt; font-size:15.0pt; font-weight: bold;">
+Sistemas de Aprendizaje Automático
+</div>
+<div class="text-block" style="left:296.2710876464844pt; top:312.155029296875pt; font-size:15.0pt; font-weight: bold;">
+(DMLS)
+</div>
+<div class="text-block" style="left:80.24607849121094pt; top:333.1300048828125pt; font-size:10.0pt; ">
+La IA puede ser un complemento de DMLS. DMLS se centra en construir aplicaciones sobre
+</div>
+<div class="text-block" style="left:80.24605560302734pt; top:345.1300048828125pt; font-size:10.0pt; ">
+modelos de ML tradicionales, lo que implica anotaciones de datos tabulares, ingeniería
+</div>
+<div class="text-block" style="left:80.24601745605469pt; top:357.1300048828125pt; font-size:10.0pt; ">
+y entrenamiento de modelos. La IA se centra en construir aplicaciones sobre fundamentos
+</div>
+<div class="text-block" style="left:80.24601745605469pt; top:369.1300048828125pt; font-size:10.0pt; ">
+modelos de atención, lo que implica más ingeniería de *prompt*, construcción de contexto y
+</div>
+<div class="text-block" style="left:80.24601745605469pt; top:381.1300048828125pt; font-size:10.0pt; ">
+ajuste fino eficiente en parámetros. Ambos libros son autocontenidos y modulares, por lo que
+</div>
+<div class="text-block" style="left:80.24601745605469pt; top:393.1300048828125pt; font-size:10.0pt; ">
+puedes leer cualquiera de los libros de forma independiente.
+</div>
+<div class="text-block" style="left:80.24601745605469pt; top:411.1300048828125pt; font-size:10.0pt; ">
+Dado que los modelos fundacionales son modelos de ML, algunos conceptos son relevantes para trabajar con
+</div>
+<div class="text-block" style="left:80.24604797363281pt; top:423.1300048828125pt; font-size:10.0pt; ">
+ambos. Si un tema es relevante para la IA (AIE) pero ha sido discutido extensamente en DMLS, aún
+</div>
+<div class="text-block" style="left:80.24604797363281pt; top:435.1300048828125pt; font-size:10.0pt; ">
+se cubrirá en este libro, pero en menor medida, con referencias a recursos relevantes.
+</div>
+<div class="text-block" style="left:80.24604797363281pt; top:453.1300048828125pt; font-size:10.0pt; ">
+Tenga en cuenta que muchos temas se cubren en DMLS pero no en AIE, y viceversa. El primer
+</div>
+<div class="text-block" style="left:80.24604797363281pt; top:465.1300048828125pt; font-size:10.0pt; ">
+capítulo de este libro también cubre las diferencias entre la ingeniería tradicional de ML
+</div>
+<div class="text-block" style="left:80.24604797363281pt; top:477.1300048828125pt; font-size:10.0pt; ">
+y la ingeniería de IA. Un sistema del mundo real a menudo involucra tanto modelos de ML tradicionales
+</div>
+<div class="text-block" style="left:80.24608612060547pt; top:489.1300048828125pt; font-size:10.0pt; ">
+y modelos fundacionales, por lo que el conocimiento sobre cómo trabajar con ambos suele ser necesario.
+</div>
+<div class="text-block" style="left:80.0pt; top:568.7539672851562pt; font-size:8.0pt; ">
+Enseñar un curso sobre cómo usar TensorFlow en 2017 me enseñó una lección dolorosa sobre lo rápido que las herramientas y
+</div>
+<div class="text-block" style="left:80.0pt; top:578.7539672851562pt; font-size:8.0pt; ">
+los tutoriales se vuelven obsoletos.
+</div>
+<div class="text-block" style="left:381.0950927734375pt; top:610.218017578125pt; font-size:9.0pt; font-weight: bold;">
+Preface
+</div>
+<div class="text-block" style="left:423.1340637207031pt; top:610.218017578125pt; font-size:9.0pt; font-weight: bold;">
+xiii
+</div>
+<div class="text-block" style="left:115.21504211425781pt; top:277.258544921875pt; font-size:6.0pt; ">
+1
+</div>
+<div class="text-block" style="left:118.09504699707031pt; top:276.9618225097656pt; font-size:6.300000190734863pt; ">
+,
+</div>
+<div class="text-block" style="left:121.91494750976562pt; top:277.258544921875pt; font-size:6.0pt; ">
+2
+</div>
+<div class="text-block" style="left:73.14000701904297pt; top:546.7429809570312pt; font-size:7.0pt; ">
+1
+</div>
+<div class="text-block" style="left:73.13701629638672pt; top:569.7429809570312pt; font-size:7.0pt; ">
+2
+</div>
+<div class="text-block" style="left:378.981201171875pt; top:353.4991149902344pt; font-size:10.5pt; ">
+X
+</div>
+<div class="text-block" style="left:385.84820556640625pt; top:353.4991149902344pt; font-size:10.5pt; ">
+,
+</div>
+<div class="text-block" style="left:429.6016845703125pt; top:353.4991149902344pt; font-size:10.5pt; ">
+,
+</div>
+<div class="text-block" style="left:197.75119018554688pt; top:366.09912109375pt; font-size:10.5pt; ">
+.
+</div>
+<div class="text-block" style="left:80.65679168701172pt; top:507.6994934082031pt; font-size:10.5pt; ">
+•
+</div>
+<div class="text-block" style="left:80.65499877929688pt; top:524.2994384765625pt; font-size:10.5pt; ">
+•
+</div>
+<div class="text-block" style="left:80.65502166748047pt; top:540.8994750976562pt; font-size:10.5pt; ">
+•
+</div>
+<div class="text-block" style="left:80.65502166748047pt; top:557.49951171875pt; font-size:10.5pt; ">
+•
+</div>
+<div class="text-block" style="left:80.65499877929688pt; top:574.0994873046875pt; font-size:10.5pt; ">
+•
+</div>
+<div class="text-block" style="left:88.01701354980469pt; top:610.218017578125pt; font-size:9.0pt; font-weight: bold;">
+|
+</div>
+<div class="text-block" style="left:80.65950012207031pt; top:52.29900360107422pt; font-size:10.5pt; ">
+•
+</div>
+<div class="text-block" style="left:80.65499877929688pt; top:68.89900207519531pt; font-size:10.5pt; ">
+•
+</div>
+<div class="text-block" style="left:80.65502166748047pt; top:85.4990005493164pt; font-size:10.5pt; ">
+•
+</div>
+<div class="text-block" style="left:80.65502166748047pt; top:102.09900665283203pt; font-size:10.5pt; ">
+•
+</div>
+<div class="text-block" style="left:80.65499877929688pt; top:118.6989974975586pt; font-size:10.5pt; ">
+•
+</div>
+<div class="text-block" style="left:383.87109375pt; top:267.6495361328125pt; font-size:6.0pt; ">
+3
+</div>
+<div class="text-block" style="left:73.14000701904297pt; top:569.7429809570312pt; font-size:7.0pt; ">
+3
+</div>
+<div class="text-block" style="left:412.2440490722656pt; top:610.218017578125pt; font-size:9.0pt; font-weight: bold;">
+|
+</div>
+</body>
+</html>

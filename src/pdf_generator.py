@@ -1,28 +1,25 @@
 """
-Generador de PDF desde HTML usando WeasyPrint.
+Generador de PDF desde HTML usando pdfkit.
 
-Este módulo genera archivos PDF desde HTML preservando el layout
-visual lo mejor posible.
+Este módulo genera archivos PDF desde HTML preservando el
+layout visual lo mejor posible.
 """
 
 from pathlib import Path
 from loguru import logger
 from typing import Optional
-import weasyprint
+import pdfkit
 
 
 class PDFGenerator:
-    """Generador de PDF desde HTML usando WeasyPrint."""
+    """Generador de PDF desde HTML usando pdfkit."""
 
     def __init__(self):
         """Inicializa el generador."""
-        logger.info("PDFGenerator inicializado")
+        logger.info("PDFGenerator inicializado (usando pdfkit)")
 
     def generate_from_html(
-        self,
-        html_content: str,
-        output_path: str,
-        css: Optional[str] = None
+        self, html_content: str, output_path: str, css: Optional[str] = None
     ) -> bool:
         """
         Genera un PDF desde contenido HTML.
@@ -38,11 +35,13 @@ class PDFGenerator:
         try:
             logger.info(f"Generando PDF desde HTML: {output_path}")
 
-            # Generar PDF usando WeasyPrint
-            weasyprint.HTML(string=html_content).write_pdf(
-                output_path,
-                stylesheets=[weasyprint.CSS(string=css)] if css else None
-            )
+            # Generar PDF usando pdfkit
+            if css:
+                # Generar HTML temporal con CSS embebido
+                html_with_css = html_content.replace("</style>", f"</style>{css}")
+                pdfkit.from_string(html_with_css, output_path)
+            else:
+                pdfkit.from_string(html_content, output_path)
 
             logger.info(f"PDF generado exitosamente: {output_path}")
             return True
@@ -52,10 +51,7 @@ class PDFGenerator:
             return False
 
     def generate_from_html_file(
-        self,
-        html_path: str,
-        output_path: str,
-        css_path: Optional[str] = None
+        self, html_path: str, output_path: str, css_path: Optional[str] = None
     ) -> bool:
         """
         Genera un PDF desde un archivo HTML.
@@ -122,9 +118,7 @@ class PDFGenerator:
         """
 
     def rebuild_html_from_blocks(
-        self,
-        translated_blocks: list,
-        original_pages: int
+        self, translated_blocks: list, original_pages: int
     ) -> str:
         """
         Reconstruye HTML completo desde bloques traducidos.

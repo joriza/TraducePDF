@@ -36,59 +36,50 @@ Ejemplos:
   python main_layout.py documento.pdf
   python main_layout.py documento.pdf --output documento_traducido.pdf
   python main_layout.py documento.pdf --profile lm-studio --verbose
-        """
+        """,
     )
 
     parser.add_argument("input_pdf", help="Ruta al archivo PDF de entrada en inglés")
 
     parser.add_argument(
-        "-o", "--output",
-        help="Ruta del archivo de salida (opcional)",
-        default=None
+        "-o", "--output", help="Ruta del archivo de salida (opcional)", default=None
     )
 
     parser.add_argument(
         "--server-url",
         help="URL del servidor LLM (default: http://localhost:8080/v1)",
-        default=None
+        default=None,
     )
 
     parser.add_argument(
         "--profile",
         choices=["llama-server", "lm-studio", "ollama"],
-        help="Perfil pre-configurado del servidor"
+        help="Perfil pre-configurado del servidor",
     )
 
     parser.add_argument(
         "--batch-size",
         type=int,
         help="Bloques a traducir por lote (default: 5)",
-        default=5
+        default=5,
     )
 
     parser.add_argument(
-        "--timeout",
-        type=int,
-        help="Timeout en segundos (default: 300)",
-        default=300
+        "--timeout", type=int, help="Timeout en segundos (default: 300)", default=300
     )
 
     parser.add_argument(
-        "--verbose", "-v",
-        action="store_true",
-        help="Mostrar información detallada"
+        "--verbose", "-v", action="store_true", help="Mostrar información detallada"
     )
 
     parser.add_argument(
-        "--log-file",
-        help="Archivo donde guardar los logs",
-        default=None
+        "--log-file", help="Archivo donde guardar los logs", default=None
     )
 
     parser.add_argument(
         "--keep-html",
         action="store_true",
-        help="Guardar el HTML intermedio para debugging"
+        help="Guardar el HTML intermedio para debugging",
     )
 
     return parser.parse_args()
@@ -117,6 +108,7 @@ def main():
     # Configurar encoding UTF-8 para Windows
     if sys.platform == "win32":
         import codecs
+
         sys.stdout = codecs.getwriter("utf-8")(sys.stdout.buffer)
         sys.stderr = codecs.getwriter("utf-8")(sys.stderr.buffer)
 
@@ -139,7 +131,7 @@ def main():
             print(f"❌ Error: El archivo '{args.input_pdf}' no existe.")
             sys.exit(1)
 
-        if not Path(args.input_pdf).suffix.lower() == '.pdf':
+        if not Path(args.input_pdf).suffix.lower() == ".pdf":
             print(f"❌ Error: '{args.input_pdf}' no es un archivo PDF.")
             sys.exit(1)
 
@@ -159,7 +151,9 @@ def main():
             server_url = profiles[args.profile]
             print(f"🎯 Usando perfil: {args.profile} ({server_url})")
         else:
-            server_url = args.server_url or os.getenv("LLM_SERVER_URL", "http://localhost:8080/v1")
+            server_url = args.server_url or os.getenv(
+                "LLM_SERVER_URL", "http://localhost:8080/v1"
+            )
 
         print(f"🔧 Lote size: {args.batch_size} bloques\n")
 
@@ -213,8 +207,7 @@ def main():
 
         translator = HTMLTranslator(llm_client)
         translated_blocks = translator.translate_html_blocks(
-            content_blocks,
-            batch_size=args.batch_size
+            content_blocks, batch_size=args.batch_size
         )
 
         print(f"✅ Traducción completada: {len(translated_blocks)} bloques\n")
@@ -236,9 +229,7 @@ def main():
 
         # Generar PDF
         success = pdf_generator.generate_from_html(
-            translated_html,
-            output_path,
-            css=pdf_generator.get_default_css()
+            translated_html, output_path, css=pdf_generator.get_default_css()
         )
 
         if success:
@@ -299,6 +290,7 @@ def _build_translated_html(blocks: list) -> str:
             margin: 0 auto;
             border: 1px solid #ccc;
             page-break-after: always;
+            overflow: hidden;
         }
         .text-block {
             position: absolute;
@@ -309,9 +301,44 @@ def _build_translated_html(blocks: list) -> str:
     html_parts.append("</head>")
     html_parts.append("<body>")
 
-    # Agregar bloques traducidos
-    for block in blocks:
-        html_parts.append(block.html)
+    # Agrupar bloques por página basado en posición top
+    if not blocks:
+        return "".join(html_parts) + "</body></html>"
+
+    # Ordenar bloques por posición (top, left)
+    sorted_blocks = sorted(blocks, key=lambda b: (b.position[1], b.position[0]))
+
+    # Detectar saltos de página (cuando top disminuye significativamente)
+    current_page_blocks = []
+    current_y = 0
+    page_count = 0
+
+    for block in sorted_blocks:
+        y_pos = block.position[1]
+
+        # Detectar salto de página (coordenada top disminuye más de 100pt)
+        if y_pos < current_y - 100:
+            # Generar página actual y empezar nueva
+            if current_page_blocks:
+                html_parts.append('<div class="page">')
+                for page_block in current_page_blocks:
+                    html_parts.append(page_block.html)
+                html_parts.append("</div>")
+                page_count += 1
+
+            current_page_blocks = [block]
+            current_y = y_pos
+        else:
+            current_page_blocks.append(block)
+            current_y = y_pos if y_pos > current_y else current_y
+
+    # Agregar última página
+    if current_page_blocks:
+        html_parts.append('<div class="page">')
+        for page_block in current_page_blocks:
+            html_parts.append(page_block.html)
+        html_parts.append("</div>")
+        page_count += 1
 
     html_parts.append("</body>")
     html_parts.append("</html>")

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<style>
+
+            body { margin: 0; padding: 0; font-family: Arial, sans-serif; }
+            .page {
+                position: relative;
+                width: 595pt; /* A4 width */
+                height: 842pt; /* A4 height */
+                margin: 0 auto;
+                border: 1px solid #ccc;
+            }
+            .text-block {
+                position: absolute;
+                left: 0;
+                top: 0;
+                white-space: pre;
+            }
+        
+</style>
+</head>
+<body>
+<div class="page" style="width:504.0pt; height:661.5pt;">
+<div class="text-block" style="left:369.9441223144531pt; top:70.22593688964844pt; font-size:25.219999313354492pt; font-weight: bold;">
+Preface
+</div>
+<div class="text-block" style="left:71.99703979492188pt; top:213.30799865722656pt; font-size:10.5pt; ">
+When ChatGPT came out, like many of my colleagues, I was disoriented. What sur‐
+</div>
+<div class="text-block" style="left:72.00454711914062pt; top:225.9080047607422pt; font-size:10.5pt; ">
+prised me wasn’t the model’s size or capabilities. For over a decade, the AI commu‐
+</div>
+<div class="text-block" style="left:72.00151062011719pt; top:238.5080108642578pt; font-size:10.5pt; ">
+nity has known that scaling up a model improves it. In 2012, the AlexNet authors
+</div>
+<div class="text-block" style="left:71.99851989746094pt; top:251.10801696777344pt; font-size:10.5pt; ">
+noted in
+</div>
+<div class="text-block" style="left:111.2615966796875pt; top:251.10801696777344pt; font-size:10.5pt; ">
+their landmark paper
+</div>
+<div class="text-block" style="left:202.47866821289062pt; top:251.10801696777344pt; font-size:10.5pt; ">
+that: “All of our experiments suggest that our results
+</div>
+<div class="text-block" style="left:71.99552917480469pt; top:263.7080383300781pt; font-size:10.5pt; ">
+can be improved simply by waiting for faster GPUs and bigger datasets to become
+</div>
+<div class="text-block" style="left:72.00303649902344pt; top:276.30804443359375pt; font-size:10.5pt; ">
+available.”
+</div>
+<div class="text-block" style="left:115.21504211425781pt; top:277.258544921875pt; font-size:6.0pt; ">
+1
+</div>
+<div class="text-block" style="left:118.09504699707031pt; top:276.9618225097656pt; font-size:6.300000190734863pt; ">
+,
+</div>
+<div class="text-block" style="left:121.91494750976562pt; top:277.258544921875pt; font-size:6.0pt; ">
+2
+</div>
+<div class="text-block" style="left:72.00094604492188pt; top:294.9080505371094pt; font-size:10.5pt; ">
+What surprised me was the sheer number of applications this capability boost
+</div>
+<div class="text-block" style="left:71.99795532226562pt; top:307.508056640625pt; font-size:10.5pt; ">
+unlocked. I thought a small increase in model quality metrics might result in a mod‐
+</div>
+<div class="text-block" style="left:71.99496459960938pt; top:320.1080627441406pt; font-size:10.5pt; ">
+est increase in applications. Instead, it resulted in an explosion of new possibilities.
+</div>
+<div class="text-block" style="left:71.99496459960938pt; top:338.70806884765625pt; font-size:10.5pt; ">
+Not only have these new AI capabilities increased the demand for AI applications,
+</div>
+<div class="text-block" style="left:72.00247192382812pt; top:351.3080749511719pt; font-size:10.5pt; ">
+but they have also lowered the entry barrier for developers. It’s become so easy to get
+</div>
+<div class="text-block" style="left:71.99948120117188pt; top:363.9080810546875pt; font-size:10.5pt; ">
+started with building AI applications. It’s even possible to build an application
+</div>
+<div class="text-block" style="left:71.99649047851562pt; top:376.5080871582031pt; font-size:10.5pt; ">
+without writing a single line of code. This shift has transformed AI from a specialized
+</div>
+<div class="text-block" style="left:72.0040054321289pt; top:389.10809326171875pt; font-size:10.5pt; ">
+discipline into a powerful development tool everyone can use.
+</div>
+<div class="text-block" style="left:72.00398254394531pt; top:407.7080993652344pt; font-size:10.5pt; ">
+Even though AI adoption today seems new, it’s built upon techniques that have been
+</div>
+<div class="text-block" style="left:72.00101470947266pt; top:420.30810546875pt; font-size:10.5pt; ">
+around for a while. Papers about language modeling came out as early as the 1950s.
+</div>
+<div class="text-block" style="left:71.9980239868164pt; top:432.9081115722656pt; font-size:10.5pt; ">
+Retrieval-augmented generation (RAG) applications are built upon retrieval technol‐
+</div>
+<div class="text-block" style="left:71.99497985839844pt; top:445.50811767578125pt; font-size:10.5pt; ">
+ogy that has powered search and recommender systems since long before the term
+</div>
+<div class="text-block" style="left:72.00249481201172pt; top:458.1081237792969pt; font-size:10.5pt; ">
+RAG was coined. The best practices for deploying traditional machine learning appli‐
+</div>
+<div class="text-block" style="left:71.99950408935547pt; top:470.7081298828125pt; font-size:10.5pt; ">
+cations—systematic experimentation, rigorous evaluation, relentless optimization for
+</div>
+<div class="text-block" style="left:71.99651336669922pt; top:483.3081359863281pt; font-size:10.5pt; ">
+faster and cheaper models—are still the best practices for working with foundation
+</div>
+<div class="text-block" style="left:72.00402069091797pt; top:495.90814208984375pt; font-size:10.5pt; ">
+model-based applications.
+</div>
+<div class="text-block" style="left:73.14000701904297pt; top:546.7429809570312pt; font-size:7.0pt; ">
+1
+</div>
+<div class="text-block" style="left:80.0pt; top:545.7539672851562pt; font-size:8.0pt; ">
+An author of the AlexNet paper, Ilya Sutskever, went on to cofound OpenAI, turning this lesson into reality
+</div>
+<div class="text-block" style="left:80.0pt; top:555.7539672851562pt; font-size:8.0pt; ">
+with GPT models.
+</div>
+<div class="text-block" style="left:73.13701629638672pt; top:569.7429809570312pt; font-size:7.0pt; ">
+2
+</div>
+<div class="text-block" style="left:80.0pt; top:568.7539672851562pt; font-size:8.0pt; ">
+Even
+</div>
+<div class="text-block" style="left:97.83999633789062pt; top:568.7539672851562pt; font-size:8.0pt; ">
+my small project in 2017
+</div>
+<div class="text-block" style="left:176.76800537109375pt; top:568.7539672851562pt; font-size:8.0pt; ">
+, which used a language model to evaluate translation quality, concluded that
+</div>
+<div class="text-block" style="left:79.99996185302734pt; top:578.7539672851562pt; font-size:8.0pt; ">
+we needed “a better language model.”
+</div>
+<div class="text-block" style="left:426.8259582519531pt; top:610.218017578125pt; font-size:9.0pt; font-weight: bold;">
+xi
+</div>
+</div>
+<div class="page" style="width:504.0pt; height:661.5pt;">
+<div class="text-block" style="left:72.0pt; top:52.29900360107422pt; font-size:10.5pt; ">
+The familiarity and ease of use of many AI engineering techniques can mislead peo‐
+</div>
+<div class="text-block" style="left:71.9970474243164pt; top:64.89900207519531pt; font-size:10.5pt; ">
+ple into thinking there is nothing new to AI engineering. But while many principles
+</div>
+<div class="text-block" style="left:72.00456237792969pt; top:77.4990005493164pt; font-size:10.5pt; ">
+for building AI applications remain the same, the scale and improved capabilities of
+</div>
+<div class="text-block" style="left:72.0016098022461pt; top:90.09900665283203pt; font-size:10.5pt; ">
+AI models introduce opportunities and challenges that require new solutions.
+</div>
+<div class="text-block" style="left:72.0016098022461pt; top:108.69901275634766pt; font-size:10.5pt; ">
+This book covers the end-to-end process of adapting foundation models to solve real-
+</div>
+<div class="text-block" style="left:72.0016098022461pt; top:121.29900360107422pt; font-size:10.5pt; ">
+world problems, encompassing tried-and-true techniques from other engineering
+</div>
+<div class="text-block" style="left:71.99861907958984pt; top:133.8990020751953pt; font-size:10.5pt; ">
+fields and techniques emerging with foundation models.
+</div>
+<div class="text-block" style="left:71.99864196777344pt; top:152.49900817871094pt; font-size:10.5pt; ">
+I set out to write the book because I wanted to learn, and I did learn a lot. I learned
+</div>
+<div class="text-block" style="left:71.99566650390625pt; top:165.0989990234375pt; font-size:10.5pt; ">
+from the projects I worked on, the papers I read, and the people I interviewed.
+</div>
+<div class="text-block" style="left:72.00318145751953pt; top:177.69900512695312pt; font-size:10.5pt; ">
+During the process of writing this book, I used notes from over 100 conversations
+</div>
+<div class="text-block" style="left:72.00022888183594pt; top:190.29901123046875pt; font-size:10.5pt; ">
+and interviews, including researchers from major AI labs (OpenAI, Google,
+</div>
+<div class="text-block" style="left:71.99723052978516pt; top:202.89901733398438pt; font-size:10.5pt; ">
+Anthropic, ...), framework developers (NVIDIA, Meta, Hugging Face, Anyscale,
+</div>
+<div class="text-block" style="left:72.0047378540039pt; top:215.4990234375pt; font-size:10.5pt; ">
+LangChain, LlamaIndex, ...), executives and heads of AI/data at companies of differ‐
+</div>
+<div class="text-block" style="left:72.00174713134766pt; top:228.09902954101562pt; font-size:10.5pt; ">
+ent sizes, product managers, community researchers, and independent application
+</div>
+<div class="text-block" style="left:71.9987564086914pt; top:240.69903564453125pt; font-size:10.5pt; ">
+developers (see
+</div>
+<div class="text-block" style="left:138.23275756835938pt; top:240.69903564453125pt; font-size:10.5pt; ">
+“Acknowledgments” on page xx
+</div>
+<div class="text-block" style="left:272.90576171875pt; top:240.69903564453125pt; font-size:10.5pt; ">
+).
+</div>
+<div class="text-block" style="left:71.99873352050781pt; top:259.2990417480469pt; font-size:10.5pt; ">
+I especially learned from early readers who tested my assumptions, introduced me to
+</div>
+<div class="text-block" style="left:71.99576568603516pt; top:271.8990783691406pt; font-size:10.5pt; ">
+different perspectives, and exposed me to new problems and approaches. Some sec‐
+</div>
+<div class="text-block" style="left:72.00322723388672pt; top:284.4990539550781pt; font-size:10.5pt; ">
+tions of the book have also received thousands of comments from the community
+</div>
+<div class="text-block" style="left:72.00023651123047pt; top:297.0990905761719pt; font-size:10.5pt; ">
+after being shared on
+</div>
+<div class="text-block" style="left:169.4368896484375pt; top:297.0990905761719pt; font-size:10.5pt; ">
+my blog
+</div>
+<div class="text-block" style="left:205.0704345703125pt; top:297.0990905761719pt; font-size:10.5pt; ">
+, many giving me new perspectives or confirming a
+</div>
+<div class="text-block" style="left:71.99723815917969pt; top:309.6990966796875pt; font-size:10.5pt; ">
+hypothesis.
+</div>
+<div class="text-block" style="left:71.99723815917969pt; top:328.2991027832031pt; font-size:10.5pt; ">
+I hope that this learning process will continue for me now that the book is in your
+</div>
+<div class="text-block" style="left:72.0047378540039pt; top:340.89910888671875pt; font-size:10.5pt; ">
+hands, as you have experiences and perspectives that are unique to you. Please
+</div>
+<div class="text-block" style="left:72.00174713134766pt; top:353.4991149902344pt; font-size:10.5pt; ">
+feel free to share any feedback you might have for this book with me via
+</div>
+<div class="text-block" style="left:378.981201171875pt; top:353.4991149902344pt; font-size:10.5pt; ">
+X
+</div>
+<div class="text-block" style="left:385.84820556640625pt; top:353.4991149902344pt; font-size:10.5pt; ">
+,
+</div>
+<div class="text-block" style="left:390.856689453125pt; top:353.4991149902344pt; font-size:10.5pt; ">
+LinkedIn
+</div>
+<div class="text-block" style="left:429.6016845703125pt; top:353.4991149902344pt; font-size:10.5pt; ">
+,
+</div>
+<div class="text-block" style="left:72.003173828125pt; top:366.09912109375pt; font-size:10.5pt; ">
+or email at
+</div>
+<div class="text-block" style="left:119.35818481445312pt; top:365.9626159667969pt; font-size:10.5pt; ">
+hi@huyenchip.com
+</div>
+<div class="text-block" style="left:197.75119018554688pt; top:366.09912109375pt; font-size:10.5pt; ">
+.
+</div>
+<div class="text-block" style="left:72.00003814697266pt; top:388.85736083984375pt; font-size:18.920000076293945pt; font-weight: bold;">
+What This Book Is About
+</div>
+<div class="text-block" style="left:72.00323486328125pt; top:416.0995178222656pt; font-size:10.5pt; ">
+This book provides a framework for adapting foundation models, which include both
+</div>
+<div class="text-block" style="left:72.00028991699219pt; top:428.69952392578125pt; font-size:10.5pt; ">
+large language models (LLMs) and large multimodal models (LMMs), to specific
+</div>
+<div class="text-block" style="left:71.99729919433594pt; top:441.2995300292969pt; font-size:10.5pt; ">
+applications.
+</div>
+<div class="text-block" style="left:71.99729919433594pt; top:459.8995361328125pt; font-size:10.5pt; ">
+There are many different ways to build an application. This book outlines various
+</div>
+<div class="text-block" style="left:72.00479888916016pt; top:472.4995422363281pt; font-size:10.5pt; ">
+solutions and also raises questions you can ask to evaluate the best solution for your
+</div>
+<div class="text-block" style="left:72.0018081665039pt; top:485.09954833984375pt; font-size:10.5pt; ">
+needs. Some of the many questions that this book can help you answer are:
+</div>
+<div class="text-block" style="left:80.65679168701172pt; top:507.6994934082031pt; font-size:10.5pt; ">
+•
+</div>
+<div class="text-block" style="left:89.99700164794922pt; top:507.6994934082031pt; font-size:10.5pt; ">
+Should I build this AI application?
+</div>
+<div class="text-block" style="left:80.65499877929688pt; top:524.2994384765625pt; font-size:10.5pt; ">
+•
+</div>
+<div class="text-block" style="left:89.99700164794922pt; top:524.2994995117188pt; font-size:10.5pt; ">
+How do I evaluate my application? Can I use AI to evaluate AI outputs?
+</div>
+<div class="text-block" style="left:80.65502166748047pt; top:540.8994750976562pt; font-size:10.5pt; ">
+•
+</div>
+<div class="text-block" style="left:89.99700164794922pt; top:540.8995361328125pt; font-size:10.5pt; ">
+What causes hallucinations? How do I detect and mitigate hallucinations?
+</div>
+<div class="text-block" style="left:80.65502166748047pt; top:557.49951171875pt; font-size:10.5pt; ">
+•
+</div>
+<div class="text-block" style="left:89.99700164794922pt; top:557.49951171875pt; font-size:10.5pt; ">
+What are the best practices for prompt engineering?
+</div>
+<div class="text-block" style="left:80.65499877929688pt; top:574.0994873046875pt; font-size:10.5pt; ">
+•
+</div>
+<div class="text-block" style="left:89.99700164794922pt; top:574.0994873046875pt; font-size:10.5pt; ">
+Why does RAG work? What are the strategies for doing RAG?
+</div>
+<div class="text-block" style="left:71.99700927734375pt; top:610.218017578125pt; font-size:9.0pt; font-weight: bold;">
+xii
+</div>
+<div class="text-block" style="left:88.01701354980469pt; top:610.218017578125pt; font-size:9.0pt; font-weight: bold;">
+|
+</div>
+<div class="text-block" style="left:98.90701293945312pt; top:610.218017578125pt; font-size:9.0pt; font-weight: bold;">
+Preface
+</div>
+</div>
+<div class="page" style="width:504.0pt; height:661.5pt;">
+<div class="text-block" style="left:80.65950012207031pt; top:52.29900360107422pt; font-size:10.5pt; ">
+•
+</div>
+<div class="text-block" style="left:89.99700164794922pt; top:52.29900360107422pt; font-size:10.5pt; ">
+What’s an agent? How do I build and evaluate an agent?
+</div>
+<div class="text-block" style="left:80.65499877929688pt; top:68.89900207519531pt; font-size:10.5pt; ">
+•
+</div>
+<div class="text-block" style="left:89.99700164794922pt; top:68.89900207519531pt; font-size:10.5pt; ">
+When to finetune a model? When not to finetune a model?
+</div>
+<div class="text-block" style="left:80.65502166748047pt; top:85.4990005493164pt; font-size:10.5pt; ">
+•
+</div>
+<div class="text-block" style="left:89.99700164794922pt; top:85.4990005493164pt; font-size:10.5pt; ">
+How much data do I need? How do I validate the quality of my data?
+</div>
+<div class="text-block" style="left:80.65502166748047pt; top:102.09900665283203pt; font-size:10.5pt; ">
+•
+</div>
+<div class="text-block" style="left:89.99700164794922pt; top:102.09900665283203pt; font-size:10.5pt; ">
+How do I make my model faster, cheaper, and secure?
+</div>
+<div class="text-block" style="left:80.65499877929688pt; top:118.6989974975586pt; font-size:10.5pt; ">
+•
+</div>
+<div class="text-block" style="left:89.99700164794922pt; top:118.6989974975586pt; font-size:10.5pt; ">
+How do I create a feedback loop to improve my application continually?
+</div>
+<div class="text-block" style="left:72.00001525878906pt; top:141.2989959716797pt; font-size:10.5pt; ">
+The book will also help you navigate the overwhelming AI landscape: types of mod‐
+</div>
+<div class="text-block" style="left:71.99700164794922pt; top:153.8990020751953pt; font-size:10.5pt; ">
+els, evaluation benchmarks, and a seemingly infinite number of use cases and appli‐
+</div>
+<div class="text-block" style="left:72.00450897216797pt; top:166.49899291992188pt; font-size:10.5pt; ">
+cation patterns.
+</div>
+<div class="text-block" style="left:72.00450897216797pt; top:185.09898376464844pt; font-size:10.5pt; ">
+The content in this book is illustrated using case studies, many of which I worked on,
+</div>
+<div class="text-block" style="left:72.00155639648438pt; top:197.69898986816406pt; font-size:10.5pt; ">
+backed by ample references and extensively reviewed by experts from a wide range of
+</div>
+<div class="text-block" style="left:71.99856567382812pt; top:210.2989959716797pt; font-size:10.5pt; ">
+backgrounds. Although the book took two years to write, it draws from my experi‐
+</div>
+<div class="text-block" style="left:71.9955825805664pt; top:222.8990020751953pt; font-size:10.5pt; ">
+ence working with language models and ML systems from the last decade.
+</div>
+<div class="text-block" style="left:71.9955825805664pt; top:241.49900817871094pt; font-size:10.5pt; ">
+Like my previous O’Reilly book,
+</div>
+<div class="text-block" style="left:214.9568328857422pt; top:241.36251831054688pt; font-size:10.5pt; ">
+Designing Machine Learning Systems
+</div>
+<div class="text-block" style="left:372.2280578613281pt; top:241.49900817871094pt; font-size:10.5pt; ">
+(DMLS), this
+</div>
+<div class="text-block" style="left:72.00308227539062pt; top:254.09901428222656pt; font-size:10.5pt; ">
+book focuses on the fundamentals of AI engineering instead of any specific tool or
+</div>
+<div class="text-block" style="left:72.00008392333984pt; top:266.69903564453125pt; font-size:10.5pt; ">
+API. Tools become outdated quickly, but fundamentals should last longer.
+</div>
+<div class="text-block" style="left:383.87109375pt; top:267.6495361328125pt; font-size:6.0pt; ">
+3
+</div>
+<div class="text-block" style="left:145.05609130859375pt; top:297.905029296875pt; font-size:15.0pt; font-weight: bold;">
+Reading
+</div>
+<div class="text-block" style="left:188.25608825683594pt; top:297.9350280761719pt; font-size:15.0pt; font-weight: bold;">
+AI Engineering
+</div>
+<div class="text-block" style="left:257.93109130859375pt; top:297.905029296875pt; font-size:15.0pt; font-weight: bold;">
+(AIE) with
+</div>
+<div class="text-block" style="left:311.256103515625pt; top:297.9350280761719pt; font-size:15.0pt; font-weight: bold;">
+Designing
+</div>
+<div class="text-block" style="left:170.18109130859375pt; top:312.1850280761719pt; font-size:15.0pt; font-weight: bold;">
+Machine Learning Systems
+</div>
+<div class="text-block" style="left:296.2710876464844pt; top:312.155029296875pt; font-size:15.0pt; font-weight: bold;">
+(DMLS)
+</div>
+<div class="text-block" style="left:80.24607849121094pt; top:333.1300048828125pt; font-size:10.0pt; ">
+AIE can be a companion to DMLS. DMLS focuses on building applications on top of
+</div>
+<div class="text-block" style="left:80.24605560302734pt; top:345.1300048828125pt; font-size:10.0pt; ">
+traditional ML models, which involves more tabular data annotations, feature engi‐
+</div>
+<div class="text-block" style="left:80.24601745605469pt; top:357.1300048828125pt; font-size:10.0pt; ">
+neering, and model training. AIE focuses on building applications on top of founda‐
+</div>
+<div class="text-block" style="left:80.24601745605469pt; top:369.1300048828125pt; font-size:10.0pt; ">
+tion models, which involves more prompt engineering, context construction, and
+</div>
+<div class="text-block" style="left:80.24601745605469pt; top:381.1300048828125pt; font-size:10.0pt; ">
+parameter-efficient finetuning. Both books are self-contained and modular, so you
+</div>
+<div class="text-block" style="left:80.24601745605469pt; top:393.1300048828125pt; font-size:10.0pt; ">
+can read either book independently.
+</div>
+<div class="text-block" style="left:80.24601745605469pt; top:411.1300048828125pt; font-size:10.0pt; ">
+Since foundation models are ML models, some concepts are relevant to working with
+</div>
+<div class="text-block" style="left:80.24604797363281pt; top:423.1300048828125pt; font-size:10.0pt; ">
+both. If a topic is relevant to AIE but has been discussed extensively in DMLS, it’ll still
+</div>
+<div class="text-block" style="left:80.24604797363281pt; top:435.1300048828125pt; font-size:10.0pt; ">
+be covered in this book, but to a lesser extent, with pointers to relevant resources.
+</div>
+<div class="text-block" style="left:80.24604797363281pt; top:453.1300048828125pt; font-size:10.0pt; ">
+Note that many topics are covered in DMLS but not in AIE, and vice versa. The first
+</div>
+<div class="text-block" style="left:80.24604797363281pt; top:465.1300048828125pt; font-size:10.0pt; ">
+chapter of this book also covers the differences between traditional ML engineering
+</div>
+<div class="text-block" style="left:80.24604797363281pt; top:477.1300048828125pt; font-size:10.0pt; ">
+and AI engineering. A real-world system often involves both traditional ML models
+</div>
+<div class="text-block" style="left:80.24608612060547pt; top:489.1300048828125pt; font-size:10.0pt; ">
+and foundation models, so knowledge about working with both is often necessary.
+</div>
+<div class="text-block" style="left:73.14000701904297pt; top:569.7429809570312pt; font-size:7.0pt; ">
+3
+</div>
+<div class="text-block" style="left:80.0pt; top:568.7539672851562pt; font-size:8.0pt; ">
+Teaching a course on how to use TensorFlow in 2017 taught me a painful lesson about how quickly tools and
+</div>
+<div class="text-block" style="left:80.0pt; top:578.7539672851562pt; font-size:8.0pt; ">
+tutorials become outdated.
+</div>
+<div class="text-block" style="left:381.0950927734375pt; top:610.218017578125pt; font-size:9.0pt; font-weight: bold;">
+Preface
+</div>
+<div class="text-block" style="left:412.2440490722656pt; top:610.218017578125pt; font-size:9.0pt; font-weight: bold;">
+|
+</div>
+<div class="text-block" style="left:423.1340637207031pt; top:610.218017578125pt; font-size:9.0pt; font-weight: bold;">
+xiii
+</div>
+</div>
+</body>
+</html>

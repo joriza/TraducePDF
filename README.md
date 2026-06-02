@@ -2,8 +2,53 @@
 
 Traductor de PDFs del inglés al español utilizando un modelo LLM local (LM Studio, Llama Server u Ollama).
 
+## Ramas del Proyecto
+
+### 📌 `master` - Traducción de Texto Plano (Producción)
+
+Traducción clásica enfocada en contenido de texto sin preservación de layout visual.
+
+**Características:**
+- ✅ Salida en TXT o Markdown
+- ✅ Formateo prolijo de oraciones
+- ✅ 0-10% preservación de layout
+- ✅ Parseo robusto sin errores
+- ✅ Rápido y probado
+
+**Comando:**
+```bash
+python src/main.py documento.pdf --format markdown
+```
+
+### 🏗️ `260601` - MVP Preservación de Layout (En Desarrollo)
+
+Traducción con preservación básica del layout visual usando PyMuPDF + BeautifulSoup + WeasyPrint.
+
+**Características:**
+- ✅ Salida en PDF con layout parcialmente preservado
+- ✅ Posicionamiento absoluto de texto
+- ✅ Estructura de páginas y bloques
+- ✅ 75-85% preservación de layout
+- ⚠️ Requiere dependencias adicionales
+- ⚠️ Pendiente de testing
+
+**Stack:**
+- PyMuPDF (extracción HTML)
+- BeautifulSoup (parsing)
+- LLM (traducción)
+- WeasyPrint (regeneración PDF)
+
+**Comando:**
+```bash
+pip install beautifulsoup4 weasyprint
+python src/main_layout.py documento.pdf --profile lm-studio
+```
+
+**Estado:** Módulos creados, pendiente de testing
+
 ## Características
 
+### Modo Texto Plano (rama master)
 - ✅ Traducción automática de PDFs del inglés al español
 - ✅ Compatible con múltiples proveedores LLM locales (LM Studio, Llama Server, Ollama)
 - ✅ Enfoque en contenido de texto (sin formato visual ni imágenes)
@@ -18,6 +63,15 @@ Traductor de PDFs del inglés al español utilizando un modelo LLM local (LM Stu
 - ✅ **Parseo robusto con fallback automático** (evita errores de traducción)
 - ✅ Logging detallado para debugging
 - ✅ **Compatible con Windows** (soporte UTF-8)
+
+### Modo Preservación de Layout (rama 260601)
+- ✅ Preservación básica de layout visual (75-85%)
+- ✅ Extracción HTML con PyMuPDF
+- ✅ Traducción manteniendo etiquetas HTML
+- ✅ Regeneración PDF con WeasyPrint
+- ✅ Posicionamiento absoluto de texto
+- ✅ Soporte para títulos, párrafos, listas
+- ⚠️ Requiere dependencias adicionales (beautifulsoup4, weasyprint)
 
 ## Requisitos
 
@@ -232,6 +286,41 @@ ollama pull llama2
 
 **Recomendación:** Usa Markdown para documentos técnicos o cuando necesites compartir en GitHub/Notion. Usa TXT para lectura simple.
 
+## Modos de Traducción
+
+### Modo 1: Texto Plano (rama `master`)
+
+Traducción clásica sin preservación de layout visual. Ideal para:
+- Documentos técnicos para documentación
+- Lectura en dispositivos móviles
+- Conversión a otros formatos
+
+**Preservación:** 0-10% de layout visual
+
+### Modo 2: Preservación de Layout (rama `260601`)
+
+Traducción con preservación básica del layout visual. Ideal para:
+- Documentos con formatting simple
+- Presentaciones básicas
+- Mantener estructura visual aproximada
+
+**Preservación:** 75-85% de layout visual
+
+**Stack adicional:**
+- PyMuPDF (extracción HTML básica)
+- BeautifulSoup (parsing HTML)
+- WeasyPrint (generación PDF)
+
+**Diferencias clave:**
+
+| Aspecto | Modo Texto | Modo Layout |
+|---------|-----------|-------------|
+| **Preservación visual** | 0-10% | 75-85% |
+| **Edición manual necesaria** | 15-30 min | 2-5 min |
+| **Tiempo de procesamiento** | Rápido | Medio |
+| **Complejidad** | Baja | Media |
+| **Dependencias** | Básicas | Adicionales |
+
 ## Cómo funciona
 
 ```
@@ -405,19 +494,55 @@ TraducePDF/
 - El overlap entre bloques puede causar duplicación de texto en los bordes
 - El formateo prolijo puede alterar ligeramente la estructura original del documento
 
+## Ramas del Proyecto
+
+### `master` - Modo Texto Plano
+- Traducción clásica sin preservación visual
+- Salida en TXT o Markdown
+- Proceso rápido y simple
+- **Comando:** `python src/main.py documento.pdf`
+- **Preservación:** 0-10%
+
+### `260601` - MVP Preservación de Layout
+- Traducción con preservación básica del layout visual
+- Salida en PDF
+- Stack: PyMuPDF + BeautifulSoup + WeasyPrint
+- **Comando:** `python src/main_layout.py documento.pdf`
+- **Preservación:** 75-85%
+
+**Cambiar de rama:**
+```bash
+git checkout master  # Modo texto plano
+git checkout 260601  # Modo layout preservation
+```
+
 ## Próximos desarrollos
 
-### Rama 260601 - MVP con preservación de layout
+### Rama 260601 - MVP con preservación de layout (En progreso)
 
 Implementación basada en investigación exhaustiva para traducir PDFs preservando el aspecto visual:
 
-**Stack:**
+**Stack actual (sin instalación externa):**
+- PyMuPDF (extracción HTML básica)
+- BeautifulSoup (parsing HTML)
+- Llama/Ollama para traducción
+- WeasyPrint (regeneración PDF)
+
+**Objetivos:**
+- 75-85% preservación de layout en documentos simples
+- Procesamiento en lotes para documentos largos
+- Detección de contenido traducible
+- Manejo de errores y fallbacks
+
+**Estado:** Módulos creados, pendiente de testing y refinamiento
+
+**Stack alternativo (pdf2htmlEX - no implementado aún):**
 - pdf2htmlEX para extracción precisa de layout
 - BeautifulSoup para parsing HTML
 - Llama/Ollama para traducción
 - WeasyPrint para regeneración PDF
 
-**Objetivos:**
+**Objetivos alternativos:**
 - 80-90% preservación de layout en documentos simples
 - Soporte para tablas básicas
 - Detección de fórmulas matemáticas
@@ -432,6 +557,66 @@ Las contribuciones son bienvenidas. Por favor, abre un issue o pull request.
 ## Licencia
 
 Este proyecto es de código abierto y está disponible bajo la licencia MIT.
+
+## Ejemplos de Uso
+
+### Modo Texto Plano (rama `master`)
+
+```bash
+# Traducción básica a TXT
+python src/main.py documento.pdf
+
+# Traducción a Markdown
+python src/main.py documento.pdf --format markdown
+
+# Traducción con LM Studio, 3 páginas por bloque
+python src/main.py documento.pdf --profile lm-studio --pages-per-block 3 -v
+
+# Traducción detallada
+python src/main.py documento.pdf --show-details --verbose
+```
+
+### Modo Preservación de Layout (rama `260601`)
+
+```bash
+# Cambiar a la rama 260601
+git checkout 260601
+
+# Traducción con preservación de layout
+python src/main_layout.py documento.pdf
+
+# Traducción con LM Studio
+python src/main_layout.py documento.pdf --profile lm-studio
+
+# Traducción con HTML intermedio (debugging)
+python src/main_layout.py documento.pdf --keep-html
+
+# Traducción con lotes más pequeños
+python src/main_layout.py documento.pdf --batch-size 3 --verbose
+```
+
+### Comparación de Salida
+
+**Modo Texto Plano (TXT):**
+```
+================================================================================
+PÁGINA 1
+================================================================================
+
+Ingeniería de IA
+
+Construyendo Aplicaciones
+
+con Foundation Models
+```
+
+**Modo Preservación de Layout (PDF):**
+```bashn# El PDF resultante mantiene:
+# - Posicionamiento aproximado de texto
+# - Estructura de párrafos
+# - Fuentes básicas (Arial)
+# - Paginación correcta
+```
 
 ## Autor
 
